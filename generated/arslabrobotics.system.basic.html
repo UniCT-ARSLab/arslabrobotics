@@ -113,10 +113,10 @@
 <td><p>Defines an integrator</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#arslabrobotics.system.basic.LinearDynamicSystem" title="arslabrobotics.system.basic.LinearDynamicSystem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearDynamicSystem</span></code></a>(A, B, C)</p></td>
-<td><p>Defines a linear system of type: x' = A x + B u y = C x :param A: The state matrix :param B: The input matrix :param C: The output matrix</p></td>
+<td><p>Defines a linear system of type.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#arslabrobotics.system.basic.Proportional" title="arslabrobotics.system.basic.Proportional"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Proportional</span></code></a>(_kp)</p></td>
-<td><p>Defines proportional block :param _kp: The constant to be multiplied by the input</p></td>
+<td><p>Defines proportional block</p></td>
 </tr>
 </tbody>
 </table>
@@ -124,15 +124,30 @@
 <dt class="sig sig-object py" id="arslabrobotics.system.basic.Proportional">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">arslabrobotics.system.basic.</span></span><span class="sig-name descname"><span class="pre">Proportional</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_kp</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/system/basic.html#Proportional"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.system.basic.Proportional" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Defines proportional block
-:param _kp: The constant to be multiplied by the input</p>
+<p>Defines proportional block</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>_kp</strong> (<em>float</em>) – The constant to be multiplied by the input</p>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="arslabrobotics.system.basic.Proportional.evaluate">
 <span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delta_t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_input</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/system/basic.html#Proportional.evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.system.basic.Proportional.evaluate" title="Link to this definition"></a></dt>
-<dd><p>Computes the output of proportional block
-:param _input: The input
-:param delta_t: The sampling time
-:return: The input times the constant</p>
+<dd><p>Computes the output of proportional block</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>_input</strong> (<em>float</em>) – The input</p></li>
+<li><p><strong>delta_t</strong> (<em>float</em>) – The sampling time</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The input times the constant</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -145,10 +160,21 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="arslabrobotics.system.basic.Derivator.evaluate">
 <span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delta_t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_input</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/system/basic.html#Derivator.evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.system.basic.Derivator.evaluate" title="Link to this definition"></a></dt>
-<dd><p>Computes the output of the derivator block
-:param _input: The input
-:param delta_t: The sampling time
-:return: The input derivated</p>
+<dd><p>Computes the output of the derivator block</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>_input</strong> (<em>float</em>) – The input</p></li>
+<li><p><strong>delta_t</strong> (<em>float</em>) – The sampling time</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The input derivated</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -161,10 +187,21 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="arslabrobotics.system.basic.Integrator.evaluate">
 <span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delta_t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_input</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/system/basic.html#Integrator.evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.system.basic.Integrator.evaluate" title="Link to this definition"></a></dt>
-<dd><p>Computes the output of the integrator
-:param _input: The input
-:param delta_t: The sampling time
-:return: The integrated data</p>
+<dd><p>Computes the output of the integrator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>_input</strong> – The input</p></li>
+<li><p><strong>delta_t</strong> (<em>float</em>) – The sampling time</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The integrated data</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -173,20 +210,34 @@
 <dt class="sig sig-object py" id="arslabrobotics.system.basic.LinearDynamicSystem">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">arslabrobotics.system.basic.</span></span><span class="sig-name descname"><span class="pre">LinearDynamicSystem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">C</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/system/basic.html#LinearDynamicSystem"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.system.basic.LinearDynamicSystem" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Defines a linear system of type:
-x’ = A x + B u
-y = C x
-:param A: The state matrix
-:param B: The input matrix
-:param C: The output matrix</p>
+<p>Defines a linear system of type:</p>
+<p>x’ = A x + B u
+y = C x</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A</strong> – The state matrix</p></li>
+<li><p><strong>B</strong> – The input matrix</p></li>
+<li><p><strong>C</strong> – The output matrix</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="arslabrobotics.system.basic.LinearDynamicSystem.evaluate">
 <span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delta_t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_input</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/system/basic.html#LinearDynamicSystem.evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.system.basic.LinearDynamicSystem.evaluate" title="Link to this definition"></a></dt>
 <dd><p>Evaluates the output of the linear system given the input. Evaluation is made
-by using the Euler approximation.
-:param delta_t: The sampling time
-:param _input: The input
-:returns: The output</p>
+by using the Euler approximation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>delta_t</strong> (<em>float</em>) – The sampling time</p></li>
+<li><p><strong>_input</strong> (<em>float</em>) – The input</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The output</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">

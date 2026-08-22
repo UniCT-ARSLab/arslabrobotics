@@ -87,21 +87,25 @@
 <a class="viewcode-back" href="../../../generated/arslabrobotics.system.basic.html#arslabrobotics.system.Proportional">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Proportional</span><span class="p">:</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_kp</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_kp</span> <span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Defines proportional block</span>
+
 <span class="sd">        :param _kp: The constant to be multiplied by the input</span>
+
 <span class="sd">        """</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">kp</span> <span class="o">=</span> <span class="n">_kp</span>
 
 <div class="viewcode-block" id="Proportional.evaluate">
 <a class="viewcode-back" href="../../../generated/arslabrobotics.system.basic.html#arslabrobotics.system.Proportional.evaluate">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delta_t</span><span class="p">,</span> <span class="n">_input</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delta_t</span> <span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">_input</span> <span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Computes the output of proportional block</span>
+
 <span class="sd">        :param _input: The input</span>
 <span class="sd">        :param delta_t: The sampling time</span>
 <span class="sd">        :return: The input times the constant</span>
+
 <span class="sd">        """</span>
         <span class="k">return</span> <span class="n">_input</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">kp</span></div>
 </div>
@@ -120,12 +124,14 @@
 
 <div class="viewcode-block" id="Derivator.evaluate">
 <a class="viewcode-back" href="../../../generated/arslabrobotics.system.basic.html#arslabrobotics.system.Derivator.evaluate">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delta_t</span><span class="p">,</span> <span class="n">_input</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delta_t</span> <span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">_input</span> <span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Computes the output of the derivator block</span>
+
 <span class="sd">        :param _input: The input</span>
 <span class="sd">        :param delta_t: The sampling time</span>
 <span class="sd">        :return: The input derivated</span>
+
 <span class="sd">        """</span>
         <span class="n">out</span> <span class="o">=</span> <span class="p">(</span><span class="n">_input</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">prev_input</span><span class="p">)</span> <span class="o">/</span> <span class="n">delta_t</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">prev_input</span> <span class="o">=</span> <span class="n">_input</span>
@@ -146,12 +152,14 @@
 
 <div class="viewcode-block" id="Integrator.evaluate">
 <a class="viewcode-back" href="../../../generated/arslabrobotics.system.basic.html#arslabrobotics.system.Integrator.evaluate">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delta_t</span><span class="p">,</span> <span class="n">_input</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delta_t</span> <span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">_input</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Computes the output of the integrator</span>
+
 <span class="sd">        :param _input: The input</span>
 <span class="sd">        :param delta_t: The sampling time</span>
 <span class="sd">        :return: The integrated data</span>
+
 <span class="sd">        """</span>
         <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">prev_output</span> <span class="o">+</span> <span class="n">_input</span> <span class="o">*</span> <span class="n">delta_t</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">prev_output</span> <span class="o">=</span> <span class="n">out</span>
@@ -166,12 +174,15 @@
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">"""</span>
-<span class="sd">        Defines a linear system of type:</span>
+<span class="sd">        Defines a linear system of type::</span>
+
 <span class="sd">        x' = A x + B u</span>
 <span class="sd">        y = C x</span>
+
 <span class="sd">        :param A: The state matrix</span>
 <span class="sd">        :param B: The input matrix</span>
 <span class="sd">        :param C: The output matrix</span>
+
 <span class="sd">        """</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
@@ -181,13 +192,15 @@
 
 <div class="viewcode-block" id="LinearDynamicSystem.evaluate">
 <a class="viewcode-back" href="../../../generated/arslabrobotics.system.basic.html#arslabrobotics.system.LinearDynamicSystem.evaluate">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delta_t</span><span class="p">,</span> <span class="n">_input</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delta_t</span> <span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">_input</span> <span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Evaluates the output of the linear system given the input. Evaluation is made</span>
 <span class="sd">        by using the Euler approximation.</span>
+
 <span class="sd">        :param delta_t: The sampling time</span>
 <span class="sd">        :param _input: The input</span>
 <span class="sd">        :returns: The output</span>
+
 <span class="sd">        """</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">A</span> <span class="o">*</span> <span class="n">delta_t</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">))</span> <span class="o">@</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">B</span> <span class="o">*</span> <span class="n">delta_t</span> <span class="o">*</span> <span class="n">_input</span>
         <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">C</span> <span class="o">@</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span>
