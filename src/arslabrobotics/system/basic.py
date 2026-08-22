@@ -82,9 +82,11 @@ class LinearDynamicSystem:
 
     def __init__(self, A, B, C):
         """
-        Defines a linear system of type::
+        Defines a linear system of type:
 
-            x' = A x + B u
+        ..math::
+
+            \dot{x} = A x + B u\\
             y = C x
 
         :param A: The state matrix
