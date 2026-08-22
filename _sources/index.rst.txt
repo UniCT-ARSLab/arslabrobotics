@@ -23,9 +23,6 @@ then enter the directory and install the binary libraries::
    :maxdepth: 2
    :caption: Contenuti:
 
-Documentazione
-------------
-
 .. automodule:: arslabrobotics
    :members:
    :undoc-members:
