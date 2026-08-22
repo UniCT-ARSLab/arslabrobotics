@@ -20,8 +20,10 @@ class Cart:
     def __init__(self, _mass: float, _friction: float):
         """
         Defines a cart robot of a 1D environment with the given mass and friction
+
         :param _mass: The mass of the cart, expressed in Kg
         :param _friction: The force of friction present in the system
+
         """
         self.M: float = _mass
         self.B: float = _friction
@@ -31,8 +33,10 @@ class Cart:
     def evaluate(self, delta_t: float, _force: float) -> tuple:
         """
         Evaluates the linear speed and position at the given time with the applied force
+
         :param delta_t: The delta time
         :param _force: The applied force
+
         """
         new_speed: float = (1 - self.B * delta_t / self.M) * self.speed + delta_t * _force / self.M
         new_position: float = self.position + self.speed * delta_t
@@ -47,11 +51,13 @@ class Cart2D:
 
     def __init__(self, _mass: float, _radius: float, _lin_friction: float, _ang_friction: float):
         """
-        Defines a cylinder robot with the given mass, radius, linear and angular frictions
+        Defines a cylindric robot with the given mass, radius, linear and angular frictions
+
         :param _mass: The mass of the cylinder robot, expressed in Kg
         :param _radius: The radius of the cylinder, expressed in meter
         :param _lin_friction: The force of linear friction present in the system
         :param _ang_friction: The force of angular friction present in the system
+
         """
         self.M: float = _mass
         self.b: float = _lin_friction
@@ -67,9 +73,11 @@ class Cart2D:
     def evaluate(self, delta_t: float, _force, _torque: float) -> None:
         """
         Evaluates the linear speed and angular speed at the given time with the applied force and torque
+
         :param delta_t: The delta time
         :param _force: The applied force
         :param _torque: The applied torque
+
         """
         new_v: float = self.v * (1 - self.b * delta_t / self.M) + delta_t * _force / self.M
         new_w: float = self.w * (1 - self.beta * delta_t / self.Iz) + delta_t * _torque / self.Iz
@@ -82,7 +90,9 @@ class Cart2D:
     def get_pose(self) -> (float, float, float):
         """
         Returns the current robot's position
+
         :return: A tuple containing X, Y coordinate and Theta angle
+
         """
         return self.x, self.y, self.theta
 
@@ -92,7 +102,9 @@ class Cart2D:
     def get_speed(self) -> (float, float):
         """
         Returns the current robot's speed
+
         :return: A tuple containing linear and angular speed
+
         """
         return self.v, self.w
 
@@ -103,22 +115,28 @@ class TwoWheelsCart2D(Cart2D):
 
     def __init__(self, _mass: float, _radius: float, _lin_friction: float, _ang_friction: float, _traction_wheelbase: float):
         """
-        Defines a cylinder robot with the given mass, radius, linear & angular frictions and distance between traction wheels
+        Defines a cylinder robot with the given mass, radius, linear & angular frictions
+        and distance between traction wheels
+
         :param _mass: The mass of the cylinder robot, expressed in Kg
         :param _radius: The radius of the cylinder, expressed in meter
         :param _lin_friction: The force of linear friction present in the system
         :param _ang_friction: The force of angular friction present in the system
         :param _traction_wheelbase: The distance between the traction wheels, expressed in meter
+
         """
         super().__init__(_mass, _radius, _lin_friction, _ang_friction)
         self.traction_wheelbase: float = _traction_wheelbase
 
     def evaluate(self, delta_t: float, f_left: float, f_right: float) -> None:
         """
-        Evaluates the linear speed and angular speed at the given time with both the forces applied on left and on right
-        :param delta_t: The delta time
-        :param f_left: The applied force on left
-        :param f_right: The applied torque on right
+        Evaluates the linear speed and angular speed at the given time
+        with both the forces applied on left and on right
+
+        :param delta_t: Sampling time
+        :param f_left: The applied force on left (in Nm)
+        :param f_right: The applied torque on right (in Nm)
+
         """
         f = f_left + f_right
         t = self.traction_wheelbase * (f_right - f_left)
@@ -135,6 +153,7 @@ class TwoWheelsCart2DEncoders(TwoWheelsCart2D):
         """
         Defines a cylinder robot with the given mass, radius, linear & angular frictions,
         and distance between traction wheels; it also simulates the encoder wheels.
+
         :param _mass: The mass of the cylinder robot, expressed in Kg
         :param _radius: The radius of the cylinder, expressed in meters
         :param _lin_friction: The force of linear friction present in the system
@@ -146,6 +165,7 @@ class TwoWheelsCart2DEncoders(TwoWheelsCart2D):
         :param _r_encoder_right: The radius of the right encoder wheel (meters)
         :param _encoder_wheelbase: The distance between the encoder wheels, expressed in meters
         :param _encoder_ticks: The numer of ticks per revolution of the encoders
+
         """
 
         super().__init__(_mass, _radius, _lin_friction, _ang_friction, _traction_wheelbase)
@@ -163,9 +183,11 @@ class TwoWheelsCart2DEncoders(TwoWheelsCart2D):
     def evaluate(self, delta_t, torque_left, torque_right) -> None:
         """
         Simulates the system, given the torques generated by the motors of the traction wheels
+
         :param delta_t: Sampling time
         :param torque_left: The torque generated by the left motor (in Nm)
         :param torque_right: The torque generated by the right motor (in Nm)
+
         """
         # torque to force
         f_left = torque_left / self.r_traction_left
@@ -195,6 +217,7 @@ class TwoWheelsCart2DEncodersOdometry(TwoWheelsCart2DEncoders):
         """
         Defines a cylinder robot with the given mass, radius, linear & angular frictions,
         and distance between traction wheels; it also simulates the encoder wheels and computes odometry.
+
         :param _mass: The mass of the cylinder robot, expressed in Kg
         :param _radius: The radius of the cylinder, expressed in meters
         :param _lin_friction: The force of linear friction present in the system
@@ -206,6 +229,7 @@ class TwoWheelsCart2DEncodersOdometry(TwoWheelsCart2DEncoders):
         :param _r_encoder_right: The radius of the right encoder wheel (meters)
         :param _encoder_wheelbase: The distance between the encoder wheels, expressed in meters
         :param _encoder_ticks: The numer of ticks per revolution of the encoders
+
         """
         super().__init__(_mass, _radius, _lin_friction, _ang_friction,
                          _r_traction_left, _r_traction_right, _traction_wheelbase,
@@ -221,9 +245,11 @@ class TwoWheelsCart2DEncodersOdometry(TwoWheelsCart2DEncoders):
     def evaluate(self, delta_t, torque_left, torque_right):
         """
         Simulates the system, given the torques generated by the motors of the traction wheels
+
         :param delta_t: Sampling time
         :param torque_left: The torque generated by the left motor (in Nm)
         :param torque_right: The torque generated by the right motor (in Nm)
+
         """
         # dynamic model
         super().evaluate(delta_t, torque_left, torque_right)
@@ -249,6 +275,7 @@ class TwoWheelsCart2DEncodersOdometry(TwoWheelsCart2DEncoders):
     def get_pose(self) -> (float, float, float):
         """
         Returns the current robot's position
+
         :return: A tuple containing X, Y coordinate and Theta angle
         """
         return self.x_r, self.y_r, self.theta_r
@@ -256,6 +283,7 @@ class TwoWheelsCart2DEncodersOdometry(TwoWheelsCart2DEncoders):
     def get_speed(self) -> (float, float):
         """
         Returns the current linear and angular speeds
+
         :return: A tuple containing V and W
         """
         return self.v_r, self.w_r
@@ -263,6 +291,7 @@ class TwoWheelsCart2DEncodersOdometry(TwoWheelsCart2DEncoders):
     def get_wheel_speed(self) -> (float, float):
         """
         Returns the current linear and angular speeds
+
         :return: A tuple containing V and W
         """
         return self.vleft, self.vright
@@ -274,11 +303,14 @@ class AckermannSteering:
 
     def __init__(self, _mass: float, _lin_friction: float, _r_traction: float, _lateral_wheelbase: float):
         """
-        Defines a vehicle ackermann steering robot with the given mass, linear friction, distance between traction and distance between wheels
+        Defines a vehicle ackermann steering robot with the given mass,
+        linear friction, distance between traction and distance between wheels
+
         :param _mass: The mass of the cylinder robot, expressed in Kg
         :param _lin_friction: The force of linear friction present in the system
         :param _r_traction: The distance between the traction wheels, expressed in meter
         :param _lateral_wheelbase: The distance between the lateral wheels, expressed in meter
+
         """
         self.M: float = _mass
         self.b: float = _lin_friction
@@ -294,9 +326,11 @@ class AckermannSteering:
     def evaluate(self, delta_t, torque, steering_angle):
         """
         Simulates the system.
+
         :param delta_t: Sampling time
         :param torque: The torque generated by the traction motor (in Nm)
         :param steering_angle: The angle of the center steering wheel (in radians)
+
         """
         _force = torque / self.r_wheels
         new_v = self.v * (1 - self.b * delta_t / self.M) + delta_t * _force / self.M
@@ -316,14 +350,18 @@ class AckermannSteering:
     def get_pose(self) -> (float, float, float):
         """
         Returns the current robot's position
+
         :return: A tuple containing X, Y coordinate and Theta angle
+
         """
         return self.x, self.y, self.theta
 
     def get_speed(self) -> (float, float):
         """
         Returns the current linear and angular speeds
+
         :return: A tuple containing V and W
+
         """
         return self.v, self.w
 

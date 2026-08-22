@@ -14,9 +14,11 @@ class Arm:
     def __init__(self, _mass: float, _len : float, _friction: float):
         """
         Defines an arm in a 2D environment with the given mass, the lengthm and the friction
+
         :param _mass: The mass of the arm, expressed in Kg
         :param _length: The length of the arm, expressed in meters
         :param _friction: The air friction coefficient
+
         """
         self.M: float = _mass
         self.B: float = _friction
@@ -27,8 +29,11 @@ class Arm:
     def evaluate(self, delta_t: float, _torque: float) -> tuple:
         """
         Evaluates the angular speed and position at the given time with the applied torque
+
         :param delta_t: The delta time
         :param _torque: The applied torque
+        :return: the angle and the angular speed
+
         """
         new_omega: float = (1 - (3./2.) * (delta_t / (self.M * self.L) ) * self.B) * self.omega \
                                 - (3./2.) * (delta_t / self.L ) * GRAVITY * math.cos(self.theta) \
