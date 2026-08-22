@@ -1,0 +1,491 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>arslabrobotics.system.cart &mdash; arslabrobotics 2.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=51b770b3"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="arslabrobotics.utils" href="arslabrobotics.utils.html" />
+    <link rel="prev" title="arslabrobotics.system.basic" href="arslabrobotics.system.basic.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            arslabrobotics
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="arslabrobotics.html">arslabrobotics</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="arslabrobotics.data.html">arslabrobotics.data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arslabrobotics.dds.html">arslabrobotics.dds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arslabrobotics.identification.html">arslabrobotics.identification</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="arslabrobotics.system.html">arslabrobotics.system</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="arslabrobotics.system.html#arslabrobotics.system.Proportional"><code class="docutils literal notranslate"><span class="pre">Proportional</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="arslabrobotics.system.html#arslabrobotics.system.Derivator"><code class="docutils literal notranslate"><span class="pre">Derivator</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="arslabrobotics.system.html#arslabrobotics.system.Integrator"><code class="docutils literal notranslate"><span class="pre">Integrator</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="arslabrobotics.system.html#arslabrobotics.system.LinearDynamicSystem"><code class="docutils literal notranslate"><span class="pre">LinearDynamicSystem</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="arslabrobotics.system.html#arslabrobotics.system.Cart"><code class="docutils literal notranslate"><span class="pre">Cart</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="arslabrobotics.system.html#arslabrobotics.system.Cart2D"><code class="docutils literal notranslate"><span class="pre">Cart2D</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="arslabrobotics.system.html#arslabrobotics.system.TwoWheelsCart2D"><code class="docutils literal notranslate"><span class="pre">TwoWheelsCart2D</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="arslabrobotics.system.html#arslabrobotics.system.TwoWheelsCart2DEncoders"><code class="docutils literal notranslate"><span class="pre">TwoWheelsCart2DEncoders</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="arslabrobotics.system.html#arslabrobotics.system.TwoWheelsCart2DEncodersOdometry"><code class="docutils literal notranslate"><span class="pre">TwoWheelsCart2DEncodersOdometry</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="arslabrobotics.system.html#arslabrobotics.system.AckermannSteering"><code class="docutils literal notranslate"><span class="pre">AckermannSteering</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="arslabrobotics.system.html#arslabrobotics.system.Arm"><code class="docutils literal notranslate"><span class="pre">Arm</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="arslabrobotics.system.arm.html">arslabrobotics.system.arm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="arslabrobotics.system.basic.html">arslabrobotics.system.basic</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">arslabrobotics.system.cart</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="arslabrobotics.utils.html">arslabrobotics.utils</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">arslabrobotics</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../api.html">API Reference</a></li>
+          <li class="breadcrumb-item"><a href="arslabrobotics.html">arslabrobotics</a></li>
+          <li class="breadcrumb-item"><a href="arslabrobotics.system.html">arslabrobotics.system</a></li>
+      <li class="breadcrumb-item active">arslabrobotics.system.cart</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/generated/arslabrobotics.system.cart.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-arslabrobotics.system.cart">
+<span id="arslabrobotics-system-cart"></span><h1>arslabrobotics.system.cart<a class="headerlink" href="#module-arslabrobotics.system.cart" title="Link to this heading"></a></h1>
+<p class="rubric">Classes</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#arslabrobotics.system.cart.AckermannSteering" title="arslabrobotics.system.cart.AckermannSteering"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AckermannSteering</span></code></a>(_mass, _lin_friction, ...)</p></td>
+<td><p>Defines a vehicle ackermann steering robot with the given mass, linear friction, distance between traction and distance between wheels :param _mass: The mass of the cylinder robot, expressed in Kg :param _lin_friction: The force of linear friction present in the system :param _r_traction: The distance between the traction wheels, expressed in meter :param _lateral_wheelbase: The distance between the lateral wheels, expressed in meter</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#arslabrobotics.system.cart.Cart" title="arslabrobotics.system.cart.Cart"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Cart</span></code></a>(_mass, _friction)</p></td>
+<td><p>Defines a cart robot of a 1D environment with the given mass and friction :param _mass: The mass of the cart, expressed in Kg :param _friction: The force of friction present in the system</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#arslabrobotics.system.cart.Cart2D" title="arslabrobotics.system.cart.Cart2D"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Cart2D</span></code></a>(_mass, _radius, _lin_friction, ...)</p></td>
+<td><p>Defines a cylinder robot with the given mass, radius, linear and angular frictions :param _mass: The mass of the cylinder robot, expressed in Kg :param _radius: The radius of the cylinder, expressed in meter :param _lin_friction: The force of linear friction present in the system :param _ang_friction: The force of angular friction present in the system</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#arslabrobotics.system.cart.TwoWheelsCart2D" title="arslabrobotics.system.cart.TwoWheelsCart2D"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TwoWheelsCart2D</span></code></a>(_mass, _radius, ...)</p></td>
+<td><p>Defines a cylinder robot with the given mass, radius, linear &amp; angular frictions and distance between traction wheels :param _mass: The mass of the cylinder robot, expressed in Kg :param _radius: The radius of the cylinder, expressed in meter :param _lin_friction: The force of linear friction present in the system :param _ang_friction: The force of angular friction present in the system :param _traction_wheelbase: The distance between the traction wheels, expressed in meter</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#arslabrobotics.system.cart.TwoWheelsCart2DEncoders" title="arslabrobotics.system.cart.TwoWheelsCart2DEncoders"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TwoWheelsCart2DEncoders</span></code></a>(_mass, _radius, ...)</p></td>
+<td><p>Defines a cylinder robot with the given mass, radius, linear &amp; angular frictions, and distance between traction wheels; it also simulates the encoder wheels.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#arslabrobotics.system.cart.TwoWheelsCart2DEncodersOdometry" title="arslabrobotics.system.cart.TwoWheelsCart2DEncodersOdometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TwoWheelsCart2DEncodersOdometry</span></code></a>(_mass, ...)</p></td>
+<td><p>Defines a cylinder robot with the given mass, radius, linear &amp; angular frictions, and distance between traction wheels; it also simulates the encoder wheels and computes odometry.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="arslabrobotics.system.cart.Cart">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">arslabrobotics.system.cart.</span></span><span class="sig-name descname"><span class="pre">Cart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_mass</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_friction</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/system/cart.html#Cart"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.system.cart.Cart" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Defines a cart robot of a 1D environment with the given mass and friction
+:param _mass: The mass of the cart, expressed in Kg
+:param _friction: The force of friction present in the system</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>_mass</strong> (<em>float</em>)</p></li>
+<li><p><strong>_friction</strong> (<em>float</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="arslabrobotics.system.cart.Cart.evaluate">
+<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delta_t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_force</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/system/cart.html#Cart.evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.system.cart.Cart.evaluate" title="Link to this definition"></a></dt>
+<dd><p>Evaluates the linear speed and position at the given time with the applied force
+:param delta_t: The delta time
+:param _force: The applied force</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>delta_t</strong> (<em>float</em>)</p></li>
+<li><p><strong>_force</strong> (<em>float</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="arslabrobotics.system.cart.Cart2D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">arslabrobotics.system.cart.</span></span><span class="sig-name descname"><span class="pre">Cart2D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_mass</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_radius</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_lin_friction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_ang_friction</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/system/cart.html#Cart2D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.system.cart.Cart2D" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Defines a cylinder robot with the given mass, radius, linear and angular frictions
+:param _mass: The mass of the cylinder robot, expressed in Kg
+:param _radius: The radius of the cylinder, expressed in meter
+:param _lin_friction: The force of linear friction present in the system
+:param _ang_friction: The force of angular friction present in the system</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>_mass</strong> (<em>float</em>)</p></li>
+<li><p><strong>_radius</strong> (<em>float</em>)</p></li>
+<li><p><strong>_lin_friction</strong> (<em>float</em>)</p></li>
+<li><p><strong>_ang_friction</strong> (<em>float</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="arslabrobotics.system.cart.Cart2D.evaluate">
+<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delta_t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_force</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_torque</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/system/cart.html#Cart2D.evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.system.cart.Cart2D.evaluate" title="Link to this definition"></a></dt>
+<dd><p>Evaluates the linear speed and angular speed at the given time with the applied force and torque
+:param delta_t: The delta time
+:param _force: The applied force
+:param _torque: The applied torque</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>delta_t</strong> (<em>float</em>)</p></li>
+<li><p><strong>_torque</strong> (<em>float</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="arslabrobotics.system.cart.Cart2D.get_pose">
+<span class="sig-name descname"><span class="pre">get_pose</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/system/cart.html#Cart2D.get_pose"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.system.cart.Cart2D.get_pose" title="Link to this definition"></a></dt>
+<dd><p>Returns the current robot’s position
+:return: A tuple containing X, Y coordinate and Theta angle</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(&lt;class ‘float’&gt;, &lt;class ‘float’&gt;, &lt;class ‘float’&gt;)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="arslabrobotics.system.cart.Cart2D.set_pose">
+<span class="sig-name descname"><span class="pre">set_pose</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">th</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/system/cart.html#Cart2D.set_pose"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.system.cart.Cart2D.set_pose" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>float</em>)</p></li>
+<li><p><strong>y</strong> (<em>float</em>)</p></li>
+<li><p><strong>th</strong> (<em>float</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="arslabrobotics.system.cart.Cart2D.get_speed">
+<span class="sig-name descname"><span class="pre">get_speed</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/system/cart.html#Cart2D.get_speed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.system.cart.Cart2D.get_speed" title="Link to this definition"></a></dt>
+<dd><p>Returns the current robot’s speed
+:return: A tuple containing linear and angular speed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(&lt;class ‘float’&gt;, &lt;class ‘float’&gt;)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="arslabrobotics.system.cart.TwoWheelsCart2D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">arslabrobotics.system.cart.</span></span><span class="sig-name descname"><span class="pre">TwoWheelsCart2D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_mass</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_radius</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_lin_friction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_ang_friction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_traction_wheelbase</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/system/cart.html#TwoWheelsCart2D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.system.cart.TwoWheelsCart2D" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#arslabrobotics.system.cart.Cart2D" title="arslabrobotics.system.cart.Cart2D"><code class="xref py py-class docutils literal notranslate"><span class="pre">Cart2D</span></code></a></p>
+<p>Defines a cylinder robot with the given mass, radius, linear &amp; angular frictions and distance between traction wheels
+:param _mass: The mass of the cylinder robot, expressed in Kg
+:param _radius: The radius of the cylinder, expressed in meter
+:param _lin_friction: The force of linear friction present in the system
+:param _ang_friction: The force of angular friction present in the system
+:param _traction_wheelbase: The distance between the traction wheels, expressed in meter</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>_mass</strong> (<em>float</em>)</p></li>
+<li><p><strong>_radius</strong> (<em>float</em>)</p></li>
+<li><p><strong>_lin_friction</strong> (<em>float</em>)</p></li>
+<li><p><strong>_ang_friction</strong> (<em>float</em>)</p></li>
+<li><p><strong>_traction_wheelbase</strong> (<em>float</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="arslabrobotics.system.cart.TwoWheelsCart2D.evaluate">
+<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delta_t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f_left</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f_right</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/system/cart.html#TwoWheelsCart2D.evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.system.cart.TwoWheelsCart2D.evaluate" title="Link to this definition"></a></dt>
+<dd><p>Evaluates the linear speed and angular speed at the given time with both the forces applied on left and on right
+:param delta_t: The delta time
+:param f_left: The applied force on left
+:param f_right: The applied torque on right</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>delta_t</strong> (<em>float</em>)</p></li>
+<li><p><strong>f_left</strong> (<em>float</em>)</p></li>
+<li><p><strong>f_right</strong> (<em>float</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="arslabrobotics.system.cart.TwoWheelsCart2DEncoders">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">arslabrobotics.system.cart.</span></span><span class="sig-name descname"><span class="pre">TwoWheelsCart2DEncoders</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_mass</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_radius</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_lin_friction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_ang_friction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_r_traction_left</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_r_traction_right</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_traction_wheelbase</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_r_encoder_left</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_r_encoder_right</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_encoder_wheelbase</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_encoder_ticks</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/system/cart.html#TwoWheelsCart2DEncoders"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.system.cart.TwoWheelsCart2DEncoders" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#arslabrobotics.system.cart.TwoWheelsCart2D" title="arslabrobotics.system.cart.TwoWheelsCart2D"><code class="xref py py-class docutils literal notranslate"><span class="pre">TwoWheelsCart2D</span></code></a></p>
+<p>Defines a cylinder robot with the given mass, radius, linear &amp; angular frictions,
+and distance between traction wheels; it also simulates the encoder wheels.
+:param _mass: The mass of the cylinder robot, expressed in Kg
+:param _radius: The radius of the cylinder, expressed in meters
+:param _lin_friction: The force of linear friction present in the system
+:param _ang_friction: The force of angular friction present in the system
+:param _r_traction_left: The radius of the left traction wheel (meters)
+:param _r_traction_right: The radius of the right traction wheel (meters)
+:param _traction_wheelbase: The distance between the traction wheels, expressed in meters
+:param _r_encoder_left: The radius of the left encoder wheel (meters)
+:param _r_encoder_right: The radius of the right encoder wheel (meters)
+:param _encoder_wheelbase: The distance between the encoder wheels, expressed in meters
+:param _encoder_ticks: The numer of ticks per revolution of the encoders</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="arslabrobotics.system.cart.TwoWheelsCart2DEncoders.evaluate">
+<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delta_t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">torque_left</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">torque_right</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/system/cart.html#TwoWheelsCart2DEncoders.evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.system.cart.TwoWheelsCart2DEncoders.evaluate" title="Link to this definition"></a></dt>
+<dd><p>Simulates the system, given the torques generated by the motors of the traction wheels
+:param delta_t: Sampling time
+:param torque_left: The torque generated by the left motor (in Nm)
+:param torque_right: The torque generated by the right motor (in Nm)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="arslabrobotics.system.cart.TwoWheelsCart2DEncodersOdometry">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">arslabrobotics.system.cart.</span></span><span class="sig-name descname"><span class="pre">TwoWheelsCart2DEncodersOdometry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_mass</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_radius</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_lin_friction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_ang_friction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_r_traction_left</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_r_traction_right</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_traction_wheelbase</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_r_encoder_left</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_r_encoder_right</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_encoder_wheelbase</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_encoder_ticks</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/system/cart.html#TwoWheelsCart2DEncodersOdometry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.system.cart.TwoWheelsCart2DEncodersOdometry" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#arslabrobotics.system.cart.TwoWheelsCart2DEncoders" title="arslabrobotics.system.cart.TwoWheelsCart2DEncoders"><code class="xref py py-class docutils literal notranslate"><span class="pre">TwoWheelsCart2DEncoders</span></code></a></p>
+<p>Defines a cylinder robot with the given mass, radius, linear &amp; angular frictions,
+and distance between traction wheels; it also simulates the encoder wheels and computes odometry.
+:param _mass: The mass of the cylinder robot, expressed in Kg
+:param _radius: The radius of the cylinder, expressed in meters
+:param _lin_friction: The force of linear friction present in the system
+:param _ang_friction: The force of angular friction present in the system
+:param _r_traction_left: The radius of the left traction wheel (meters)
+:param _r_traction_right: The radius of the right traction wheel (meters)
+:param _traction_wheelbase: The distance between the traction wheels, expressed in meters
+:param _r_encoder_left: The radius of the left encoder wheel (meters)
+:param _r_encoder_right: The radius of the right encoder wheel (meters)
+:param _encoder_wheelbase: The distance between the encoder wheels, expressed in meters
+:param _encoder_ticks: The numer of ticks per revolution of the encoders</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>_mass</strong> (<em>float</em>)</p></li>
+<li><p><strong>_radius</strong> (<em>float</em>)</p></li>
+<li><p><strong>_lin_friction</strong> (<em>float</em>)</p></li>
+<li><p><strong>_ang_friction</strong> (<em>float</em>)</p></li>
+<li><p><strong>_r_traction_left</strong> (<em>float</em>)</p></li>
+<li><p><strong>_r_traction_right</strong> (<em>float</em>)</p></li>
+<li><p><strong>_traction_wheelbase</strong> (<em>float</em>)</p></li>
+<li><p><strong>_r_encoder_left</strong> (<em>float</em>)</p></li>
+<li><p><strong>_r_encoder_right</strong> (<em>float</em>)</p></li>
+<li><p><strong>_encoder_wheelbase</strong> (<em>float</em>)</p></li>
+<li><p><strong>_encoder_ticks</strong> (<em>float</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="arslabrobotics.system.cart.TwoWheelsCart2DEncodersOdometry.evaluate">
+<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delta_t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">torque_left</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">torque_right</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/system/cart.html#TwoWheelsCart2DEncodersOdometry.evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.system.cart.TwoWheelsCart2DEncodersOdometry.evaluate" title="Link to this definition"></a></dt>
+<dd><p>Simulates the system, given the torques generated by the motors of the traction wheels
+:param delta_t: Sampling time
+:param torque_left: The torque generated by the left motor (in Nm)
+:param torque_right: The torque generated by the right motor (in Nm)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="arslabrobotics.system.cart.TwoWheelsCart2DEncodersOdometry.get_pose">
+<span class="sig-name descname"><span class="pre">get_pose</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/system/cart.html#TwoWheelsCart2DEncodersOdometry.get_pose"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.system.cart.TwoWheelsCart2DEncodersOdometry.get_pose" title="Link to this definition"></a></dt>
+<dd><p>Returns the current robot’s position
+:return: A tuple containing X, Y coordinate and Theta angle</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(&lt;class ‘float’&gt;, &lt;class ‘float’&gt;, &lt;class ‘float’&gt;)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="arslabrobotics.system.cart.TwoWheelsCart2DEncodersOdometry.get_speed">
+<span class="sig-name descname"><span class="pre">get_speed</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/system/cart.html#TwoWheelsCart2DEncodersOdometry.get_speed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.system.cart.TwoWheelsCart2DEncodersOdometry.get_speed" title="Link to this definition"></a></dt>
+<dd><p>Returns the current linear and angular speeds
+:return: A tuple containing V and W</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(&lt;class ‘float’&gt;, &lt;class ‘float’&gt;)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="arslabrobotics.system.cart.TwoWheelsCart2DEncodersOdometry.get_wheel_speed">
+<span class="sig-name descname"><span class="pre">get_wheel_speed</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/system/cart.html#TwoWheelsCart2DEncodersOdometry.get_wheel_speed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.system.cart.TwoWheelsCart2DEncodersOdometry.get_wheel_speed" title="Link to this definition"></a></dt>
+<dd><p>Returns the current linear and angular speeds
+:return: A tuple containing V and W</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(&lt;class ‘float’&gt;, &lt;class ‘float’&gt;)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="arslabrobotics.system.cart.AckermannSteering">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">arslabrobotics.system.cart.</span></span><span class="sig-name descname"><span class="pre">AckermannSteering</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_mass</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_lin_friction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_r_traction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_lateral_wheelbase</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/system/cart.html#AckermannSteering"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.system.cart.AckermannSteering" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Defines a vehicle ackermann steering robot with the given mass, linear friction, distance between traction and distance between wheels
+:param _mass: The mass of the cylinder robot, expressed in Kg
+:param _lin_friction: The force of linear friction present in the system
+:param _r_traction: The distance between the traction wheels, expressed in meter
+:param _lateral_wheelbase: The distance between the lateral wheels, expressed in meter</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>_mass</strong> (<em>float</em>)</p></li>
+<li><p><strong>_lin_friction</strong> (<em>float</em>)</p></li>
+<li><p><strong>_r_traction</strong> (<em>float</em>)</p></li>
+<li><p><strong>_lateral_wheelbase</strong> (<em>float</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="arslabrobotics.system.cart.AckermannSteering.evaluate">
+<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delta_t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">torque</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">steering_angle</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/system/cart.html#AckermannSteering.evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.system.cart.AckermannSteering.evaluate" title="Link to this definition"></a></dt>
+<dd><p>Simulates the system.
+:param delta_t: Sampling time
+:param torque: The torque generated by the traction motor (in Nm)
+:param steering_angle: The angle of the center steering wheel (in radians)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="arslabrobotics.system.cart.AckermannSteering.get_pose">
+<span class="sig-name descname"><span class="pre">get_pose</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/system/cart.html#AckermannSteering.get_pose"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.system.cart.AckermannSteering.get_pose" title="Link to this definition"></a></dt>
+<dd><p>Returns the current robot’s position
+:return: A tuple containing X, Y coordinate and Theta angle</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(&lt;class ‘float’&gt;, &lt;class ‘float’&gt;, &lt;class ‘float’&gt;)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="arslabrobotics.system.cart.AckermannSteering.get_speed">
+<span class="sig-name descname"><span class="pre">get_speed</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/system/cart.html#AckermannSteering.get_speed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.system.cart.AckermannSteering.get_speed" title="Link to this definition"></a></dt>
+<dd><p>Returns the current linear and angular speeds
+:return: A tuple containing V and W</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(&lt;class ‘float’&gt;, &lt;class ‘float’&gt;)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="arslabrobotics.system.basic.html" class="btn btn-neutral float-left" title="arslabrobotics.system.basic" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="arslabrobotics.utils.html" class="btn btn-neutral float-right" title="arslabrobotics.utils" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, ARSLab, Corrado Santoro.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+arslabrobotics.identification
+=============================
+
+.. automodule:: arslabrobotics.identification
+
+   
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :recursive:
+
+   arx

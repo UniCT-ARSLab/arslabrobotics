@@ -1,0 +1,18 @@
+arslabrobotics.data.dataplot
+============================
+
+.. automodule:: arslabrobotics.data.dataplot
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      plot_multiple
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      DataPlotter
+   

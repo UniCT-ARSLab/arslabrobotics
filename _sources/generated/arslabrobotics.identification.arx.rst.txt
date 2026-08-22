@@ -1,0 +1,14 @@
+arslabrobotics.identification.arx
+=================================
+
+.. automodule:: arslabrobotics.identification.arx
+
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      ARXModel
+      ARXSolver
+      NeuralARX
+   

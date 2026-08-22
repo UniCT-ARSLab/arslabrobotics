@@ -1,0 +1,13 @@
+arslabrobotics.data
+===================
+
+.. automodule:: arslabrobotics.data
+
+   
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :recursive:
+
+   dataplot

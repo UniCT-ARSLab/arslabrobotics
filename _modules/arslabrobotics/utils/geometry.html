@@ -1,0 +1,164 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>arslabrobotics.utils.geometry &mdash; arslabrobotics 2.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=51b770b3"></script>
+      <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            arslabrobotics
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">arslabrobotics</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">arslabrobotics.utils.geometry</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for arslabrobotics.utils.geometry</h1><div class="highlight"><pre>
+<span></span><span class="c1">#</span>
+<span class="c1"># geometry.py</span>
+<span class="c1">#</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">"normalize_angle"</span><span class="p">,</span>
+    <span class="s2">"rototranslate"</span><span class="p">,</span>
+    <span class="s2">"global_to_local"</span><span class="p">,</span>
+    <span class="s2">"local_to_global"</span>
+    <span class="p">]</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+<div class="viewcode-block" id="normalize_angle">
+<a class="viewcode-back" href="../../../generated/arslabrobotics.utils.geometry.html#arslabrobotics.utils.normalize_angle">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">normalize_angle</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+    <span class="k">while</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">:</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span>
+    <span class="k">while</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="o">-</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">:</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span>
+    <span class="k">return</span> <span class="n">a</span></div>
+
+
+
+<div class="viewcode-block" id="rototranslate">
+<a class="viewcode-back" href="../../../generated/arslabrobotics.utils.geometry.html#arslabrobotics.utils.rototranslate">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">rototranslate</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span> <span class="n">yp</span><span class="p">,</span> <span class="n">xc</span><span class="p">,</span> <span class="n">yc</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Rototranslate a point from a reference system (x',y') to a system (x,y)</span>
+<span class="sd">    :param xp,yp: The point in the reference system (x', y')</span>
+<span class="sd">    :param xc, yc: The origin of (x',y') in (x,y) coordinates</span>
+<span class="sd">    :param t: The rotation of x' with respect to x (in radians)</span>
+<span class="sd">    """</span>
+    <span class="n">cos_t</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">sin_t</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">global_point_x</span> <span class="o">=</span> <span class="n">xc</span> <span class="o">+</span> <span class="n">xp</span> <span class="o">*</span> <span class="n">cos_t</span> <span class="o">-</span> <span class="n">yp</span> <span class="o">*</span> <span class="n">sin_t</span>
+    <span class="n">global_point_y</span> <span class="o">=</span> <span class="n">yc</span> <span class="o">+</span> <span class="n">xp</span> <span class="o">*</span> <span class="n">sin_t</span> <span class="o">+</span> <span class="n">yp</span> <span class="o">*</span> <span class="n">cos_t</span>
+    <span class="k">return</span> <span class="n">global_point_x</span><span class="p">,</span> <span class="n">global_point_y</span></div>
+
+
+
+<div class="viewcode-block" id="global_to_local">
+<a class="viewcode-back" href="../../../generated/arslabrobotics.utils.geometry.html#arslabrobotics.utils.global_to_local">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">global_to_local</span><span class="p">(</span><span class="n">xc</span><span class="p">,</span> <span class="n">yc</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">cos_t</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">sin_t</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">dx</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">xc</span>
+    <span class="n">dy</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="n">yc</span>
+    <span class="n">local_x</span> <span class="o">=</span> <span class="n">dx</span> <span class="o">*</span> <span class="n">cos_t</span> <span class="o">+</span> <span class="n">dy</span> <span class="o">*</span> <span class="n">sin_t</span>
+    <span class="n">local_y</span> <span class="o">=</span> <span class="o">-</span> <span class="n">dx</span> <span class="o">*</span> <span class="n">sin_t</span> <span class="o">+</span> <span class="n">dy</span> <span class="o">*</span> <span class="n">cos_t</span>
+    <span class="k">return</span> <span class="n">local_x</span><span class="p">,</span> <span class="n">local_y</span></div>
+
+
+
+<div class="viewcode-block" id="local_to_global">
+<a class="viewcode-back" href="../../../generated/arslabrobotics.utils.geometry.html#arslabrobotics.utils.local_to_global">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">local_to_global</span><span class="p">(</span><span class="n">xc</span><span class="p">,</span> <span class="n">yc</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">cos_t</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">sin_t</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">global_point_x</span> <span class="o">=</span> <span class="n">xc</span> <span class="o">+</span> <span class="n">x</span> <span class="o">*</span> <span class="n">cos_t</span> <span class="o">-</span> <span class="n">y</span> <span class="o">*</span> <span class="n">sin_t</span>
+    <span class="n">global_point_y</span> <span class="o">=</span> <span class="n">yc</span> <span class="o">+</span> <span class="n">x</span> <span class="o">*</span> <span class="n">sin_t</span> <span class="o">+</span> <span class="n">y</span> <span class="o">*</span> <span class="n">cos_t</span>
+    <span class="k">return</span> <span class="n">global_point_x</span><span class="p">,</span> <span class="n">global_point_y</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, ARSLab, Corrado Santoro.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
