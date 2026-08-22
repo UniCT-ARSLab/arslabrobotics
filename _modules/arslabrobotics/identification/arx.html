@@ -83,6 +83,17 @@
 <span class="k">class</span><span class="w"> </span><span class="nc">ARXSolver</span><span class="p">:</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_in_out</span><span class="p">,</span> <span class="n">output_lag</span><span class="p">,</span> <span class="n">input_lag</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        An helper class to solve the linear system identification problem using</span>
+<span class="sd">        the auto-regressive model::</span>
+
+<span class="sd">            y(k) + a0 * y(k-1) + a1 * y(k-2) + ... y(k-n) = b0 * u(k) + b1 * u(k-1) + ... u(k-m)</span>
+
+<span class="sd">        :param data_in_out: A matrix [ [ u(k), y(k) ] ] containing input/output sampled data</span>
+<span class="sd">        :param output_lag: The number of delay blocks for the output (n)</span>
+<span class="sd">        :param input_lag: The number of delay blocks for the input (m)</span>
+
+<span class="sd">        """</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">data_in_out</span> <span class="o">=</span> <span class="n">data_in_out</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">output_lag</span> <span class="o">=</span> <span class="n">output_lag</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">input_lag</span> <span class="o">=</span> <span class="n">input_lag</span>
@@ -90,7 +101,12 @@
 
 <div class="viewcode-block" id="ARXSolver.solve">
 <a class="viewcode-back" href="../../../generated/arslabrobotics.identification.arx.html#arslabrobotics.identification.ARXSolver.solve">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">solve</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">solve</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Solves the ARX model</span>
+
+<span class="sd">        :return: A tuple (a_parameters, b_parameters)</span>
+<span class="sd">        """</span>
         <span class="n">U</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_in_out</span><span class="p">[</span> <span class="p">:</span> <span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
         <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_in_out</span><span class="p">[</span> <span class="p">:</span> <span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
         <span class="n">n_rows</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_len</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_lag</span>

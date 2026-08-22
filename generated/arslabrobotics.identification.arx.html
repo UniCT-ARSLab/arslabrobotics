@@ -100,7 +100,7 @@
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#arslabrobotics.identification.arx.ARXSolver" title="arslabrobotics.identification.arx.ARXSolver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ARXSolver</span></code></a>(data_in_out, output_lag, input_lag)</p></td>
-<td><p></p></td>
+<td><p>An helper class to solve the linear system identification problem using the auto-regressive model.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#arslabrobotics.identification.arx.NeuralARX" title="arslabrobotics.identification.arx.NeuralARX"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NeuralARX</span></code></a>(data_in_out, output_lag, input_lag)</p></td>
 <td><p></p></td>
@@ -111,10 +111,33 @@
 <dt class="sig sig-object py" id="arslabrobotics.identification.arx.ARXSolver">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">arslabrobotics.identification.arx.</span></span><span class="sig-name descname"><span class="pre">ARXSolver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_in_out</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_lag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_lag</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/identification/arx.html#ARXSolver"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.identification.arx.ARXSolver" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>An helper class to solve the linear system identification problem using
+the auto-regressive model:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">y</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="n">a0</span> <span class="o">*</span> <span class="n">y</span><span class="p">(</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">a1</span> <span class="o">*</span> <span class="n">y</span><span class="p">(</span><span class="n">k</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="o">...</span> <span class="n">y</span><span class="p">(</span><span class="n">k</span><span class="o">-</span><span class="n">n</span><span class="p">)</span> <span class="o">=</span> <span class="n">b0</span> <span class="o">*</span> <span class="n">u</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="n">b1</span> <span class="o">*</span> <span class="n">u</span><span class="p">(</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="o">...</span> <span class="n">u</span><span class="p">(</span><span class="n">k</span><span class="o">-</span><span class="n">m</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_in_out</strong> – A matrix [ [ u(k), y(k) ] ] containing input/output sampled data</p></li>
+<li><p><strong>output_lag</strong> – The number of delay blocks for the output (n)</p></li>
+<li><p><strong>input_lag</strong> – The number of delay blocks for the input (m)</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="arslabrobotics.identification.arx.ARXSolver.solve">
 <span class="sig-name descname"><span class="pre">solve</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/identification/arx.html#ARXSolver.solve"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.identification.arx.ARXSolver.solve" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Solves the ARX model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A tuple (a_parameters, b_parameters)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
