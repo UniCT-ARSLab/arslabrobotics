@@ -19,7 +19,7 @@ classifiers = [
 license = "MIT"
 license-files = ["LICEN[CS]E*"]
 dependencies = [
-    "matplotlib>=3.11.1",
+    "matplotlib>=3.10.9",
     "opencv-python>=4.14.0.94",
     "numpy",
 
