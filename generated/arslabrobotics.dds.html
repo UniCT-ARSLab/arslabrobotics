@@ -96,19 +96,12 @@
 <dt class="sig sig-object py" id="arslabrobotics.dds.DDS">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">arslabrobotics.dds.</span></span><span class="sig-name descname"><span class="pre">DDS</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uPort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/dds/dds.html#DDS"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.dds.DDS" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Thread</span></code></p>
-<p>This constructor should always be called with keyword arguments. Arguments are:</p>
-<p><em>group</em> should be None; reserved for future extension when a ThreadGroup
-class is implemented.</p>
-<p><em>target</em> is the callable object to be invoked by the run()
-method. Defaults to None, meaning nothing is called.</p>
-<p><em>name</em> is the thread name. By default, a unique name is constructed of
-the form “Thread-N” where N is a small decimal number.</p>
-<p><em>args</em> is a list or tuple of arguments for the target invocation. Defaults to ().</p>
-<p><em>kwargs</em> is a dictionary of keyword arguments for the target
-invocation. Defaults to {}.</p>
-<p>If a subclass overrides the constructor, it must make sure to invoke
-the base class constructor (Thread.__init__()) before doing anything
-else to the thread.</p>
+<p>Creates a DDS object to handle publish and subscribe services</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>uPort</strong> – the UDP socket local port, if “None” it is choosen by the system</p>
+</dd>
+</dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="arslabrobotics.dds.DDS.COMMAND_KEEP_ALIVE">
 <span class="sig-name descname"><span class="pre">COMMAND_KEEP_ALIVE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">128</span></span><a class="headerlink" href="#arslabrobotics.dds.DDS.COMMAND_KEEP_ALIVE" title="Link to this definition"></a></dt>
@@ -126,38 +119,91 @@ else to the thread.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="arslabrobotics.dds.DDS.start">
-<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_remote_host</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'127.0.0.1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_remote_port</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4444</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/dds/dds.html#DDS.start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.dds.DDS.start" title="Link to this definition"></a></dt>
-<dd><p>Start the thread’s activity.</p>
-<p>It must be called at most once per thread object. It arranges for the
-object’s run() method to be invoked in a separate thread of control.</p>
-<p>This method will raise a RuntimeError if called more than once on the
-same thread object.</p>
+<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">remote_host</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'127.0.0.1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_port</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4444</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/dds/dds.html#DDS.start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.dds.DDS.start" title="Link to this definition"></a></dt>
+<dd><p>Starts the DDS service</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>remote_host</strong> – The host to connect to</p></li>
+<li><p><strong>remote_port</strong> – The port to connect to</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="arslabrobotics.dds.DDS.stop">
 <span class="sig-name descname"><span class="pre">stop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/dds/dds.html#DDS.stop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.dds.DDS.stop" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Stops the DDS service</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="arslabrobotics.dds.DDS.subscribe">
 <span class="sig-name descname"><span class="pre">subscribe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_varlist</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/dds/dds.html#DDS.subscribe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.dds.DDS.subscribe" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Subscribes this peer to a set of named variables</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>_varlist</strong> – a list of strings, i.e. the variable names</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="arslabrobotics.dds.DDS.publish">
 <span class="sig-name descname"><span class="pre">publish</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/dds/dds.html#DDS.publish"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.dds.DDS.publish" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Publishes a variable with its value and type</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>_name</strong> (<em>str</em>) – The name of the variable</p></li>
+<li><p><strong>_value</strong> – The value</p></li>
+<li><p><strong>_type</strong> – The type, chosen among DDS_TYPE_INT, DDS_TYPE_FLOAT, DDS_TYPE_BLOB</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="arslabrobotics.dds.DDS.read">
 <span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_varname</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/dds/dds.html#DDS.read"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.dds.DDS.read" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Reads the value of subscribed variable</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>_varname</strong> (<em>str</em>) – The name of the variable</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The variable value of None if the variable was never received</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="arslabrobotics.dds.DDS.wait">
 <span class="sig-name descname"><span class="pre">wait</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_varname</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/dds/dds.html#DDS.wait"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.dds.DDS.wait" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Waits for a remote peer to pubished a variable</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>_varname</strong> – The name of the variable</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The variable value of None if the variable was never received</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="arslabrobotics.dds.DDS.run">

@@ -133,8 +133,13 @@
     <span class="n">COMMAND_SUBSCRIBE</span> <span class="o">=</span> <span class="mh">0x81</span>
     <span class="n">COMMAND_PUBLISH</span> <span class="o">=</span> <span class="mh">0x82</span>
 
-
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uPort</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Creates a DDS object to handle publish and subscribe services</span>
+
+<span class="sd">        :param uPort: the UDP socket local port, if "None" it is choosen by the system</span>
+
+<span class="sd">        """</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">DDS</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setDaemon</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">variables</span> <span class="o">=</span> <span class="p">{}</span>
@@ -142,25 +147,39 @@
         <span class="k">if</span> <span class="n">uPort</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">sd</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span> <span class="p">(</span><span class="s1">''</span><span class="p">,</span> <span class="n">uPort</span><span class="p">)</span> <span class="p">)</span>
 
-
 <div class="viewcode-block" id="DDS.start">
 <a class="viewcode-back" href="../../../generated/arslabrobotics.dds.dds.html#arslabrobotics.dds.DDS.start">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_remote_host</span> <span class="o">=</span> <span class="s1">'127.0.0.1'</span><span class="p">,</span> <span class="n">_remote_port</span> <span class="o">=</span> <span class="mi">4444</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">remote_host</span> <span class="o">=</span> <span class="n">_remote_host</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">remote_port</span> <span class="o">=</span> <span class="n">_remote_port</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">remote_host</span> <span class="o">=</span> <span class="s1">'127.0.0.1'</span><span class="p">,</span> <span class="n">remote_port</span> <span class="o">=</span> <span class="mi">4444</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Starts the DDS service</span>
+
+<span class="sd">        :param remote_host: The host to connect to</span>
+<span class="sd">        :param remote_port: The port to connect to</span>
+
+<span class="sd">        """</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">remote_host</span> <span class="o">=</span> <span class="n">remote_host</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">remote_port</span> <span class="o">=</span> <span class="n">remote_port</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">DDS</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">start</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="DDS.stop">
 <a class="viewcode-back" href="../../../generated/arslabrobotics.dds.dds.html#arslabrobotics.dds.DDS.stop">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Stops the DDS service</span>
+<span class="sd">        """</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__running</span> <span class="o">=</span> <span class="kc">False</span></div>
-
 
 
 <div class="viewcode-block" id="DDS.subscribe">
 <a class="viewcode-back" href="../../../generated/arslabrobotics.dds.dds.html#arslabrobotics.dds.DDS.subscribe">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">subscribe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_varlist</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">subscribe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_varlist</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Subscribes this peer to a set of named variables</span>
+
+<span class="sd">        :param _varlist: a list of strings, i.e. the variable names</span>
+
+<span class="sd">        """</span>
         <span class="n">data</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">()</span>
         <span class="n">data</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">bytes</span><span class="p">([</span><span class="n">DDS</span><span class="o">.</span><span class="n">COMMAND_SUBSCRIBE</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">_varlist</span><span class="p">)]))</span>
         <span class="k">for</span> <span class="n">_varname</span> <span class="ow">in</span> <span class="n">_varlist</span><span class="p">:</span>
@@ -173,7 +192,15 @@
 
 <div class="viewcode-block" id="DDS.publish">
 <a class="viewcode-back" href="../../../generated/arslabrobotics.dds.dds.html#arslabrobotics.dds.DDS.publish">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">publish</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_name</span><span class="p">,</span> <span class="n">_value</span><span class="p">,</span> <span class="n">_type</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">publish</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_name</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">_value</span><span class="p">,</span> <span class="n">_type</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Publishes a variable with its value and type</span>
+
+<span class="sd">        :param _name: The name of the variable</span>
+<span class="sd">        :param _value: The value</span>
+<span class="sd">        :param _type: The type, chosen among DDS_TYPE_INT, DDS_TYPE_FLOAT, DDS_TYPE_BLOB</span>
+
+<span class="sd">        """</span>
         <span class="n">data</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">()</span>
         <span class="n">data</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">bytes</span><span class="p">([</span><span class="n">DDS</span><span class="o">.</span><span class="n">COMMAND_PUBLISH</span><span class="p">,</span> <span class="n">_type</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">_name</span><span class="p">)]))</span>
         <span class="n">data</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">_name</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">))</span>
@@ -187,7 +214,14 @@
 
 <div class="viewcode-block" id="DDS.read">
 <a class="viewcode-back" href="../../../generated/arslabrobotics.dds.dds.html#arslabrobotics.dds.DDS.read">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_varname</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_varname</span> <span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Reads the value of subscribed variable</span>
+
+<span class="sd">        :param _varname: The name of the variable</span>
+<span class="sd">        :return: The variable value of None if the variable was never received</span>
+
+<span class="sd">        """</span>
         <span class="k">if</span> <span class="n">_varname</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="n">_varname</span><span class="p">]</span><span class="o">.</span><span class="n">get_value</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
@@ -198,6 +232,13 @@
 <div class="viewcode-block" id="DDS.wait">
 <a class="viewcode-back" href="../../../generated/arslabrobotics.dds.dds.html#arslabrobotics.dds.DDS.wait">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">wait</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_varname</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Waits for a remote peer to pubished a variable</span>
+
+<span class="sd">        :param _varname: The name of the variable</span>
+<span class="sd">        :return: The variable value of None if the variable was never received</span>
+
+<span class="sd">        """</span>
         <span class="k">if</span> <span class="n">_varname</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="n">_varname</span><span class="p">]</span><span class="o">.</span><span class="n">wait_value</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
