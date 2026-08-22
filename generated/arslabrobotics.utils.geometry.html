@@ -100,42 +100,93 @@
 <table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#arslabrobotics.utils.geometry.global_to_local" title="arslabrobotics.utils.geometry.global_to_local"><code class="xref py py-obj docutils literal notranslate"><span class="pre">global_to_local</span></code></a>(xc, yc, t, x, y)</p></td>
-<td><p></p></td>
+<td><p>Converts the coordinates from a global 2D reference system to a local one</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#arslabrobotics.utils.geometry.local_to_global" title="arslabrobotics.utils.geometry.local_to_global"><code class="xref py py-obj docutils literal notranslate"><span class="pre">local_to_global</span></code></a>(xc, yc, t, x, y)</p></td>
-<td><p></p></td>
+<td><p>Converts the coordinates from a local 2D reference system to a global one</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#arslabrobotics.utils.geometry.normalize_angle" title="arslabrobotics.utils.geometry.normalize_angle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">normalize_angle</span></code></a>(a)</p></td>
-<td><p></p></td>
+<td><p>Normalizes an angle between -Pi and Pi</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#arslabrobotics.utils.geometry.rototranslate" title="arslabrobotics.utils.geometry.rototranslate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rototranslate</span></code></a>(xp, yp, xc, yc, t)</p></td>
-<td><p>Rototranslate a point from a reference system (x',y') to a system (x,y) :param xp,yp: The point in the reference system (x', y') :param xc, yc: The origin of (x',y') in (x,y) coordinates :param t: The rotation of x' with respect to x (in radians)</p></td>
+<td><p>Rototranslate a point from a reference system (x',y') to a system (x,y)</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py function">
 <dt class="sig sig-object py" id="arslabrobotics.utils.geometry.normalize_angle">
 <span class="sig-prename descclassname"><span class="pre">arslabrobotics.utils.geometry.</span></span><span class="sig-name descname"><span class="pre">normalize_angle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/utils/geometry.html#normalize_angle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.utils.geometry.normalize_angle" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Normalizes an angle between -Pi and Pi</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>a</strong> (<em>float</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="arslabrobotics.utils.geometry.rototranslate">
 <span class="sig-prename descclassname"><span class="pre">arslabrobotics.utils.geometry.</span></span><span class="sig-name descname"><span class="pre">rototranslate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/utils/geometry.html#rototranslate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.utils.geometry.rototranslate" title="Link to this definition"></a></dt>
-<dd><p>Rototranslate a point from a reference system (x’,y’) to a system (x,y)
-:param xp,yp: The point in the reference system (x’, y’)
-:param xc, yc: The origin of (x’,y’) in (x,y) coordinates
-:param t: The rotation of x’ with respect to x (in radians)</p>
+<dd><p>Rototranslate a point from a reference system (x’,y’) to a system (x,y)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>xp</strong><strong>,</strong><strong>yp</strong> – The point in the reference system (x’, y’)</p></li>
+<li><p><strong>yc</strong> (<em>xc</em><em>,</em>) – The origin of (x’,y’) in (x,y) coordinates</p></li>
+<li><p><strong>t</strong> – The rotation of x’ with respect to x (in radians)</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="arslabrobotics.utils.geometry.global_to_local">
 <span class="sig-prename descclassname"><span class="pre">arslabrobotics.utils.geometry.</span></span><span class="sig-name descname"><span class="pre">global_to_local</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/utils/geometry.html#global_to_local"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.utils.geometry.global_to_local" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Converts the coordinates from a global 2D reference system to a local one</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>yc</strong> (<em>xc</em><em>,</em>) – The origin of the local system in global coordinates</p></li>
+<li><p><strong>t</strong> (<em>float</em>) – The rotation of the local system with respect to the global one (in radians)</p></li>
+<li><p><strong>y</strong> (<em>x</em><em>,</em>) – The point in global coordinates</p></li>
+<li><p><strong>xc</strong> (<em>float</em>)</p></li>
+<li><p><strong>x</strong> (<em>float</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The point (x, y) in local coordinates</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="arslabrobotics.utils.geometry.local_to_global">
 <span class="sig-prename descclassname"><span class="pre">arslabrobotics.utils.geometry.</span></span><span class="sig-name descname"><span class="pre">local_to_global</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/utils/geometry.html#local_to_global"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.utils.geometry.local_to_global" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Converts the coordinates from a local 2D reference system to a global one</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>yc</strong> (<em>xc</em><em>,</em>) – The origin of the local system in global coordinates</p></li>
+<li><p><strong>t</strong> (<em>float</em>) – The rotation of the local system with respect to the global one (in radians)</p></li>
+<li><p><strong>y</strong> (<em>x</em><em>,</em>) – The point in local coordinates</p></li>
+<li><p><strong>xc</strong> (<em>float</em>)</p></li>
+<li><p><strong>x</strong> (<em>float</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The point (x, y) in global coordinates</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
 
 </section>
 

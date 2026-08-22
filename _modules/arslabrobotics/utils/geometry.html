@@ -85,7 +85,10 @@
 
 <div class="viewcode-block" id="normalize_angle">
 <a class="viewcode-back" href="../../../generated/arslabrobotics.utils.geometry.html#arslabrobotics.utils.normalize_angle">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">normalize_angle</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">normalize_angle</span><span class="p">(</span><span class="n">a</span> <span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Normalizes an angle between -Pi and Pi</span>
+<span class="sd">    """</span>
     <span class="k">while</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">:</span>
         <span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span>
     <span class="k">while</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="o">-</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">:</span>
@@ -99,9 +102,11 @@
 <span class="k">def</span><span class="w"> </span><span class="nf">rototranslate</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span> <span class="n">yp</span><span class="p">,</span> <span class="n">xc</span><span class="p">,</span> <span class="n">yc</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Rototranslate a point from a reference system (x',y') to a system (x,y)</span>
+
 <span class="sd">    :param xp,yp: The point in the reference system (x', y')</span>
 <span class="sd">    :param xc, yc: The origin of (x',y') in (x,y) coordinates</span>
 <span class="sd">    :param t: The rotation of x' with respect to x (in radians)</span>
+
 <span class="sd">    """</span>
     <span class="n">cos_t</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
     <span class="n">sin_t</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
@@ -113,7 +118,16 @@
 
 <div class="viewcode-block" id="global_to_local">
 <a class="viewcode-back" href="../../../generated/arslabrobotics.utils.geometry.html#arslabrobotics.utils.global_to_local">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">global_to_local</span><span class="p">(</span><span class="n">xc</span><span class="p">,</span> <span class="n">yc</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">global_to_local</span><span class="p">(</span><span class="n">xc</span> <span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">yc</span> <span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">t</span> <span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">x</span> <span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">y</span> <span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Converts the coordinates from a global 2D reference system to a local one</span>
+
+<span class="sd">    :param xc, yc: The origin of the local system in global coordinates</span>
+<span class="sd">    :param t: The rotation of the local system with respect to the global one (in radians)</span>
+<span class="sd">    :param x, y: The point in global coordinates</span>
+<span class="sd">    :return: The point (x, y) in local coordinates</span>
+
+<span class="sd">    """</span>
     <span class="n">cos_t</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
     <span class="n">sin_t</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
     <span class="n">dx</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">xc</span>
@@ -126,7 +140,16 @@
 
 <div class="viewcode-block" id="local_to_global">
 <a class="viewcode-back" href="../../../generated/arslabrobotics.utils.geometry.html#arslabrobotics.utils.local_to_global">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">local_to_global</span><span class="p">(</span><span class="n">xc</span><span class="p">,</span> <span class="n">yc</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">local_to_global</span><span class="p">(</span><span class="n">xc</span> <span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">yc</span> <span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">t</span> <span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">x</span> <span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">y</span> <span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Converts the coordinates from a local 2D reference system to a global one</span>
+
+<span class="sd">    :param xc, yc: The origin of the local system in global coordinates</span>
+<span class="sd">    :param t: The rotation of the local system with respect to the global one (in radians)</span>
+<span class="sd">    :param x, y: The point in local coordinates</span>
+<span class="sd">    :return: The point (x, y) in global coordinates</span>
+
+<span class="sd">    """</span>
     <span class="n">cos_t</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
     <span class="n">sin_t</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
     <span class="n">global_point_x</span> <span class="o">=</span> <span class="n">xc</span> <span class="o">+</span> <span class="n">x</span> <span class="o">*</span> <span class="n">cos_t</span> <span class="o">-</span> <span class="n">y</span> <span class="o">*</span> <span class="n">sin_t</span>
