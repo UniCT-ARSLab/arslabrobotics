@@ -11,6 +11,28 @@ class DataPlotter:
     FIGURE = 1
 
     def __init__(self):
+        """
+        An helper class to make trend plots of multiple data.
+
+        Example usage::
+
+            import arslabrobotics as ar
+            import math
+
+            d = ar.data.DataPlotter()
+            d.set_x("time")
+            d.add_y("sin", "Sin(t)")
+            d.add_y("cos", "Cos(t)")
+            t = 0
+            while t < 10:
+                d.append_x(t)
+                d.append_y("sin", math.sin(t))
+                d.append_y("cos", math.cos(t))
+                t += 0.01
+
+            d.plot()
+
+        """
         self.y_data = {}
         self.y_label = {}
         self.x_data = []
@@ -18,7 +40,10 @@ class DataPlotter:
         self.__options = ['r-', 'b-', 'g-']
         DataPlotter.FIGURE = 1
 
-    def set_x(self, label):
+    def set_x(self, label : str) -> None:
+        """
+        Sets the label of the X axis
+        """
         self.x_label = label
 
     def set_x_data(self, label, d):
@@ -29,17 +54,37 @@ class DataPlotter:
         self.y_data[varname] = vardata
         self.y_label[varname] = varlabel
 
-    def append_x(self, value):
-        self.x_data.append(value)
+    def add_y(self, varname : str, varlabel : str) -> None:
+        """
+        Adds a new variable to Y axis
 
-    def add_y(self, varname, varlabel):
+        :param varname: The name of the variable
+        :param varlabel: The label shown in the legend
+
+        """
         self.y_data[varname] = []
         self.y_label[varname] = varlabel
 
-    def append_y(self, varname, value):
+    def append_x(self, value) -> None:
+        """
+        Appends a new value to the X axis
+        """
+        self.x_data.append(value)
+
+    def append_y(self, varname : str, value) -> None:
+        """
+        Appends a value to a variable for Y axis
+
+        :param varname: The name of the variable
+        :param value: The value of the variable
+
+        """
         self.y_data[varname].append(value)
 
     def plot(self):
+        """
+        Plots the data
+        """
         pylab.figure(DataPlotter.FIGURE)
 
         i = 0
@@ -55,8 +100,10 @@ class DataPlotter:
 def plot_multiple(plotters, figsize=(20, 18)):
     """
     Plots multiple DataPlotter objects as subplots in a single figure
+
     :param plotters: list of DataPlotter objects
     :param figsize: tuple (width, height) of the figure
+
     """
     num_plots = len(plotters)
     pylab.figure(DataPlotter.FIGURE, figsize=figsize)

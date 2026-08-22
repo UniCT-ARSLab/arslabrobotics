@@ -26,8 +26,10 @@ def rototranslate(xp, yp, xc, yc, t):
     """
     Rototranslate a point from a reference system (x',y') to a system (x,y)
 
-    :param xp,yp: The point in the reference system (x', y')
-    :param xc, yc: The origin of (x',y') in (x,y) coordinates
+    :param xp: The x' of the point in the reference system (x', y')
+    :param yp: The y' point in the reference system (x', y')
+    :param xc: The origin x of (x',y') in (x,y) coordinates
+    :param yc: The origin y of (x',y') in (x,y) coordinates
     :param t: The rotation of x' with respect to x (in radians)
 
     """
@@ -42,9 +44,11 @@ def global_to_local(xc : float, yc : float, t : float, x : float, y : float) -> 
     """
     Converts the coordinates from a global 2D reference system to a local one
 
-    :param xc, yc: The origin of the local system in global coordinates
+    :param xc: The origin x of the local system in global coordinates
+    :param yc: The origin y of the local system in global coordinates
     :param t: The rotation of the local system with respect to the global one (in radians)
-    :param x, y: The point in global coordinates
+    :param x: The point x in global coordinates
+    :param y: The point y in global coordinates
     :return: The point (x, y) in local coordinates
 
     """
@@ -61,9 +65,11 @@ def local_to_global(xc : float, yc : float, t : float, x : float, y : float) -> 
     """
     Converts the coordinates from a local 2D reference system to a global one
 
-    :param xc, yc: The origin of the local system in global coordinates
+    :param xc: The origin x of the local system in global coordinates
+    :param yc: The origin y of the local system in global coordinates
     :param t: The rotation of the local system with respect to the global one (in radians)
-    :param x, y: The point in local coordinates
+    :param x: The point x in local coordinates
+    :param x: The point y in local coordinates
     :return: The point (x, y) in global coordinates
 
     """
