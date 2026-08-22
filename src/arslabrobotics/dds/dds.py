@@ -59,8 +59,13 @@ class DDS(threading.Thread):
     COMMAND_SUBSCRIBE = 0x81
     COMMAND_PUBLISH = 0x82
 
-
     def __init__(self, uPort = None):
+        """
+        Creates a DDS object to handle publish and subscribe services
+
+        :param uPort: the UDP socket local port, if "None" it is choosen by the system
+
+        """
         super(DDS, self).__init__()
         self.setDaemon(True)
         self.variables = {}
@@ -68,17 +73,31 @@ class DDS(threading.Thread):
         if uPort is not None:
             self.sd.bind( ('', uPort) )
 
+    def start(self, remote_host = '127.0.0.1', remote_port = 4444) -> None:
+        """
+        Starts the DDS service
 
-    def start(self, _remote_host = '127.0.0.1', _remote_port = 4444):
-        self.remote_host = _remote_host
-        self.remote_port = _remote_port
+        :param remote_host: The host to connect to
+        :param remote_port: The port to connect to
+
+        """
+        self.remote_host = remote_host
+        self.remote_port = remote_port
         super(DDS, self).start()
 
-    def stop(self):
+    def stop(self) -> None:
+        """
+        Stops the DDS service
+        """
         self.__running = False
 
+    def subscribe(self, _varlist) -> None:
+        """
+        Subscribes this peer to a set of named variables
 
-    def subscribe(self, _varlist):
+        :param _varlist: a list of strings, i.e. the variable names
+
+        """
         data = io.BytesIO()
         data.write(bytes([DDS.COMMAND_SUBSCRIBE, len(_varlist)]))
         for _varname in _varlist:
@@ -88,7 +107,15 @@ class DDS(threading.Thread):
         self.sd.sendto(data.getvalue(), (self.remote_host, self.remote_port))
 
 
-    def publish(self, _name, _value, _type):
+    def publish(self, _name : str, _value, _type) -> None:
+        """
+        Publishes a variable with its value and type
+
+        :param _name: The name of the variable
+        :param _value: The value
+        :param _type: The type, chosen among DDS_TYPE_INT, DDS_TYPE_FLOAT, DDS_TYPE_BLOB
+
+        """
         data = io.BytesIO()
         data.write(bytes([DDS.COMMAND_PUBLISH, _type, len(_name)]))
         data.write(_name.encode("utf-8"))
@@ -99,7 +126,14 @@ class DDS(threading.Thread):
         self.sd.sendto(data.getvalue(), (self.remote_host, self.remote_port))
 
 
-    def read(self, _varname):
+    def read(self, _varname : str):
+        """
+        Reads the value of subscribed variable
+
+        :param _varname: The name of the variable
+        :return: The variable value of None if the variable was never received
+
+        """
         if _varname in self.variables:
             return self.variables[_varname].get_value()
         else:
@@ -107,6 +141,13 @@ class DDS(threading.Thread):
 
 
     def wait(self, _varname):
+        """
+        Waits for a remote peer to pubished a variable
+
+        :param _varname: The name of the variable
+        :return: The variable value of None if the variable was never received
+
+        """
         if _varname in self.variables:
             return self.variables[_varname].wait_value()
         else:

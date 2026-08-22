@@ -84,8 +84,8 @@ class LinearDynamicSystem:
         """
         Defines a linear system of type::
 
-        x' = A x + B u
-        y = C x
+            x' = A x + B u
+            y = C x
 
         :param A: The state matrix
         :param B: The input matrix
