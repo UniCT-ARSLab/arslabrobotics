@@ -103,8 +103,10 @@
 <span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Rototranslate a point from a reference system (x',y') to a system (x,y)</span>
 
-<span class="sd">    :param xp,yp: The point in the reference system (x', y')</span>
-<span class="sd">    :param xc, yc: The origin of (x',y') in (x,y) coordinates</span>
+<span class="sd">    :param xp: The x' of the point in the reference system (x', y')</span>
+<span class="sd">    :param yp: The y' point in the reference system (x', y')</span>
+<span class="sd">    :param xc: The origin x of (x',y') in (x,y) coordinates</span>
+<span class="sd">    :param yc: The origin y of (x',y') in (x,y) coordinates</span>
 <span class="sd">    :param t: The rotation of x' with respect to x (in radians)</span>
 
 <span class="sd">    """</span>
@@ -122,9 +124,11 @@
 <span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Converts the coordinates from a global 2D reference system to a local one</span>
 
-<span class="sd">    :param xc, yc: The origin of the local system in global coordinates</span>
+<span class="sd">    :param xc: The origin x of the local system in global coordinates</span>
+<span class="sd">    :param yc: The origin y of the local system in global coordinates</span>
 <span class="sd">    :param t: The rotation of the local system with respect to the global one (in radians)</span>
-<span class="sd">    :param x, y: The point in global coordinates</span>
+<span class="sd">    :param x: The point x in global coordinates</span>
+<span class="sd">    :param y: The point y in global coordinates</span>
 <span class="sd">    :return: The point (x, y) in local coordinates</span>
 
 <span class="sd">    """</span>
@@ -144,9 +148,11 @@
 <span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Converts the coordinates from a local 2D reference system to a global one</span>
 
-<span class="sd">    :param xc, yc: The origin of the local system in global coordinates</span>
+<span class="sd">    :param xc: The origin x of the local system in global coordinates</span>
+<span class="sd">    :param yc: The origin y of the local system in global coordinates</span>
 <span class="sd">    :param t: The rotation of the local system with respect to the global one (in radians)</span>
-<span class="sd">    :param x, y: The point in local coordinates</span>
+<span class="sd">    :param x: The point x in local coordinates</span>
+<span class="sd">    :param x: The point y in local coordinates</span>
 <span class="sd">    :return: The point (x, y) in global coordinates</span>
 
 <span class="sd">    """</span>

@@ -95,6 +95,25 @@
 <dt class="sig sig-object py" id="arslabrobotics.data.DataPlotter">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">arslabrobotics.data.</span></span><span class="sig-name descname"><span class="pre">DataPlotter</span></span><a class="reference internal" href="../_modules/arslabrobotics/data/dataplot.html#DataPlotter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.data.DataPlotter" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>An helper class to make trend plots of multiple data.</p>
+<p>Example usage:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">arslabrobotics</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ar</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="n">ar</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataPlotter</span><span class="p">()</span>
+<span class="n">d</span><span class="o">.</span><span class="n">set_x</span><span class="p">(</span><span class="s2">"time"</span><span class="p">)</span>
+<span class="n">d</span><span class="o">.</span><span class="n">add_y</span><span class="p">(</span><span class="s2">"sin"</span><span class="p">,</span> <span class="s2">"Sin(t)"</span><span class="p">)</span>
+<span class="n">d</span><span class="o">.</span><span class="n">add_y</span><span class="p">(</span><span class="s2">"cos"</span><span class="p">,</span> <span class="s2">"Cos(t)"</span><span class="p">)</span>
+<span class="n">t</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+    <span class="n">d</span><span class="o">.</span><span class="n">append_x</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">d</span><span class="o">.</span><span class="n">append_y</span><span class="p">(</span><span class="s2">"sin"</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+    <span class="n">d</span><span class="o">.</span><span class="n">append_y</span><span class="p">(</span><span class="s2">"cos"</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+    <span class="n">t</span> <span class="o">+=</span> <span class="mf">0.01</span>
+
+<span class="n">d</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="arslabrobotics.data.DataPlotter.FIGURE">
 <span class="sig-name descname"><span class="pre">FIGURE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></span><a class="headerlink" href="#arslabrobotics.data.DataPlotter.FIGURE" title="Link to this definition"></a></dt>
@@ -103,7 +122,16 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="arslabrobotics.data.DataPlotter.set_x">
 <span class="sig-name descname"><span class="pre">set_x</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/data/dataplot.html#DataPlotter.set_x"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.data.DataPlotter.set_x" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Sets the label of the X axis</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>label</strong> (<em>str</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="arslabrobotics.data.DataPlotter.set_x_data">
@@ -116,33 +144,70 @@
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="arslabrobotics.data.DataPlotter.append_x">
-<span class="sig-name descname"><span class="pre">append_x</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/data/dataplot.html#DataPlotter.append_x"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.data.DataPlotter.append_x" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="arslabrobotics.data.DataPlotter.add_y">
 <span class="sig-name descname"><span class="pre">add_y</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">varname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">varlabel</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/data/dataplot.html#DataPlotter.add_y"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.data.DataPlotter.add_y" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Adds a new variable to Y axis</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>varname</strong> (<em>str</em>) – The name of the variable</p></li>
+<li><p><strong>varlabel</strong> (<em>str</em>) – The label shown in the legend</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="arslabrobotics.data.DataPlotter.append_x">
+<span class="sig-name descname"><span class="pre">append_x</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/data/dataplot.html#DataPlotter.append_x"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.data.DataPlotter.append_x" title="Link to this definition"></a></dt>
+<dd><p>Appends a new value to the X axis</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="arslabrobotics.data.DataPlotter.append_y">
 <span class="sig-name descname"><span class="pre">append_y</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">varname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/data/dataplot.html#DataPlotter.append_y"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.data.DataPlotter.append_y" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Appends a value to a variable for Y axis</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>varname</strong> (<em>str</em>) – The name of the variable</p></li>
+<li><p><strong>value</strong> – The value of the variable</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="arslabrobotics.data.DataPlotter.plot">
 <span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/data/dataplot.html#DataPlotter.plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.data.DataPlotter.plot" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Plots the data</p>
+</dd></dl>
 
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="arslabrobotics.data.plot_multiple">
 <span class="sig-prename descclassname"><span class="pre">arslabrobotics.data.</span></span><span class="sig-name descname"><span class="pre">plot_multiple</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plotters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(20,</span> <span class="pre">18)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/data/dataplot.html#plot_multiple"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.data.plot_multiple" title="Link to this definition"></a></dt>
-<dd><p>Plots multiple DataPlotter objects as subplots in a single figure
-:param plotters: list of DataPlotter objects
-:param figsize: tuple (width, height) of the figure</p>
+<dd><p>Plots multiple DataPlotter objects as subplots in a single figure</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>plotters</strong> – list of DataPlotter objects</p></li>
+<li><p><strong>figsize</strong> – tuple (width, height) of the figure</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <p class="rubric">Modules</p>

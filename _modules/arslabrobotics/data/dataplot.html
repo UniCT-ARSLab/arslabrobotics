@@ -85,6 +85,28 @@
     <span class="n">FIGURE</span> <span class="o">=</span> <span class="mi">1</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        An helper class to make trend plots of multiple data.</span>
+
+<span class="sd">        Example usage::</span>
+
+<span class="sd">            import arslabrobotics as ar</span>
+<span class="sd">            import math</span>
+
+<span class="sd">            d = ar.data.DataPlotter()</span>
+<span class="sd">            d.set_x("time")</span>
+<span class="sd">            d.add_y("sin", "Sin(t)")</span>
+<span class="sd">            d.add_y("cos", "Cos(t)")</span>
+<span class="sd">            t = 0</span>
+<span class="sd">            while t &lt; 10:</span>
+<span class="sd">                d.append_x(t)</span>
+<span class="sd">                d.append_y("sin", math.sin(t))</span>
+<span class="sd">                d.append_y("cos", math.cos(t))</span>
+<span class="sd">                t += 0.01</span>
+
+<span class="sd">            d.plot()</span>
+
+<span class="sd">        """</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">y_data</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">y_label</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">x_data</span> <span class="o">=</span> <span class="p">[]</span>
@@ -94,7 +116,10 @@
 
 <div class="viewcode-block" id="DataPlotter.set_x">
 <a class="viewcode-back" href="../../../generated/arslabrobotics.data.dataplot.html#arslabrobotics.data.DataPlotter.set_x">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">set_x</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_x</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span> <span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Sets the label of the X axis</span>
+<span class="sd">        """</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">x_label</span> <span class="o">=</span> <span class="n">label</span></div>
 
 
@@ -112,28 +137,48 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">y_label</span><span class="p">[</span><span class="n">varname</span><span class="p">]</span> <span class="o">=</span> <span class="n">varlabel</span></div>
 
 
-<div class="viewcode-block" id="DataPlotter.append_x">
-<a class="viewcode-back" href="../../../generated/arslabrobotics.data.dataplot.html#arslabrobotics.data.DataPlotter.append_x">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">append_x</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">x_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span></div>
-
-
 <div class="viewcode-block" id="DataPlotter.add_y">
 <a class="viewcode-back" href="../../../generated/arslabrobotics.data.dataplot.html#arslabrobotics.data.DataPlotter.add_y">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">add_y</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">varname</span><span class="p">,</span> <span class="n">varlabel</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_y</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">varname</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">varlabel</span> <span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Adds a new variable to Y axis</span>
+
+<span class="sd">        :param varname: The name of the variable</span>
+<span class="sd">        :param varlabel: The label shown in the legend</span>
+
+<span class="sd">        """</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">y_data</span><span class="p">[</span><span class="n">varname</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">y_label</span><span class="p">[</span><span class="n">varname</span><span class="p">]</span> <span class="o">=</span> <span class="n">varlabel</span></div>
 
 
+<div class="viewcode-block" id="DataPlotter.append_x">
+<a class="viewcode-back" href="../../../generated/arslabrobotics.data.dataplot.html#arslabrobotics.data.DataPlotter.append_x">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">append_x</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Appends a new value to the X axis</span>
+<span class="sd">        """</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span></div>
+
+
 <div class="viewcode-block" id="DataPlotter.append_y">
 <a class="viewcode-back" href="../../../generated/arslabrobotics.data.dataplot.html#arslabrobotics.data.DataPlotter.append_y">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">append_y</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">varname</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">append_y</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">varname</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Appends a value to a variable for Y axis</span>
+
+<span class="sd">        :param varname: The name of the variable</span>
+<span class="sd">        :param value: The value of the variable</span>
+
+<span class="sd">        """</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">y_data</span><span class="p">[</span><span class="n">varname</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="DataPlotter.plot">
 <a class="viewcode-back" href="../../../generated/arslabrobotics.data.dataplot.html#arslabrobotics.data.DataPlotter.plot">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Plots the data</span>
+<span class="sd">        """</span>
         <span class="n">pylab</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">DataPlotter</span><span class="o">.</span><span class="n">FIGURE</span><span class="p">)</span>
 
         <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
@@ -153,8 +198,10 @@
 <span class="k">def</span><span class="w"> </span><span class="nf">plot_multiple</span><span class="p">(</span><span class="n">plotters</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">18</span><span class="p">)):</span>
 <span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Plots multiple DataPlotter objects as subplots in a single figure</span>
+
 <span class="sd">    :param plotters: list of DataPlotter objects</span>
 <span class="sd">    :param figsize: tuple (width, height) of the figure</span>
+
 <span class="sd">    """</span>
     <span class="n">num_plots</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">plotters</span><span class="p">)</span>
     <span class="n">pylab</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">DataPlotter</span><span class="o">.</span><span class="n">FIGURE</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>

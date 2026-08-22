@@ -116,8 +116,10 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>xp</strong><strong>,</strong><strong>yp</strong> – The point in the reference system (x’, y’)</p></li>
-<li><p><strong>yc</strong> (<em>xc</em><em>,</em>) – The origin of (x’,y’) in (x,y) coordinates</p></li>
+<li><p><strong>xp</strong> – The x’ of the point in the reference system (x’, y’)</p></li>
+<li><p><strong>yp</strong> – The y’ point in the reference system (x’, y’)</p></li>
+<li><p><strong>xc</strong> – The origin x of (x’,y’) in (x,y) coordinates</p></li>
+<li><p><strong>yc</strong> – The origin y of (x’,y’) in (x,y) coordinates</p></li>
 <li><p><strong>t</strong> – The rotation of x’ with respect to x (in radians)</p></li>
 </ul>
 </dd>
@@ -131,11 +133,11 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>yc</strong> (<em>xc</em><em>,</em>) – The origin of the local system in global coordinates</p></li>
+<li><p><strong>xc</strong> (<em>float</em>) – The origin x of the local system in global coordinates</p></li>
+<li><p><strong>yc</strong> (<em>float</em>) – The origin y of the local system in global coordinates</p></li>
 <li><p><strong>t</strong> (<em>float</em>) – The rotation of the local system with respect to the global one (in radians)</p></li>
-<li><p><strong>y</strong> (<em>x</em><em>,</em>) – The point in global coordinates</p></li>
-<li><p><strong>xc</strong> (<em>float</em>)</p></li>
-<li><p><strong>x</strong> (<em>float</em>)</p></li>
+<li><p><strong>x</strong> (<em>float</em>) – The point x in global coordinates</p></li>
+<li><p><strong>y</strong> (<em>float</em>) – The point y in global coordinates</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -154,11 +156,12 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>yc</strong> (<em>xc</em><em>,</em>) – The origin of the local system in global coordinates</p></li>
+<li><p><strong>xc</strong> (<em>float</em>) – The origin x of the local system in global coordinates</p></li>
+<li><p><strong>yc</strong> (<em>float</em>) – The origin y of the local system in global coordinates</p></li>
 <li><p><strong>t</strong> (<em>float</em>) – The rotation of the local system with respect to the global one (in radians)</p></li>
-<li><p><strong>y</strong> (<em>x</em><em>,</em>) – The point in local coordinates</p></li>
-<li><p><strong>xc</strong> (<em>float</em>)</p></li>
-<li><p><strong>x</strong> (<em>float</em>)</p></li>
+<li><p><strong>x</strong> (<em>float</em>) – The point x in local coordinates</p></li>
+<li><p><strong>x</strong> – The point y in local coordinates</p></li>
+<li><p><strong>y</strong> (<em>float</em>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
