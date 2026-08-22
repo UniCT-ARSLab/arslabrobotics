@@ -107,7 +107,7 @@
 <table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#arslabrobotics.system.arm.Arm" title="arslabrobotics.system.arm.Arm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Arm</span></code></a>(_mass, _len, _friction)</p></td>
-<td><p>Defines an arm in a 2D environment with the given mass, the lengthm and the friction :param _mass: The mass of the arm, expressed in Kg :param _length: The length of the arm, expressed in meters :param _friction: The air friction coefficient</p></td>
+<td><p>Defines an arm in a 2D environment with the given mass, the lengthm and the friction</p></td>
 </tr>
 </tbody>
 </table>
@@ -115,34 +115,33 @@
 <dt class="sig sig-object py" id="arslabrobotics.system.arm.Arm">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">arslabrobotics.system.arm.</span></span><span class="sig-name descname"><span class="pre">Arm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_mass</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_len</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_friction</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/system/arm.html#Arm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.system.arm.Arm" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Defines an arm in a 2D environment with the given mass, the lengthm and the friction
-:param _mass: The mass of the arm, expressed in Kg
-:param _length: The length of the arm, expressed in meters
-:param _friction: The air friction coefficient</p>
+<p>Defines an arm in a 2D environment with the given mass, the lengthm and the friction</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>_mass</strong> (<em>float</em>)</p></li>
+<li><p><strong>_mass</strong> (<em>float</em>) – The mass of the arm, expressed in Kg</p></li>
+<li><p><strong>_length</strong> – The length of the arm, expressed in meters</p></li>
+<li><p><strong>_friction</strong> (<em>float</em>) – The air friction coefficient</p></li>
 <li><p><strong>_len</strong> (<em>float</em>)</p></li>
-<li><p><strong>_friction</strong> (<em>float</em>)</p></li>
 </ul>
 </dd>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="arslabrobotics.system.arm.Arm.evaluate">
 <span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delta_t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_torque</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/system/arm.html#Arm.evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.system.arm.Arm.evaluate" title="Link to this definition"></a></dt>
-<dd><p>Evaluates the angular speed and position at the given time with the applied torque
-:param delta_t: The delta time
-:param _torque: The applied torque</p>
+<dd><p>Evaluates the angular speed and position at the given time with the applied torque</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>delta_t</strong> (<em>float</em>)</p></li>
-<li><p><strong>_torque</strong> (<em>float</em>)</p></li>
+<li><p><strong>delta_t</strong> (<em>float</em>) – The delta time</p></li>
+<li><p><strong>_torque</strong> (<em>float</em>) – The applied torque</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>tuple</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the angle and the angular speed</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
 </dd>
 </dl>
 </dd></dl>

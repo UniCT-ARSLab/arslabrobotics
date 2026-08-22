@@ -88,9 +88,11 @@
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_mass</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">_len</span> <span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">_friction</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Defines an arm in a 2D environment with the given mass, the lengthm and the friction</span>
+
 <span class="sd">        :param _mass: The mass of the arm, expressed in Kg</span>
 <span class="sd">        :param _length: The length of the arm, expressed in meters</span>
 <span class="sd">        :param _friction: The air friction coefficient</span>
+
 <span class="sd">        """</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">M</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">_mass</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">B</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">_friction</span>
@@ -103,8 +105,11 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delta_t</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">_torque</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Evaluates the angular speed and position at the given time with the applied torque</span>
+
 <span class="sd">        :param delta_t: The delta time</span>
 <span class="sd">        :param _torque: The applied torque</span>
+<span class="sd">        :return: the angle and the angular speed</span>
+
 <span class="sd">        """</span>
         <span class="n">new_omega</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="mf">3.</span><span class="o">/</span><span class="mf">2.</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">delta_t</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">M</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">L</span><span class="p">)</span> <span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">B</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">omega</span> \
                                 <span class="o">-</span> <span class="p">(</span><span class="mf">3.</span><span class="o">/</span><span class="mf">2.</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">delta_t</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">L</span> <span class="p">)</span> <span class="o">*</span> <span class="n">GRAVITY</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">theta</span><span class="p">)</span> \

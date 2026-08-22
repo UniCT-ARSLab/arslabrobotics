@@ -94,8 +94,10 @@
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_mass</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">_friction</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Defines a cart robot of a 1D environment with the given mass and friction</span>
+
 <span class="sd">        :param _mass: The mass of the cart, expressed in Kg</span>
 <span class="sd">        :param _friction: The force of friction present in the system</span>
+
 <span class="sd">        """</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">M</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">_mass</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">B</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">_friction</span>
@@ -107,8 +109,10 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delta_t</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">_force</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Evaluates the linear speed and position at the given time with the applied force</span>
+
 <span class="sd">        :param delta_t: The delta time</span>
 <span class="sd">        :param _force: The applied force</span>
+
 <span class="sd">        """</span>
         <span class="n">new_speed</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">B</span> <span class="o">*</span> <span class="n">delta_t</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">M</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">speed</span> <span class="o">+</span> <span class="n">delta_t</span> <span class="o">*</span> <span class="n">_force</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">M</span>
         <span class="n">new_position</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">position</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">speed</span> <span class="o">*</span> <span class="n">delta_t</span>
@@ -127,11 +131,13 @@
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_mass</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">_radius</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">_lin_friction</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">_ang_friction</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">"""</span>
-<span class="sd">        Defines a cylinder robot with the given mass, radius, linear and angular frictions</span>
+<span class="sd">        Defines a cylindric robot with the given mass, radius, linear and angular frictions</span>
+
 <span class="sd">        :param _mass: The mass of the cylinder robot, expressed in Kg</span>
 <span class="sd">        :param _radius: The radius of the cylinder, expressed in meter</span>
 <span class="sd">        :param _lin_friction: The force of linear friction present in the system</span>
 <span class="sd">        :param _ang_friction: The force of angular friction present in the system</span>
+
 <span class="sd">        """</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">M</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">_mass</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">_lin_friction</span>
@@ -149,9 +155,11 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delta_t</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">_force</span><span class="p">,</span> <span class="n">_torque</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Evaluates the linear speed and angular speed at the given time with the applied force and torque</span>
+
 <span class="sd">        :param delta_t: The delta time</span>
 <span class="sd">        :param _force: The applied force</span>
 <span class="sd">        :param _torque: The applied torque</span>
+
 <span class="sd">        """</span>
         <span class="n">new_v</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">*</span> <span class="n">delta_t</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">M</span><span class="p">)</span> <span class="o">+</span> <span class="n">delta_t</span> <span class="o">*</span> <span class="n">_force</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">M</span>
         <span class="n">new_w</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta</span> <span class="o">*</span> <span class="n">delta_t</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">Iz</span><span class="p">)</span> <span class="o">+</span> <span class="n">delta_t</span> <span class="o">*</span> <span class="n">_torque</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">Iz</span>
@@ -167,7 +175,9 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">get_pose</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Returns the current robot's position</span>
+
 <span class="sd">        :return: A tuple containing X, Y coordinate and Theta angle</span>
+
 <span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">theta</span></div>
 
@@ -183,7 +193,9 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">get_speed</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Returns the current robot's speed</span>
+
 <span class="sd">        :return: A tuple containing linear and angular speed</span>
+
 <span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">w</span></div>
 </div>
@@ -198,12 +210,15 @@
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_mass</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">_radius</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">_lin_friction</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">_ang_friction</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">_traction_wheelbase</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">"""</span>
-<span class="sd">        Defines a cylinder robot with the given mass, radius, linear &amp; angular frictions and distance between traction wheels</span>
+<span class="sd">        Defines a cylinder robot with the given mass, radius, linear &amp; angular frictions</span>
+<span class="sd">        and distance between traction wheels</span>
+
 <span class="sd">        :param _mass: The mass of the cylinder robot, expressed in Kg</span>
 <span class="sd">        :param _radius: The radius of the cylinder, expressed in meter</span>
 <span class="sd">        :param _lin_friction: The force of linear friction present in the system</span>
 <span class="sd">        :param _ang_friction: The force of angular friction present in the system</span>
 <span class="sd">        :param _traction_wheelbase: The distance between the traction wheels, expressed in meter</span>
+
 <span class="sd">        """</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">_mass</span><span class="p">,</span> <span class="n">_radius</span><span class="p">,</span> <span class="n">_lin_friction</span><span class="p">,</span> <span class="n">_ang_friction</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">traction_wheelbase</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">_traction_wheelbase</span>
@@ -212,10 +227,13 @@
 <a class="viewcode-back" href="../../../generated/arslabrobotics.system.cart.html#arslabrobotics.system.TwoWheelsCart2D.evaluate">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delta_t</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">f_left</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">f_right</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">"""</span>
-<span class="sd">        Evaluates the linear speed and angular speed at the given time with both the forces applied on left and on right</span>
-<span class="sd">        :param delta_t: The delta time</span>
-<span class="sd">        :param f_left: The applied force on left</span>
-<span class="sd">        :param f_right: The applied torque on right</span>
+<span class="sd">        Evaluates the linear speed and angular speed at the given time</span>
+<span class="sd">        with both the forces applied on left and on right</span>
+
+<span class="sd">        :param delta_t: Sampling time</span>
+<span class="sd">        :param f_left: The applied force on left (in Nm)</span>
+<span class="sd">        :param f_right: The applied torque on right (in Nm)</span>
+
 <span class="sd">        """</span>
         <span class="n">f</span> <span class="o">=</span> <span class="n">f_left</span> <span class="o">+</span> <span class="n">f_right</span>
         <span class="n">t</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">traction_wheelbase</span> <span class="o">*</span> <span class="p">(</span><span class="n">f_right</span> <span class="o">-</span> <span class="n">f_left</span><span class="p">)</span>
@@ -236,6 +254,7 @@
 <span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Defines a cylinder robot with the given mass, radius, linear &amp; angular frictions,</span>
 <span class="sd">        and distance between traction wheels; it also simulates the encoder wheels.</span>
+
 <span class="sd">        :param _mass: The mass of the cylinder robot, expressed in Kg</span>
 <span class="sd">        :param _radius: The radius of the cylinder, expressed in meters</span>
 <span class="sd">        :param _lin_friction: The force of linear friction present in the system</span>
@@ -247,6 +266,7 @@
 <span class="sd">        :param _r_encoder_right: The radius of the right encoder wheel (meters)</span>
 <span class="sd">        :param _encoder_wheelbase: The distance between the encoder wheels, expressed in meters</span>
 <span class="sd">        :param _encoder_ticks: The numer of ticks per revolution of the encoders</span>
+
 <span class="sd">        """</span>
 
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">_mass</span><span class="p">,</span> <span class="n">_radius</span><span class="p">,</span> <span class="n">_lin_friction</span><span class="p">,</span> <span class="n">_ang_friction</span><span class="p">,</span> <span class="n">_traction_wheelbase</span><span class="p">)</span>
@@ -266,9 +286,11 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delta_t</span><span class="p">,</span> <span class="n">torque_left</span><span class="p">,</span> <span class="n">torque_right</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Simulates the system, given the torques generated by the motors of the traction wheels</span>
+
 <span class="sd">        :param delta_t: Sampling time</span>
 <span class="sd">        :param torque_left: The torque generated by the left motor (in Nm)</span>
 <span class="sd">        :param torque_right: The torque generated by the right motor (in Nm)</span>
+
 <span class="sd">        """</span>
         <span class="c1"># torque to force</span>
         <span class="n">f_left</span> <span class="o">=</span> <span class="n">torque_left</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">r_traction_left</span>
@@ -302,6 +324,7 @@
 <span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Defines a cylinder robot with the given mass, radius, linear &amp; angular frictions,</span>
 <span class="sd">        and distance between traction wheels; it also simulates the encoder wheels and computes odometry.</span>
+
 <span class="sd">        :param _mass: The mass of the cylinder robot, expressed in Kg</span>
 <span class="sd">        :param _radius: The radius of the cylinder, expressed in meters</span>
 <span class="sd">        :param _lin_friction: The force of linear friction present in the system</span>
@@ -313,6 +336,7 @@
 <span class="sd">        :param _r_encoder_right: The radius of the right encoder wheel (meters)</span>
 <span class="sd">        :param _encoder_wheelbase: The distance between the encoder wheels, expressed in meters</span>
 <span class="sd">        :param _encoder_ticks: The numer of ticks per revolution of the encoders</span>
+
 <span class="sd">        """</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">_mass</span><span class="p">,</span> <span class="n">_radius</span><span class="p">,</span> <span class="n">_lin_friction</span><span class="p">,</span> <span class="n">_ang_friction</span><span class="p">,</span>
                          <span class="n">_r_traction_left</span><span class="p">,</span> <span class="n">_r_traction_right</span><span class="p">,</span> <span class="n">_traction_wheelbase</span><span class="p">,</span>
@@ -330,9 +354,11 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delta_t</span><span class="p">,</span> <span class="n">torque_left</span><span class="p">,</span> <span class="n">torque_right</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Simulates the system, given the torques generated by the motors of the traction wheels</span>
+
 <span class="sd">        :param delta_t: Sampling time</span>
 <span class="sd">        :param torque_left: The torque generated by the left motor (in Nm)</span>
 <span class="sd">        :param torque_right: The torque generated by the right motor (in Nm)</span>
+
 <span class="sd">        """</span>
         <span class="c1"># dynamic model</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">delta_t</span><span class="p">,</span> <span class="n">torque_left</span><span class="p">,</span> <span class="n">torque_right</span><span class="p">)</span>
@@ -361,6 +387,7 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">get_pose</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Returns the current robot's position</span>
+
 <span class="sd">        :return: A tuple containing X, Y coordinate and Theta angle</span>
 <span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_r</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_r</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">theta_r</span></div>
@@ -371,6 +398,7 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">get_speed</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Returns the current linear and angular speeds</span>
+
 <span class="sd">        :return: A tuple containing V and W</span>
 <span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">v_r</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">w_r</span></div>
@@ -381,6 +409,7 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">get_wheel_speed</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Returns the current linear and angular speeds</span>
+
 <span class="sd">        :return: A tuple containing V and W</span>
 <span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">vleft</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">vright</span></div>
@@ -396,11 +425,14 @@
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_mass</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">_lin_friction</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">_r_traction</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">_lateral_wheelbase</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">"""</span>
-<span class="sd">        Defines a vehicle ackermann steering robot with the given mass, linear friction, distance between traction and distance between wheels</span>
+<span class="sd">        Defines a vehicle ackermann steering robot with the given mass,</span>
+<span class="sd">        linear friction, distance between traction and distance between wheels</span>
+
 <span class="sd">        :param _mass: The mass of the cylinder robot, expressed in Kg</span>
 <span class="sd">        :param _lin_friction: The force of linear friction present in the system</span>
 <span class="sd">        :param _r_traction: The distance between the traction wheels, expressed in meter</span>
 <span class="sd">        :param _lateral_wheelbase: The distance between the lateral wheels, expressed in meter</span>
+
 <span class="sd">        """</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">M</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">_mass</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">_lin_friction</span>
@@ -418,9 +450,11 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delta_t</span><span class="p">,</span> <span class="n">torque</span><span class="p">,</span> <span class="n">steering_angle</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Simulates the system.</span>
+
 <span class="sd">        :param delta_t: Sampling time</span>
 <span class="sd">        :param torque: The torque generated by the traction motor (in Nm)</span>
 <span class="sd">        :param steering_angle: The angle of the center steering wheel (in radians)</span>
+
 <span class="sd">        """</span>
         <span class="n">_force</span> <span class="o">=</span> <span class="n">torque</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">r_wheels</span>
         <span class="n">new_v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">*</span> <span class="n">delta_t</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">M</span><span class="p">)</span> <span class="o">+</span> <span class="n">delta_t</span> <span class="o">*</span> <span class="n">_force</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">M</span>
@@ -443,7 +477,9 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">get_pose</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Returns the current robot's position</span>
+
 <span class="sd">        :return: A tuple containing X, Y coordinate and Theta angle</span>
+
 <span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">theta</span></div>
 
@@ -453,7 +489,9 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">get_speed</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Returns the current linear and angular speeds</span>
+
 <span class="sd">        :return: A tuple containing V and W</span>
+
 <span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">w</span></div>
 </div>
