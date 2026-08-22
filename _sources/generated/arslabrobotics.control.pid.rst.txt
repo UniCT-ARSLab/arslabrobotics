@@ -1,0 +1,20 @@
+arslabrobotics.control.pid
+==========================
+
+.. automodule:: arslabrobotics.control.pid
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      saturate
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      PID_Controller
+      PI_Controller
+      P_Controller
+   

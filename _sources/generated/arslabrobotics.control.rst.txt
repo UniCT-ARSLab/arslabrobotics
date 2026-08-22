@@ -1,0 +1,13 @@
+arslabrobotics.control
+======================
+
+.. automodule:: arslabrobotics.control
+
+   
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :recursive:
+
+   pid
