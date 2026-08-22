@@ -11,7 +11,10 @@ __all__ = [
 
 import math
 
-def normalize_angle(a):
+def normalize_angle(a : float) -> float:
+    """
+    Normalizes an angle between -Pi and Pi
+    """
     while a > math.pi:
         a = a - 2 * math.pi
     while a < - math.pi:
@@ -22,9 +25,11 @@ def normalize_angle(a):
 def rototranslate(xp, yp, xc, yc, t):
     """
     Rototranslate a point from a reference system (x',y') to a system (x,y)
+
     :param xp,yp: The point in the reference system (x', y')
     :param xc, yc: The origin of (x',y') in (x,y) coordinates
     :param t: The rotation of x' with respect to x (in radians)
+
     """
     cos_t = math.cos(t)
     sin_t = math.sin(t)
@@ -33,7 +38,16 @@ def rototranslate(xp, yp, xc, yc, t):
     return global_point_x, global_point_y
 
 
-def global_to_local(xc, yc, t, x, y):
+def global_to_local(xc : float, yc : float, t : float, x : float, y : float) -> tuple:
+    """
+    Converts the coordinates from a global 2D reference system to a local one
+
+    :param xc, yc: The origin of the local system in global coordinates
+    :param t: The rotation of the local system with respect to the global one (in radians)
+    :param x, y: The point in global coordinates
+    :return: The point (x, y) in local coordinates
+
+    """
     cos_t = math.cos(t)
     sin_t = math.sin(t)
     dx = x - xc
@@ -43,7 +57,16 @@ def global_to_local(xc, yc, t, x, y):
     return local_x, local_y
 
 
-def local_to_global(xc, yc, t, x, y):
+def local_to_global(xc : float, yc : float, t : float, x : float, y : float) -> tuple:
+    """
+    Converts the coordinates from a local 2D reference system to a global one
+
+    :param xc, yc: The origin of the local system in global coordinates
+    :param t: The rotation of the local system with respect to the global one (in radians)
+    :param x, y: The point in local coordinates
+    :return: The point (x, y) in global coordinates
+
+    """
     cos_t = math.cos(t)
     sin_t = math.sin(t)
     global_point_x = xc + x * cos_t - y * sin_t

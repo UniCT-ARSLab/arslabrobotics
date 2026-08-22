@@ -10,7 +10,9 @@ class Time:
     def __init__(self, use_fake_time : bool =False):
         """
         Helper class to manage the simulation time
+
         :param use_fake_time: set to false to use the real-time, true to use a simulated time
+
         """
         self.use_fake_time = use_fake_time
         self.last_t = 0
