@@ -11,14 +11,21 @@ authors = [
 ]
 description = "A small example package"
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.11"
 classifiers = [
     "Programming Language :: Python :: 3",
     "Operating System :: OS Independent",
 ]
 license = "MIT"
 license-files = ["LICEN[CS]E*"]
-
-[project.urls]
-Homepage = "https://github.com/pypa/sampleproject"
-#Issues = "https://github.com/pypa/sampleproject/issues"
+dependencies = [
+    "matplotlib>=3.11.1",
+    "opencv-python>=4.14.0.94",
+    "numpy>=2.5.2",
+    
+]
+[project.optional-dependencies]
+docs = [
+    "sphinx>=7.2.6",
+    "sphinx-rtd-theme>=2.0.0",
+]
