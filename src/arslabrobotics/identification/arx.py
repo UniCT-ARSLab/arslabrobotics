@@ -9,12 +9,28 @@ import numpy as np
 class ARXSolver:
 
     def __init__(self, data_in_out, output_lag, input_lag):
+        """
+        An helper class to solve the linear system identification problem using
+        the auto-regressive model::
+
+            y(k) + a0 * y(k-1) + a1 * y(k-2) + ... y(k-n) = b0 * u(k) + b1 * u(k-1) + ... u(k-m)
+
+        :param data_in_out: A matrix [ [ u(k), y(k) ] ] containing input/output sampled data
+        :param output_lag: The number of delay blocks for the output (n)
+        :param input_lag: The number of delay blocks for the input (m)
+
+        """
         self.data_in_out = data_in_out
         self.output_lag = output_lag
         self.input_lag = input_lag
         self.data_len = len(self.data_in_out)
 
-    def solve(self):
+    def solve(self) -> tuple:
+        """
+        Solves the ARX model
+
+        :return: A tuple (a_parameters, b_parameters)
+        """
         U = np.array( self.data_in_out[ : , 0] ).reshape(-1, 1)
         Y = np.array( self.data_in_out[ : , 1] ).reshape(-1, 1)
         n_rows = self.data_len - self.output_lag
