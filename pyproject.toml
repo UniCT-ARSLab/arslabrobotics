@@ -9,9 +9,9 @@ version = "2.0.0"
 authors = [
   { name="Corrado Santoro", email="corrado.santoro@unict.it" },
 ]
-description = "A small example package"
+description = "A library to simulate and implement robotic systems"
 readme = "README.md"
-requires-python = ">=3.11"
+requires-python = ">=3.10"
 classifiers = [
     "Programming Language :: Python :: 3",
     "Operating System :: OS Independent",
