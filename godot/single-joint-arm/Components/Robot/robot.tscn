@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://dk2jptyi1lbl4"]
+
+[ext_resource type="ArrayMesh" uid="uid://cw4oodxty53vw" path="res://Assets/joint_base.obj" id="1_4ybhm"]
+[ext_resource type="Script" uid="uid://raq60je6b4fh" path="res://Components/Robot/robot.gd" id="1_igof8"]
+[ext_resource type="ArrayMesh" uid="uid://dwn2xmka4ccvv" path="res://Assets/joint_1.obj" id="2_qfhfy"]
+[ext_resource type="ArrayMesh" uid="uid://ds1s8tto7bt6i" path="res://Assets/arm_1.obj" id="3_w0l7k"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qfhfy"]
+size = Vector3(0.150365, 0.16118401, 0.177202)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w0l7k"]
+size = Vector3(0.120000005, 0.13693699, 0.126901)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_igof8"]
+points = PackedVector3Array(-0.019860225, 0.017801017, -0.078655556, 0.0020623738, 0.01047273, 0.08218889, -0.0052401507, 0.01047273, 0.08218889, -0.02716275, 0.47105554, 0.060241245, 0.060542673, 0.47105554, -0.027454877, 0.075162746, 0.003144443, 0.038309343, -0.06372045, 0.47105554, -0.012828361, -0.07834052, 0.003144443, 0.023698568, 0.067845196, 0.003144443, -0.04938678, 0.038605046, 0.47105554, 0.052935857, 0.016682448, 0.47105554, -0.06402904, -0.07102297, 0.003144443, -0.042081393, -0.0344803, 0.47105554, -0.056692164, -0.049100373, 0.003144443, 0.06756237, -0.049100373, 0.47105554, 0.04563047, 0.045922596, 0.003144443, -0.071318686, 0.060542673, 0.47105554, 0.023698568, 0.038605046, 0.003144443, 0.07486776, 0.045922596, 0.47105554, -0.04938678, 0.075162746, 0.017801017, -0.034760263, 0.023984972, 0.47105554, 0.060241245, -0.041782822, 0.003144443, -0.071318686, -0.06372045, 0.47105554, 0.016377438, -0.07102297, 0.01047273, 0.04563047, -0.07834052, 0.017801017, -0.027454877, -0.0564029, 0.47105554, -0.034760263, 0.023984972, 0.017801017, -0.078655556, -0.012542675, 0.47105554, -0.06402904, -0.0344803, 0.017801017, 0.07486776, -0.02716275, 0.003144443, -0.078655556, 0.053225122, 0.47105554, 0.038309343, -0.041782822, 0.47105554, 0.052935857)
+
+[node name="Robot" type="Node3D" unique_id=1283625937]
+script = ExtResource("1_igof8")
+
+[node name="Base" type="StaticBody3D" parent="." unique_id=407490009]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Base" unique_id=2124422088]
+mesh = ExtResource("1_4ybhm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Base" unique_id=1434839669]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4985285e-06, 0.005408004, 0.001399003)
+shape = SubResource("BoxShape3D_qfhfy")
+
+[node name="Joint1" type="RigidBody3D" parent="Base" unique_id=413451792]
+transform = Transform3D(-2.9802322e-08, -4.3711392e-08, -1, 4.3711392e-08, 1, -4.371138e-08, 1, -4.3711385e-08, -2.980232e-08, 0, 0.088214725, -3.855988e-09)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Base/Joint1" unique_id=2018445181]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010390729, -0.009179413, -0.06733215)
+mesh = ExtResource("2_qfhfy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Base/Joint1" unique_id=829064486]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00039072707, 0.06533908, -0.0044826493)
+shape = SubResource("BoxShape3D_w0l7k")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Base/Joint1" unique_id=161254832]
+transform = Transform3D(-1, -4.371138e-08, 4.3711385e-08, 4.371139e-08, 4.371138e-08, 1, -4.3711385e-08, 1, -4.371138e-08, -2.3492538e-08, 0.069740534, -0.5374466)
+mesh = ExtResource("3_w0l7k")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Base/Joint1" unique_id=992214359]
+transform = Transform3D(-1, -4.371138e-08, 4.3711385e-08, 4.371139e-08, 4.371138e-08, 1, -4.3711385e-08, 1, -4.371138e-08, -2.3492538e-08, 0.069740534, -0.5374466)
+shape = SubResource("ConvexPolygonShape3D_igof8")
+
+[node name="HingeJoint3D" type="HingeJoint3D" parent="Base" unique_id=2013443981]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+node_a = NodePath("..")
+node_b = NodePath("../Joint1")
+motor/target_velocity = 1.2217305
