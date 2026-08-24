@@ -11,3 +11,4 @@ arslabrobotics.control
    :recursive:
 
    pid
+   speed

@@ -1,0 +1,12 @@
+arslabrobotics.control.speed
+============================
+
+.. automodule:: arslabrobotics.control.speed
+
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      DifferentialDriveSpeedControl
+   
