@@ -12,3 +12,4 @@ arslabrobotics.control
 
    pid
    speed
+   trajectory

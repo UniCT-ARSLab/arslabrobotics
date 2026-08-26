@@ -1,0 +1,16 @@
+arslabrobotics.control.trajectory
+=================================
+
+.. automodule:: arslabrobotics.control.trajectory
+
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      ContinuousPath2D
+      Path2D
+      StraightLine2DMotion
+      StraightLineMotion
+      VirtualRobot
+   

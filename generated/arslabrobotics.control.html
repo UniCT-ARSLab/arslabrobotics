@@ -53,8 +53,14 @@
 <li class="toctree-l4"><a class="reference internal" href="#arslabrobotics.control.PI_Controller"><code class="docutils literal notranslate"><span class="pre">PI_Controller</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#arslabrobotics.control.PID_Controller"><code class="docutils literal notranslate"><span class="pre">PID_Controller</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#arslabrobotics.control.DifferentialDriveSpeedControl"><code class="docutils literal notranslate"><span class="pre">DifferentialDriveSpeedControl</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#arslabrobotics.control.VirtualRobot"><code class="docutils literal notranslate"><span class="pre">VirtualRobot</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#arslabrobotics.control.StraightLine2DMotion"><code class="docutils literal notranslate"><span class="pre">StraightLine2DMotion</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#arslabrobotics.control.StraightLineMotion"><code class="docutils literal notranslate"><span class="pre">StraightLineMotion</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#arslabrobotics.control.Path2D"><code class="docutils literal notranslate"><span class="pre">Path2D</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#arslabrobotics.control.ContinuousPath2D"><code class="docutils literal notranslate"><span class="pre">ContinuousPath2D</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="arslabrobotics.control.pid.html">arslabrobotics.control.pid</a></li>
 <li class="toctree-l4"><a class="reference internal" href="arslabrobotics.control.speed.html">arslabrobotics.control.speed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="arslabrobotics.control.trajectory.html">arslabrobotics.control.trajectory</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="arslabrobotics.data.html">arslabrobotics.data</a></li>
@@ -277,6 +283,147 @@ and the second is a boolean indicating if the saturation occurred</p>
 
 </dd></dl>
 
+<dl class="py class">
+<dt class="sig sig-object py" id="arslabrobotics.control.VirtualRobot">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">arslabrobotics.control.</span></span><span class="sig-name descname"><span class="pre">VirtualRobot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_p_target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_vmax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_acc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_dec</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/control/trajectory.html#VirtualRobot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.control.VirtualRobot" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class implements the algoritm of the linear trajectory
+generation for a virtual robot moving over a straight line of a certain distance
+with an acceleration, a cruise speed and a deceleration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>_p_target</strong> (<em>float</em>)</p></li>
+<li><p><strong>_vmax</strong> (<em>float</em>)</p></li>
+<li><p><strong>_acc</strong> (<em>float</em>)</p></li>
+<li><p><strong>_dec</strong> (<em>float</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="arslabrobotics.control.VirtualRobot.ACCEL">
+<span class="sig-name descname"><span class="pre">ACCEL</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#arslabrobotics.control.VirtualRobot.ACCEL" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="arslabrobotics.control.VirtualRobot.CRUISE">
+<span class="sig-name descname"><span class="pre">CRUISE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></span><a class="headerlink" href="#arslabrobotics.control.VirtualRobot.CRUISE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="arslabrobotics.control.VirtualRobot.DECEL">
+<span class="sig-name descname"><span class="pre">DECEL</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></span><a class="headerlink" href="#arslabrobotics.control.VirtualRobot.DECEL" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="arslabrobotics.control.VirtualRobot.TARGET">
+<span class="sig-name descname"><span class="pre">TARGET</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></span><a class="headerlink" href="#arslabrobotics.control.VirtualRobot.TARGET" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="arslabrobotics.control.VirtualRobot.start">
+<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_p_target</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/control/trajectory.html#VirtualRobot.start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.control.VirtualRobot.start" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="arslabrobotics.control.VirtualRobot.evaluate">
+<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delta_t</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/control/trajectory.html#VirtualRobot.evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.control.VirtualRobot.evaluate" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>delta_t</strong> (<em>float</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="arslabrobotics.control.VirtualRobot.speed">
+<span class="sig-name descname"><span class="pre">speed</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/control/trajectory.html#VirtualRobot.speed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.control.VirtualRobot.speed" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="arslabrobotics.control.VirtualRobot.position">
+<span class="sig-name descname"><span class="pre">position</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/control/trajectory.html#VirtualRobot.position"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.control.VirtualRobot.position" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="arslabrobotics.control.StraightLine2DMotion">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">arslabrobotics.control.</span></span><span class="sig-name descname"><span class="pre">StraightLine2DMotion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_vmax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_acc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_dec</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/control/trajectory.html#StraightLine2DMotion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.control.StraightLine2DMotion" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="arslabrobotics.control.StraightLine2DMotion.start_motion">
+<span class="sig-name descname"><span class="pre">start_motion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/control/trajectory.html#StraightLine2DMotion.start_motion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.control.StraightLine2DMotion.start_motion" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="arslabrobotics.control.StraightLine2DMotion.evaluate">
+<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delta_t</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/control/trajectory.html#StraightLine2DMotion.evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.control.StraightLine2DMotion.evaluate" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="arslabrobotics.control.StraightLineMotion">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">arslabrobotics.control.</span></span><span class="sig-name descname"><span class="pre">StraightLineMotion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_vmax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_acc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_dec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angles_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/control/trajectory.html#StraightLineMotion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.control.StraightLineMotion" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="arslabrobotics.control.StraightLineMotion.start_motion">
+<span class="sig-name descname"><span class="pre">start_motion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/control/trajectory.html#StraightLineMotion.start_motion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.control.StraightLineMotion.start_motion" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="arslabrobotics.control.StraightLineMotion.evaluate">
+<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delta_t</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/control/trajectory.html#StraightLineMotion.evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.control.StraightLineMotion.evaluate" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="arslabrobotics.control.Path2D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">arslabrobotics.control.</span></span><span class="sig-name descname"><span class="pre">Path2D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_vmax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_acc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_dec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_threshold</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/control/trajectory.html#Path2D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.control.Path2D" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="arslabrobotics.control.Path2D.set_path">
+<span class="sig-name descname"><span class="pre">set_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/control/trajectory.html#Path2D.set_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.control.Path2D.set_path" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="arslabrobotics.control.Path2D.start">
+<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_pos</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/control/trajectory.html#Path2D.start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.control.Path2D.start" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="arslabrobotics.control.Path2D.evaluate">
+<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delta_t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pose</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/control/trajectory.html#Path2D.evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.control.Path2D.evaluate" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="arslabrobotics.control.ContinuousPath2D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">arslabrobotics.control.</span></span><span class="sig-name descname"><span class="pre">ContinuousPath2D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_vmax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_acc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_dec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_threshold</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/control/trajectory.html#ContinuousPath2D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.control.ContinuousPath2D" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="arslabrobotics.control.ContinuousPath2D.set_path">
+<span class="sig-name descname"><span class="pre">set_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/control/trajectory.html#ContinuousPath2D.set_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.control.ContinuousPath2D.set_path" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="arslabrobotics.control.ContinuousPath2D.start">
+<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_pos</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/control/trajectory.html#ContinuousPath2D.start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.control.ContinuousPath2D.start" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="arslabrobotics.control.ContinuousPath2D.evaluate">
+<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delta_t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_pose</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/control/trajectory.html#ContinuousPath2D.evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.control.ContinuousPath2D.evaluate" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 <p class="rubric">Modules</p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
@@ -284,6 +431,9 @@ and the second is a boolean indicating if the saturation occurred</p>
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="arslabrobotics.control.speed.html#module-arslabrobotics.control.speed" title="arslabrobotics.control.speed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">speed</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="arslabrobotics.control.trajectory.html#module-arslabrobotics.control.trajectory" title="arslabrobotics.control.trajectory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">trajectory</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
