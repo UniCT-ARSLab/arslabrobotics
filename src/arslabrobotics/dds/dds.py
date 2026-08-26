@@ -8,6 +8,7 @@ import select
 import io
 import time
 import struct
+import json
 
 DDS_TYPE_UNKNOWN = 0
 DDS_TYPE_INT = 1
@@ -16,7 +17,13 @@ DDS_TYPE_BLOB = 3
 DDS_TYPE_STRING = 4
 DDS_TYPE_JSON = 5
 
-__all__ = [ "DDS", "DDS_TYPE_FLOAT", "DDS_TYPE_INT", "DDS_TYPE_BLOB" ]
+__all__ = [ "DDS",
+            "DDS_TYPE_FLOAT",
+            "DDS_TYPE_INT",
+            "DDS_TYPE_BLOB",
+            "DDS_TYPE_STRING",
+            "DDS_TYPE_JSON"
+           ]
 
 
 class MonitoredVariable:
@@ -25,10 +32,12 @@ class MonitoredVariable:
         self.mutex = threading.Lock()
         self.condition = threading.Condition(self.mutex)
         self.value = None
+        self.is_fresh = False
 
     def get_value(self):
         self.mutex.acquire()
         v = self.value
+        self.is_fresh = False
         self.mutex.release()
         return v
 
@@ -36,6 +45,7 @@ class MonitoredVariable:
         self.mutex.acquire()
         self.condition.wait()
         v = self.value
+        self.is_fresh = True
         self.mutex.release()
         return v
 
@@ -146,6 +156,18 @@ class DDS(threading.Thread):
         else:
             return None
 
+    def is_new(self, _varname):
+        """
+        Checks if a new data has been published for the given variable.
+
+        :param _varname: The name of the variable
+        :return: The freshness status
+
+        """
+        if _varname in self.variables:
+            return self.variables[_varname].is_fresh
+        else:
+            return False
 
     def wait(self, _varname):
         """
@@ -208,6 +230,7 @@ class DDS(threading.Thread):
 
         if (value is not None)and(name in self.variables):
             m = self.variables[name]
+            m.is_fresh = True
             m.notify(value[0])
 
 
