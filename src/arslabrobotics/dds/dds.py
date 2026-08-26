@@ -13,6 +13,8 @@ DDS_TYPE_UNKNOWN = 0
 DDS_TYPE_INT = 1
 DDS_TYPE_FLOAT = 2
 DDS_TYPE_BLOB = 3
+DDS_TYPE_STRING = 4
+DDS_TYPE_JSON = 5
 
 __all__ = [ "DDS", "DDS_TYPE_FLOAT", "DDS_TYPE_INT", "DDS_TYPE_BLOB" ]
 
@@ -123,6 +125,11 @@ class DDS(threading.Thread):
             data.write(struct.pack("<f", _value))
         elif _type == DDS_TYPE_INT:
             data.write(struct.pack("<i", _value))
+        elif _type == DDS_TYPE_STRING:
+            data.write(struct.pack(f"<{len(_value)}s", _value.encode("utf-8")))
+        elif _type == DDS_TYPE_JSON:
+            data.write(struct.pack(f"<{len(_value)}s", _value.encode("utf-8")))
+
         self.sd.sendto(data.getvalue(), (self.remote_host, self.remote_port))
 
 
@@ -190,8 +197,14 @@ class DDS(threading.Thread):
         elif typ == DDS_TYPE_INT:
             value = struct.unpack("<i", data[l+3:l+7])
         elif typ == DDS_TYPE_BLOB:
-                (blob_length,) = struct.unpack("<i", data[l+3:l+7])
-                value = [ data[l+7:l+7+blob_length] ]
+            (blob_length,) = struct.unpack("<i", data[l+3:l+7])
+            value = [ data[l+7:l+7+blob_length] ]
+        elif typ == DDS_TYPE_STRING:
+            _bytes = data[l+3:]
+            value = [ _bytes.decode("utf-8") ]
+        elif typ == DDS_TYPE_JSON:
+            _bytes = data[l+3:]
+            value = [ json.loads(_bytes.decode("utf-8")) ]
 
         if (value is not None)and(name in self.variables):
             m = self.variables[name]

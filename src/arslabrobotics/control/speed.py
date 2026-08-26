@@ -21,8 +21,8 @@ class DifferentialDriveSpeedControl:
         :param sat: The optional saturation value of the PID output
 
         """
-        self.left_wheel = PID(kp, ki, kd, sat)
-        self.right_wheel = PID(kp, ki, kd, sat)
+        self.left_wheel = PID_Controller(kp, ki, kd, sat)
+        self.right_wheel = PID_Controller(kp, ki, kd, sat)
 
         self.left_target = 0
         self.right_target = 0
