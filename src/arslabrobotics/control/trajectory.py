@@ -77,6 +77,9 @@ class VirtualRobot:
     def position(self):
         return self.p
 
+    def target_got(self):
+        return self.phase == VirtualRobot.TARGET
+
 # ------------------------------------------------------------
 
 class StraightLine2DMotion:
@@ -133,6 +136,9 @@ class StraightLineMotion:
         if self.angles_index >= 0:
             for i in range(self.angles_index, self.size):
                 a[i] = normalize_angle(a[i])
+
+    def target_got(self):
+        return self.virtual_robot.target_got()
 
 # ------------------------------------------------------------
 
