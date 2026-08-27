@@ -161,6 +161,12 @@
 <a class="viewcode-back" href="../../../generated/arslabrobotics.control.trajectory.html#arslabrobotics.control.VirtualRobot.position">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">position</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">p</span></div>
+
+
+<div class="viewcode-block" id="VirtualRobot.target_got">
+<a class="viewcode-back" href="../../../generated/arslabrobotics.control.trajectory.html#arslabrobotics.control.VirtualRobot.target_got">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">target_got</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">phase</span> <span class="o">==</span> <span class="n">VirtualRobot</span><span class="o">.</span><span class="n">TARGET</span></div>
 </div>
 
 
@@ -236,7 +242,13 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">__normalize_angles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">angles_index</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">angles_index</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">):</span>
-                <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">normalize_angle</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">])</span></div>
+                <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">normalize_angle</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+<div class="viewcode-block" id="StraightLineMotion.target_got">
+<a class="viewcode-back" href="../../../generated/arslabrobotics.control.trajectory.html#arslabrobotics.control.StraightLineMotion.target_got">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">target_got</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">virtual_robot</span><span class="o">.</span><span class="n">target_got</span><span class="p">()</span></div>
+</div>
 
 
 <span class="c1"># ------------------------------------------------------------</span>
