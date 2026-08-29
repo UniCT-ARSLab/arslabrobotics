@@ -20,6 +20,15 @@ class VirtualRobot:
     TARGET = 3
 
     def __init__(self, _p_target : float, _vmax : float, _acc : float, _dec : float):
+        """
+        Initializes the linear trajectory
+
+        :param _p_target: the distance to drive
+        :param _vmax: the maximum speed
+        :param _acc: the acceleration
+        :param _dec: the deceleration
+
+        """
         self.p_target = _p_target
         self.vmax = _vmax
         self.accel = _acc
@@ -29,13 +38,25 @@ class VirtualRobot:
         self.phase = VirtualRobot.ACCEL
         self.decel_distance = 0.5 * _vmax * _vmax / _dec
 
-    def start(self, _p_target):
+    def start(self, _p_target : float):
+        """
+        Restarts the trajectory
+
+        :param _p_target: the new distance to drive
+
+        """
         self.p_target = _p_target
         self.v = 0  # current speed
         self.p = 0  # current position
         self.phase = VirtualRobot.ACCEL
 
     def evaluate(self, delta_t : float) -> None:
+        """
+        Executes a trajectory step
+
+        :param delta_t: the sampling time
+
+        """
         if self.phase == VirtualRobot.ACCEL:
             self.p = self.p + self.v * delta_t \
                      + self.accel * delta_t * delta_t / 2
@@ -71,25 +92,53 @@ class VirtualRobot:
             self.v = 0
             self.p = self.p_target
 
-    def speed(self):
+    def speed(self) -> float:
+        """
+        Returns the current speed
+        """
         return self.v
 
-    def position(self):
+    def position(self) -> float:
+        """
+        Returns the current position
+        """
         return self.p
 
-    def target_got(self):
+    def target_got(self) -> bool:
+        """
+        Returns a boolean indicating if the distance has been traveled
+        """
         return self.phase == VirtualRobot.TARGET
 
 # ------------------------------------------------------------
 
 class StraightLine2DMotion:
+    """
+    This class performs a linear motion over a 2D space form a point (x_start, y_start)
+    to a point (x_end, y_end)
+    """
 
-    def __init__(self, _vmax, _acc, _dec):
+    def __init__(self, _vmax : float, _acc : float, _dec : float):
+        """
+        Initializes the trajectory
+
+        :param _vmax: the maximum speed
+        :param _acc: the acceleration
+        :param _dec: the deceleration
+
+        """
         self.vmax = _vmax
         self.accel = _acc
         self.decel = _dec
 
-    def start_motion(self, start, end):
+    def start_motion(self, start : tuple[float, float], end : tuple[float, float]) -> None:
+        """
+        Starts the trajectory
+
+        :param start: a tuple (x,y) indicating the starting point
+        :param end: a tuple (x,y) indicating the ending point
+
+        """
         (self.xs,self.ys) = start
         (self.xe,self.ye) = end
         dx = self.xe - self.xs
@@ -99,7 +148,14 @@ class StraightLine2DMotion:
         self.virtual_robot = VirtualRobot(self.distance,
                                           self.vmax, self.accel, self.decel)
 
-    def evaluate(self, delta_t):
+    def evaluate(self, delta_t : float) -> tuple[float,float]:
+        """
+        Executes a trajectory step
+
+        :param delta_t: the sampling time
+        :return: the current position (x,y)
+
+        """
         self.virtual_robot.evaluate(delta_t)
         xt = self.xs + self.virtual_robot.p * math.cos(self.heading)
         yt = self.ys + self.virtual_robot.p * math.sin(self.heading)
@@ -109,13 +165,39 @@ class StraightLine2DMotion:
 
 class StraightLineMotion:
 
-    def __init__(self, _vmax, _acc, _dec, angles_index = -1):
+    """
+    This class performs a linear motion over a generic n-dimensional space form a point
+    start to a point end.
+
+    Start and end are supposed to be robot poses made of cartesian coordinates and angles.
+
+    """
+    def __init__(self, _vmax : float, _acc : float, _dec : float, angles_index = -1):
+        """
+        Initializes the trajectory
+
+        angles_index specifies the element in the pose where the angles start.
+        For example, in a 2D where the pose is (x,y,theta), angles_index would be 2.
+
+        :param _vmax: the maximum speed
+        :param _acc: the acceleration
+        :param _dec: the deceleration
+        :param angles_index: the index in the pose where the angles start
+
+        """
         self.vmax = _vmax
         self.accel = _acc
         self.decel = _dec
         self.angles_index = angles_index
 
     def start_motion(self, start, end):
+        """
+        Starts the trajectory
+
+        :param start: the starting pose
+        :param end: the ending pose
+
+        """
         self.start = np.array(start)
         self.end = np.array(end)
         self.size = len(start)
@@ -125,7 +207,14 @@ class StraightLineMotion:
         self.virtual_robot = VirtualRobot(self.distance,
                                           self.vmax, self.accel, self.decel)
 
-    def evaluate(self, delta_t):
+    def evaluate(self, delta_t : float) -> list[float]:
+        """
+        Executes a trajectory step
+
+        :param delta_t: the sampling time
+        :return: the current position
+
+        """
         self.virtual_robot.evaluate(delta_t)
         param = self.virtual_robot.p / self.distance
         new_pos = self.start + param * self.diff
@@ -138,24 +227,61 @@ class StraightLineMotion:
                 a[i] = normalize_angle(a[i])
 
     def target_got(self):
+        """
+        Returns a boolean indicating if the final position has been reached
+        """
         return self.virtual_robot.target_got()
 
 # ------------------------------------------------------------
 
 class Path2D:
-    def __init__(self, _vmax, _acc, _dec, _threshold):
+    """
+    This class generates a trajectory using a list of points in a 2D space. It travels over the points
+    making a stop for each point of the trajectory.
+    """
+    def __init__(self, _vmax : float, _acc : float, _dec : float, _threshold : float):
+        """
+        Initializes the path
+
+        :param _vmax: the maximum speed
+        :param _acc: the acceleration
+        :param _dec: the deceleration
+        :param _threshold: a distance threshold that is used to check if a point of
+                           the trajectory has been reaced
+
+        """
         self.threshold = _threshold
         self.path = [ ]
         self.trajectory = StraightLine2DMotion(_vmax, _acc, _dec)
 
-    def set_path(self, path):
+    def set_path(self, path : list[tuple[float, float]]) -> None:
+        """
+        Specifies the path to be traveled
+
+        :param path: a list of tuples (x,y)
+
+        """
         self.path = path
 
-    def start(self, start_pos):
+    def start(self, start_pos : tuple[float,float]) -> None:
+        """
+        Starts the path specifying the starting position
+
+        :param start_pos: a tuple (x,y)
+
+        """
         self.current_target = self.path.pop(0)
         self.trajectory.start_motion(start_pos, self.current_target)
 
-    def evaluate(self, delta_t, pose):
+    def evaluate(self, delta_t : float, pose : tuple[float,float]):
+        """
+        Executes a trajectory step
+
+        :param delta_t: the sampling time
+        :param pose: the real current pose of the robot
+        :return: the current position in the trajector or None if the path is over
+
+        """
         (x, y) = self.trajectory.evaluate(delta_t)
 
         target_distance = math.hypot(pose[0] - self.current_target[0],
@@ -172,6 +298,11 @@ class Path2D:
  # ------------------------------------------------------------
 
 class ContinuousPath2D:
+    """
+    This class generates a continuous trajectory using a list of points in a 2D space.
+    It has the same behaviour of Path2D but avoids stopping for each point of the trajectory,
+    instead it performs a smoothed motion.
+    """
     def __init__(self, _vmax, _acc, _dec, _threshold):
         self.threshold = _threshold
         self.path = [ ]
