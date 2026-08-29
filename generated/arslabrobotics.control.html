@@ -290,13 +290,14 @@ and the second is a boolean indicating if the saturation occurred</p>
 <p>This class implements the algoritm of the linear trajectory
 generation for a virtual robot moving over a straight line of a certain distance
 with an acceleration, a cruise speed and a deceleration.</p>
+<p>Initializes the linear trajectory</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>_p_target</strong> (<em>float</em>)</p></li>
-<li><p><strong>_vmax</strong> (<em>float</em>)</p></li>
-<li><p><strong>_acc</strong> (<em>float</em>)</p></li>
-<li><p><strong>_dec</strong> (<em>float</em>)</p></li>
+<li><p><strong>_p_target</strong> (<em>float</em>) – the distance to drive</p></li>
+<li><p><strong>_vmax</strong> (<em>float</em>) – the maximum speed</p></li>
+<li><p><strong>_acc</strong> (<em>float</em>) – the acceleration</p></li>
+<li><p><strong>_dec</strong> (<em>float</em>) – the deceleration</p></li>
 </ul>
 </dd>
 </dl>
@@ -323,14 +324,21 @@ with an acceleration, a cruise speed and a deceleration.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="arslabrobotics.control.VirtualRobot.start">
 <span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_p_target</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/control/trajectory.html#VirtualRobot.start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.control.VirtualRobot.start" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Restarts the trajectory</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>_p_target</strong> (<em>float</em>) – the new distance to drive</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="arslabrobotics.control.VirtualRobot.evaluate">
 <span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delta_t</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/control/trajectory.html#VirtualRobot.evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.control.VirtualRobot.evaluate" title="Link to this definition"></a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Executes a trajectory step</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>delta_t</strong> (<em>float</em>)</p>
+<dd class="field-odd"><p><strong>delta_t</strong> (<em>float</em>) – the sampling time</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>None</p>
@@ -341,17 +349,35 @@ with an acceleration, a cruise speed and a deceleration.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="arslabrobotics.control.VirtualRobot.speed">
 <span class="sig-name descname"><span class="pre">speed</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/control/trajectory.html#VirtualRobot.speed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.control.VirtualRobot.speed" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Returns the current speed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="arslabrobotics.control.VirtualRobot.position">
 <span class="sig-name descname"><span class="pre">position</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/control/trajectory.html#VirtualRobot.position"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.control.VirtualRobot.position" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Returns the current position</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="arslabrobotics.control.VirtualRobot.target_got">
 <span class="sig-name descname"><span class="pre">target_got</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/control/trajectory.html#VirtualRobot.target_got"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.control.VirtualRobot.target_got" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Returns a boolean indicating if the distance has been traveled</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -359,15 +385,51 @@ with an acceleration, a cruise speed and a deceleration.</p>
 <dt class="sig sig-object py" id="arslabrobotics.control.StraightLine2DMotion">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">arslabrobotics.control.</span></span><span class="sig-name descname"><span class="pre">StraightLine2DMotion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_vmax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_acc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_dec</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/control/trajectory.html#StraightLine2DMotion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.control.StraightLine2DMotion" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class performs a linear motion over a 2D space form a point (x_start, y_start)
+to a point (x_end, y_end)</p>
+<p>Initializes the trajectory</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>_vmax</strong> (<em>float</em>) – the maximum speed</p></li>
+<li><p><strong>_acc</strong> (<em>float</em>) – the acceleration</p></li>
+<li><p><strong>_dec</strong> (<em>float</em>) – the deceleration</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="arslabrobotics.control.StraightLine2DMotion.start_motion">
 <span class="sig-name descname"><span class="pre">start_motion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/control/trajectory.html#StraightLine2DMotion.start_motion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.control.StraightLine2DMotion.start_motion" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Starts the trajectory</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> (<em>tuple</em><em>[</em><em>float</em><em>, </em><em>float</em><em>]</em>) – a tuple (x,y) indicating the starting point</p></li>
+<li><p><strong>end</strong> (<em>tuple</em><em>[</em><em>float</em><em>, </em><em>float</em><em>]</em>) – a tuple (x,y) indicating the ending point</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="arslabrobotics.control.StraightLine2DMotion.evaluate">
 <span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delta_t</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/control/trajectory.html#StraightLine2DMotion.evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.control.StraightLine2DMotion.evaluate" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Executes a trajectory step</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>delta_t</strong> (<em>float</em>) – the sampling time</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the current position (x,y)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[float, float]</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -375,20 +437,58 @@ with an acceleration, a cruise speed and a deceleration.</p>
 <dt class="sig sig-object py" id="arslabrobotics.control.StraightLineMotion">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">arslabrobotics.control.</span></span><span class="sig-name descname"><span class="pre">StraightLineMotion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_vmax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_acc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_dec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angles_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/control/trajectory.html#StraightLineMotion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.control.StraightLineMotion" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class performs a linear motion over a generic n-dimensional space form a point
+start to a point end.</p>
+<p>Start and end are supposed to be robot poses made of cartesian coordinates and angles.</p>
+<p>Initializes the trajectory</p>
+<p>angles_index specifies the element in the pose where the angles start.
+For example, in a 2D where the pose is (x,y,theta), angles_index would be 2.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>_vmax</strong> (<em>float</em>) – the maximum speed</p></li>
+<li><p><strong>_acc</strong> (<em>float</em>) – the acceleration</p></li>
+<li><p><strong>_dec</strong> (<em>float</em>) – the deceleration</p></li>
+<li><p><strong>angles_index</strong> – the index in the pose where the angles start</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="arslabrobotics.control.StraightLineMotion.start_motion">
 <span class="sig-name descname"><span class="pre">start_motion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/control/trajectory.html#StraightLineMotion.start_motion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.control.StraightLineMotion.start_motion" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Starts the trajectory</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> – the starting pose</p></li>
+<li><p><strong>end</strong> – the ending pose</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="arslabrobotics.control.StraightLineMotion.evaluate">
 <span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delta_t</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/control/trajectory.html#StraightLineMotion.evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.control.StraightLineMotion.evaluate" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Executes a trajectory step</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>delta_t</strong> (<em>float</em>) – the sampling time</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the current position</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[float]</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="arslabrobotics.control.StraightLineMotion.target_got">
 <span class="sig-name descname"><span class="pre">target_got</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/control/trajectory.html#StraightLineMotion.target_got"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.control.StraightLineMotion.target_got" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Returns a boolean indicating if the final position has been reached</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -396,20 +496,64 @@ with an acceleration, a cruise speed and a deceleration.</p>
 <dt class="sig sig-object py" id="arslabrobotics.control.Path2D">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">arslabrobotics.control.</span></span><span class="sig-name descname"><span class="pre">Path2D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_vmax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_acc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_dec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_threshold</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/control/trajectory.html#Path2D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.control.Path2D" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class generates a trajectory using a list of points in a 2D space. It travels over the points
+making a stop for each point of the trajectory.</p>
+<p>Initializes the path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>_vmax</strong> (<em>float</em>) – the maximum speed</p></li>
+<li><p><strong>_acc</strong> (<em>float</em>) – the acceleration</p></li>
+<li><p><strong>_dec</strong> (<em>float</em>) – the deceleration</p></li>
+<li><p><strong>_threshold</strong> (<em>float</em>) – a distance threshold that is used to check if a point of
+the trajectory has been reaced</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="arslabrobotics.control.Path2D.set_path">
 <span class="sig-name descname"><span class="pre">set_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/control/trajectory.html#Path2D.set_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.control.Path2D.set_path" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Specifies the path to be traveled</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>list</em><em>[</em><em>tuple</em><em>[</em><em>float</em><em>, </em><em>float</em><em>]</em><em>]</em>) – a list of tuples (x,y)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="arslabrobotics.control.Path2D.start">
 <span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_pos</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/control/trajectory.html#Path2D.start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.control.Path2D.start" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Starts the path specifying the starting position</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>start_pos</strong> (<em>tuple</em><em>[</em><em>float</em><em>, </em><em>float</em><em>]</em>) – a tuple (x,y)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="arslabrobotics.control.Path2D.evaluate">
 <span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delta_t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pose</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/control/trajectory.html#Path2D.evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.control.Path2D.evaluate" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Executes a trajectory step</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>delta_t</strong> (<em>float</em>) – the sampling time</p></li>
+<li><p><strong>pose</strong> (<em>tuple</em><em>[</em><em>float</em><em>, </em><em>float</em><em>]</em>) – the real current pose of the robot</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the current position in the trajector or None if the path is over</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -417,6 +561,9 @@ with an acceleration, a cruise speed and a deceleration.</p>
 <dt class="sig sig-object py" id="arslabrobotics.control.ContinuousPath2D">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">arslabrobotics.control.</span></span><span class="sig-name descname"><span class="pre">ContinuousPath2D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_vmax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_acc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_dec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_threshold</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/control/trajectory.html#ContinuousPath2D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.control.ContinuousPath2D" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class generates a continuous trajectory using a list of points in a 2D space.
+It has the same behaviour of Path2D but avoids stopping for each point of the trajectory,
+instead it performs a smoothed motion.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="arslabrobotics.control.ContinuousPath2D.set_path">
 <span class="sig-name descname"><span class="pre">set_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/control/trajectory.html#ContinuousPath2D.set_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.control.ContinuousPath2D.set_path" title="Link to this definition"></a></dt>

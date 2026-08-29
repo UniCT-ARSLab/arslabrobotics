@@ -94,6 +94,15 @@
     <span class="n">TARGET</span> <span class="o">=</span> <span class="mi">3</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_p_target</span> <span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">_vmax</span> <span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">_acc</span> <span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">_dec</span> <span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Initializes the linear trajectory</span>
+
+<span class="sd">        :param _p_target: the distance to drive</span>
+<span class="sd">        :param _vmax: the maximum speed</span>
+<span class="sd">        :param _acc: the acceleration</span>
+<span class="sd">        :param _dec: the deceleration</span>
+
+<span class="sd">        """</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">p_target</span> <span class="o">=</span> <span class="n">_p_target</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">vmax</span> <span class="o">=</span> <span class="n">_vmax</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">accel</span> <span class="o">=</span> <span class="n">_acc</span>
@@ -105,7 +114,13 @@
 
 <div class="viewcode-block" id="VirtualRobot.start">
 <a class="viewcode-back" href="../../../generated/arslabrobotics.control.trajectory.html#arslabrobotics.control.VirtualRobot.start">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_p_target</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_p_target</span> <span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Restarts the trajectory</span>
+
+<span class="sd">        :param _p_target: the new distance to drive</span>
+
+<span class="sd">        """</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">p_target</span> <span class="o">=</span> <span class="n">_p_target</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># current speed</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">p</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># current position</span>
@@ -115,6 +130,12 @@
 <div class="viewcode-block" id="VirtualRobot.evaluate">
 <a class="viewcode-back" href="../../../generated/arslabrobotics.control.trajectory.html#arslabrobotics.control.VirtualRobot.evaluate">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delta_t</span> <span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Executes a trajectory step</span>
+
+<span class="sd">        :param delta_t: the sampling time</span>
+
+<span class="sd">        """</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">phase</span> <span class="o">==</span> <span class="n">VirtualRobot</span><span class="o">.</span><span class="n">ACCEL</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">p</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">p</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">*</span> <span class="n">delta_t</span> \
                      <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">accel</span> <span class="o">*</span> <span class="n">delta_t</span> <span class="o">*</span> <span class="n">delta_t</span> <span class="o">/</span> <span class="mi">2</span>
@@ -153,19 +174,28 @@
 
 <div class="viewcode-block" id="VirtualRobot.speed">
 <a class="viewcode-back" href="../../../generated/arslabrobotics.control.trajectory.html#arslabrobotics.control.VirtualRobot.speed">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">speed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">speed</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Returns the current speed</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span></div>
 
 
 <div class="viewcode-block" id="VirtualRobot.position">
 <a class="viewcode-back" href="../../../generated/arslabrobotics.control.trajectory.html#arslabrobotics.control.VirtualRobot.position">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">position</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">position</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Returns the current position</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">p</span></div>
 
 
 <div class="viewcode-block" id="VirtualRobot.target_got">
 <a class="viewcode-back" href="../../../generated/arslabrobotics.control.trajectory.html#arslabrobotics.control.VirtualRobot.target_got">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">target_got</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">target_got</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Returns a boolean indicating if the distance has been traveled</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">phase</span> <span class="o">==</span> <span class="n">VirtualRobot</span><span class="o">.</span><span class="n">TARGET</span></div>
 </div>
 
@@ -175,15 +205,34 @@
 <div class="viewcode-block" id="StraightLine2DMotion">
 <a class="viewcode-back" href="../../../generated/arslabrobotics.control.trajectory.html#arslabrobotics.control.StraightLine2DMotion">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">StraightLine2DMotion</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    This class performs a linear motion over a 2D space form a point (x_start, y_start)</span>
+<span class="sd">    to a point (x_end, y_end)</span>
+<span class="sd">    """</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_vmax</span><span class="p">,</span> <span class="n">_acc</span><span class="p">,</span> <span class="n">_dec</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_vmax</span> <span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">_acc</span> <span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">_dec</span> <span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Initializes the trajectory</span>
+
+<span class="sd">        :param _vmax: the maximum speed</span>
+<span class="sd">        :param _acc: the acceleration</span>
+<span class="sd">        :param _dec: the deceleration</span>
+
+<span class="sd">        """</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">vmax</span> <span class="o">=</span> <span class="n">_vmax</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">accel</span> <span class="o">=</span> <span class="n">_acc</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">decel</span> <span class="o">=</span> <span class="n">_dec</span>
 
 <div class="viewcode-block" id="StraightLine2DMotion.start_motion">
 <a class="viewcode-back" href="../../../generated/arslabrobotics.control.trajectory.html#arslabrobotics.control.StraightLine2DMotion.start_motion">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">start_motion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">start_motion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span> <span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="n">end</span> <span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Starts the trajectory</span>
+
+<span class="sd">        :param start: a tuple (x,y) indicating the starting point</span>
+<span class="sd">        :param end: a tuple (x,y) indicating the ending point</span>
+
+<span class="sd">        """</span>
         <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">xs</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">ys</span><span class="p">)</span> <span class="o">=</span> <span class="n">start</span>
         <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">xe</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">ye</span><span class="p">)</span> <span class="o">=</span> <span class="n">end</span>
         <span class="n">dx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xe</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">xs</span>
@@ -196,7 +245,14 @@
 
 <div class="viewcode-block" id="StraightLine2DMotion.evaluate">
 <a class="viewcode-back" href="../../../generated/arslabrobotics.control.trajectory.html#arslabrobotics.control.StraightLine2DMotion.evaluate">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delta_t</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delta_t</span> <span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Executes a trajectory step</span>
+
+<span class="sd">        :param delta_t: the sampling time</span>
+<span class="sd">        :return: the current position (x,y)</span>
+
+<span class="sd">        """</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">virtual_robot</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">delta_t</span><span class="p">)</span>
         <span class="n">xt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xs</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">virtual_robot</span><span class="o">.</span><span class="n">p</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">heading</span><span class="p">)</span>
         <span class="n">yt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ys</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">virtual_robot</span><span class="o">.</span><span class="n">p</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">heading</span><span class="p">)</span>
@@ -210,7 +266,26 @@
 <a class="viewcode-back" href="../../../generated/arslabrobotics.control.trajectory.html#arslabrobotics.control.StraightLineMotion">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">StraightLineMotion</span><span class="p">:</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_vmax</span><span class="p">,</span> <span class="n">_acc</span><span class="p">,</span> <span class="n">_dec</span><span class="p">,</span> <span class="n">angles_index</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    This class performs a linear motion over a generic n-dimensional space form a point</span>
+<span class="sd">    start to a point end.</span>
+
+<span class="sd">    Start and end are supposed to be robot poses made of cartesian coordinates and angles.</span>
+
+<span class="sd">    """</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_vmax</span> <span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">_acc</span> <span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">_dec</span> <span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">angles_index</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Initializes the trajectory</span>
+
+<span class="sd">        angles_index specifies the element in the pose where the angles start.</span>
+<span class="sd">        For example, in a 2D where the pose is (x,y,theta), angles_index would be 2.</span>
+
+<span class="sd">        :param _vmax: the maximum speed</span>
+<span class="sd">        :param _acc: the acceleration</span>
+<span class="sd">        :param _dec: the deceleration</span>
+<span class="sd">        :param angles_index: the index in the pose where the angles start</span>
+
+<span class="sd">        """</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">vmax</span> <span class="o">=</span> <span class="n">_vmax</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">accel</span> <span class="o">=</span> <span class="n">_acc</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">decel</span> <span class="o">=</span> <span class="n">_dec</span>
@@ -219,6 +294,13 @@
 <div class="viewcode-block" id="StraightLineMotion.start_motion">
 <a class="viewcode-back" href="../../../generated/arslabrobotics.control.trajectory.html#arslabrobotics.control.StraightLineMotion.start_motion">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">start_motion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Starts the trajectory</span>
+
+<span class="sd">        :param start: the starting pose</span>
+<span class="sd">        :param end: the ending pose</span>
+
+<span class="sd">        """</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">start</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">start</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">end</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">end</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">start</span><span class="p">)</span>
@@ -231,7 +313,14 @@
 
 <div class="viewcode-block" id="StraightLineMotion.evaluate">
 <a class="viewcode-back" href="../../../generated/arslabrobotics.control.trajectory.html#arslabrobotics.control.StraightLineMotion.evaluate">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delta_t</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delta_t</span> <span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Executes a trajectory step</span>
+
+<span class="sd">        :param delta_t: the sampling time</span>
+<span class="sd">        :return: the current position</span>
+
+<span class="sd">        """</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">virtual_robot</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">delta_t</span><span class="p">)</span>
         <span class="n">param</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">virtual_robot</span><span class="o">.</span><span class="n">p</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">distance</span>
         <span class="n">new_pos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span> <span class="o">+</span> <span class="n">param</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">diff</span>
@@ -247,6 +336,9 @@
 <div class="viewcode-block" id="StraightLineMotion.target_got">
 <a class="viewcode-back" href="../../../generated/arslabrobotics.control.trajectory.html#arslabrobotics.control.StraightLineMotion.target_got">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">target_got</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Returns a boolean indicating if the final position has been reached</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">virtual_robot</span><span class="o">.</span><span class="n">target_got</span><span class="p">()</span></div>
 </div>
 
@@ -256,27 +348,61 @@
 <div class="viewcode-block" id="Path2D">
 <a class="viewcode-back" href="../../../generated/arslabrobotics.control.trajectory.html#arslabrobotics.control.Path2D">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Path2D</span><span class="p">:</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_vmax</span><span class="p">,</span> <span class="n">_acc</span><span class="p">,</span> <span class="n">_dec</span><span class="p">,</span> <span class="n">_threshold</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    This class generates a trajectory using a list of points in a 2D space. It travels over the points</span>
+<span class="sd">    making a stop for each point of the trajectory.</span>
+<span class="sd">    """</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_vmax</span> <span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">_acc</span> <span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">_dec</span> <span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">_threshold</span> <span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Initializes the path</span>
+
+<span class="sd">        :param _vmax: the maximum speed</span>
+<span class="sd">        :param _acc: the acceleration</span>
+<span class="sd">        :param _dec: the deceleration</span>
+<span class="sd">        :param _threshold: a distance threshold that is used to check if a point of</span>
+<span class="sd">                           the trajectory has been reaced</span>
+
+<span class="sd">        """</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">threshold</span> <span class="o">=</span> <span class="n">_threshold</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="p">[</span> <span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">trajectory</span> <span class="o">=</span> <span class="n">StraightLine2DMotion</span><span class="p">(</span><span class="n">_vmax</span><span class="p">,</span> <span class="n">_acc</span><span class="p">,</span> <span class="n">_dec</span><span class="p">)</span>
 
 <div class="viewcode-block" id="Path2D.set_path">
 <a class="viewcode-back" href="../../../generated/arslabrobotics.control.trajectory.html#arslabrobotics.control.Path2D.set_path">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">set_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span> <span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Specifies the path to be traveled</span>
+
+<span class="sd">        :param path: a list of tuples (x,y)</span>
+
+<span class="sd">        """</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">path</span></div>
 
 
 <div class="viewcode-block" id="Path2D.start">
 <a class="viewcode-back" href="../../../generated/arslabrobotics.control.trajectory.html#arslabrobotics.control.Path2D.start">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start_pos</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start_pos</span> <span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Starts the path specifying the starting position</span>
+
+<span class="sd">        :param start_pos: a tuple (x,y)</span>
+
+<span class="sd">        """</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">current_target</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">trajectory</span><span class="o">.</span><span class="n">start_motion</span><span class="p">(</span><span class="n">start_pos</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_target</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Path2D.evaluate">
 <a class="viewcode-back" href="../../../generated/arslabrobotics.control.trajectory.html#arslabrobotics.control.Path2D.evaluate">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delta_t</span><span class="p">,</span> <span class="n">pose</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delta_t</span> <span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">pose</span> <span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span><span class="nb">float</span><span class="p">]):</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Executes a trajectory step</span>
+
+<span class="sd">        :param delta_t: the sampling time</span>
+<span class="sd">        :param pose: the real current pose of the robot</span>
+<span class="sd">        :return: the current position in the trajector or None if the path is over</span>
+
+<span class="sd">        """</span>
         <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">trajectory</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">delta_t</span><span class="p">)</span>
 
         <span class="n">target_distance</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">hypot</span><span class="p">(</span><span class="n">pose</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_target</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
@@ -297,6 +423,11 @@
 <div class="viewcode-block" id="ContinuousPath2D">
 <a class="viewcode-back" href="../../../generated/arslabrobotics.control.trajectory.html#arslabrobotics.control.ContinuousPath2D">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">ContinuousPath2D</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    This class generates a continuous trajectory using a list of points in a 2D space.</span>
+<span class="sd">    It has the same behaviour of Path2D but avoids stopping for each point of the trajectory,</span>
+<span class="sd">    instead it performs a smoothed motion.</span>
+<span class="sd">    """</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_vmax</span><span class="p">,</span> <span class="n">_acc</span><span class="p">,</span> <span class="n">_dec</span><span class="p">,</span> <span class="n">_threshold</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">threshold</span> <span class="o">=</span> <span class="n">_threshold</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="p">[</span> <span class="p">]</span>
