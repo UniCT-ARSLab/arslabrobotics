@@ -96,7 +96,7 @@ class LinearDynamicSystem:
         self.A = np.array(A)
         self.B = np.array(B)
         self.C = np.array(C)
-        self.order = len(A)
+        self.order = self.A.shape[0]
         self.x = np.array( [0] *  self.order)
 
     def evaluate(self, delta_t : float, _input : float):
