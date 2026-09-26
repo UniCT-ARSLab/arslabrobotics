@@ -80,14 +80,17 @@ class NeuralARX:
     def prepare(self):
         U = np.array( self.data_in_out[ : , 0] ).reshape(-1, 1)
         Y = np.array( self.data_in_out[ : , 1] ).reshape(-1, 1)
+        #print("U:", U.shape)
+        #print("Y:", Y.shape)
 
         nn_in, nn_out = [], []
         for i in range(self.data_len - max([self.output_lag, self.input_lag + 1])):
 
             u_window = U[i:(i + self.input_lag + 1)]
             y_window = Y[i:(i + self.output_lag)]
+            #print(u_window, y_window)
 
-            nn_input = np.row_stack( (u_window, y_window) )
+            nn_input = np.stack( (u_window, y_window), axis=1 )[0]
 
             nn_in.append(nn_input)
             nn_out.append(Y[i + self.output_lag])
