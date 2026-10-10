@@ -98,7 +98,7 @@
 <table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#arslabrobotics.identification.arx.ARXModel" title="arslabrobotics.identification.arx.ARXModel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ARXModel</span></code></a>(a_params, b_params)</p></td>
-<td><p></p></td>
+<td><p>An helper class that implements an auto-regressive model.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#arslabrobotics.identification.arx.ARXSolver" title="arslabrobotics.identification.arx.ARXSolver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ARXSolver</span></code></a>(data_in_out, output_lag, input_lag)</p></td>
 <td><p>An helper class to solve the linear system identification problem using the auto-regressive model.</p></td>
@@ -114,7 +114,7 @@
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>An helper class to solve the linear system identification problem using
 the auto-regressive model:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">y</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="n">a0</span> <span class="o">*</span> <span class="n">y</span><span class="p">(</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">a1</span> <span class="o">*</span> <span class="n">y</span><span class="p">(</span><span class="n">k</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="o">...</span> <span class="n">y</span><span class="p">(</span><span class="n">k</span><span class="o">-</span><span class="n">n</span><span class="p">)</span> <span class="o">=</span> <span class="n">b0</span> <span class="o">*</span> <span class="n">u</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="n">b1</span> <span class="o">*</span> <span class="n">u</span><span class="p">(</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="o">...</span> <span class="n">u</span><span class="p">(</span><span class="n">k</span><span class="o">-</span><span class="n">m</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">y</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="n">a1</span> <span class="o">*</span> <span class="n">y</span><span class="p">(</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">a2</span> <span class="o">*</span> <span class="n">y</span><span class="p">(</span><span class="n">k</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="o">...</span> <span class="o">+</span> <span class="n">an</span> <span class="o">*</span> <span class="n">y</span><span class="p">(</span><span class="n">k</span><span class="o">-</span><span class="n">n</span><span class="p">)</span> <span class="o">=</span> <span class="n">b0</span> <span class="o">*</span> <span class="n">u</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="n">b1</span> <span class="o">*</span> <span class="n">u</span><span class="p">(</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="o">...</span> <span class="n">bm</span> <span class="o">*</span> <span class="n">u</span><span class="p">(</span><span class="n">k</span><span class="o">-</span><span class="n">m</span><span class="p">)</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -146,10 +146,31 @@ the auto-regressive model:</p>
 <dt class="sig sig-object py" id="arslabrobotics.identification.arx.ARXModel">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">arslabrobotics.identification.arx.</span></span><span class="sig-name descname"><span class="pre">ARXModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a_params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b_params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/identification/arx.html#ARXModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.identification.arx.ARXModel" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>An helper class that implements an auto-regressive model:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">y</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="n">a1</span> <span class="o">*</span> <span class="n">y</span><span class="p">(</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">a2</span> <span class="o">*</span> <span class="n">y</span><span class="p">(</span><span class="n">k</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="o">...</span> <span class="o">+</span> <span class="n">an</span> <span class="o">*</span> <span class="n">y</span><span class="p">(</span><span class="n">k</span><span class="o">-</span><span class="n">n</span><span class="p">)</span> <span class="o">=</span> <span class="n">b0</span> <span class="o">*</span> <span class="n">u</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="n">b1</span> <span class="o">*</span> <span class="n">u</span><span class="p">(</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="o">...</span> <span class="n">bm</span> <span class="o">*</span> <span class="n">u</span><span class="p">(</span><span class="n">k</span><span class="o">-</span><span class="n">m</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a_params</strong> – [ a1, a2, …, an ]</p></li>
+<li><p><strong>b_params</strong> – [ b0, b1, …, bm ]</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="arslabrobotics.identification.arx.ARXModel.evaluate">
 <span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_input</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/identification/arx.html#ARXModel.evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.identification.arx.ARXModel.evaluate" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Evaluates the ARX model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>_input</strong> – the input</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the output</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 

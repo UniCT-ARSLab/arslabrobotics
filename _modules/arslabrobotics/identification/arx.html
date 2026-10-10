@@ -87,7 +87,7 @@
 <span class="sd">        An helper class to solve the linear system identification problem using</span>
 <span class="sd">        the auto-regressive model::</span>
 
-<span class="sd">            y(k) + a0 * y(k-1) + a1 * y(k-2) + ... y(k-n) = b0 * u(k) + b1 * u(k-1) + ... u(k-m)</span>
+<span class="sd">            y(k) + a1 * y(k-1) + a2 * y(k-2) + ... + an * y(k-n) = b0 * u(k) + b1 * u(k-1) + ... bm * u(k-m)</span>
 
 <span class="sd">        :param data_in_out: A matrix [ [ u(k), y(k) ] ] containing input/output sampled data</span>
 <span class="sd">        :param output_lag: The number of delay blocks for the output (n)</span>
@@ -128,6 +128,15 @@
 <span class="k">class</span><span class="w"> </span><span class="nc">ARXModel</span><span class="p">:</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a_params</span><span class="p">,</span> <span class="n">b_params</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        An helper class that implements an auto-regressive model::</span>
+
+<span class="sd">            y(k) + a1 * y(k-1) + a2 * y(k-2) + ... + an * y(k-n) = b0 * u(k) + b1 * u(k-1) + ... bm * u(k-m)</span>
+
+<span class="sd">        :param a_params: [ a1, a2, ..., an ]</span>
+<span class="sd">        :param b_params: [ b0, b1, ..., bm ]</span>
+
+<span class="sd">        """</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">a_params</span> <span class="o">=</span> <span class="n">a_params</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">b_params</span> <span class="o">=</span> <span class="n">b_params</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">output_lag</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">a_params</span><span class="p">)</span>
@@ -138,16 +147,25 @@
 <div class="viewcode-block" id="ARXModel.evaluate">
 <a class="viewcode-back" href="../../../generated/arslabrobotics.identification.arx.html#arslabrobotics.identification.ARXModel.evaluate">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_input</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Evaluates the ARX model</span>
+
+<span class="sd">        :param _input: the input</span>
+<span class="sd">        :return: the output</span>
+<span class="sd">        """</span>
         <span class="n">output</span> <span class="o">=</span> <span class="mf">0.0</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">output_lag</span><span class="p">):</span>
             <span class="n">output</span> <span class="o">+=</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_memory</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_params</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="c1"># output = y[0] * a[0] + y[1] * a[1] + ...</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">input_lag</span><span class="p">):</span>
             <span class="n">output</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">u_memory</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">b_params</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
         <span class="n">output</span> <span class="o">+=</span> <span class="n">_input</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">b_params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">y_memory</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_memory</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">y_memory</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">u_memory</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">u_memory</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">u_memory</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_input</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">y_memory</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_memory</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y_memory</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">output</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_lag</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">u_memory</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">u_memory</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">u_memory</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">_input</span>
         <span class="k">return</span> <span class="n">output</span></div>
 </div>
 
