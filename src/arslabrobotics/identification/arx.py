@@ -13,7 +13,7 @@ class ARXSolver:
         An helper class to solve the linear system identification problem using
         the auto-regressive model::
 
-            y(k) + a0 * y(k-1) + a1 * y(k-2) + ... y(k-n) = b0 * u(k) + b1 * u(k-1) + ... u(k-m)
+            y(k) + a1 * y(k-1) + a2 * y(k-2) + ... + an * y(k-n) = b0 * u(k) + b1 * u(k-1) + ... bm * u(k-m)
 
         :param data_in_out: A matrix [ [ u(k), y(k) ] ] containing input/output sampled data
         :param output_lag: The number of delay blocks for the output (n)
@@ -48,6 +48,15 @@ class ARXSolver:
 class ARXModel:
 
     def __init__(self, a_params, b_params):
+        """
+        An helper class that implements an auto-regressive model::
+
+            y(k) + a1 * y(k-1) + a2 * y(k-2) + ... + an * y(k-n) = b0 * u(k) + b1 * u(k-1) + ... bm * u(k-m)
+
+        :param a_params: [ a1, a2, ..., an ]
+        :param b_params: [ b0, b1, ..., bm ]
+
+        """
         self.a_params = a_params
         self.b_params = b_params
         self.output_lag = len(a_params)
@@ -56,16 +65,25 @@ class ARXModel:
         self.u_memory = [ 0 ] * self.input_lag
 
     def evaluate(self, _input):
+        """
+        Evaluates the ARX model
+
+        :param _input: the input
+        :return: the output
+        """
         output = 0.0
         for i in range(self.output_lag):
             output += - self.y_memory[i] * self.a_params[i]
+        # output = y[0] * a[0] + y[1] * a[1] + ...
         for i in range(self.input_lag):
             output += self.u_memory[i] * self.b_params[i + 1]
         output += _input * self.b_params[0]
-        self.y_memory = self.y_memory[1:]
-        self.y_memory.append(output)
-        self.u_memory = self.u_memory[1:]
-        self.u_memory.append(_input)
+
+        self.y_memory[1:] = self.y_memory[:-1]
+        self.y_memory[0] = output
+        if self.input_lag > 1:
+            self.u_memory[1:] = self.u_memory[:-1]
+            self.u_memory[0] = _input
         return output
 
 
