@@ -53,7 +53,7 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">arslabrobotics.identification</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#arslabrobotics.identification.ARXSolver"><code class="docutils literal notranslate"><span class="pre">ARXSolver</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#arslabrobotics.identification.ARXModel"><code class="docutils literal notranslate"><span class="pre">ARXModel</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#arslabrobotics.identification.NeuralARX"><code class="docutils literal notranslate"><span class="pre">NeuralARX</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#arslabrobotics.identification.NeuralARXDataSet"><code class="docutils literal notranslate"><span class="pre">NeuralARXDataSet</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="arslabrobotics.identification.arx.html">arslabrobotics.identification.arx</a></li>
 </ul>
 </li>
@@ -160,13 +160,29 @@ the auto-regressive model:</p>
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="arslabrobotics.identification.NeuralARX">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">arslabrobotics.identification.</span></span><span class="sig-name descname"><span class="pre">NeuralARX</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_in_out</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_lag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_lag</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/identification/arx.html#NeuralARX"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.identification.NeuralARX" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="arslabrobotics.identification.NeuralARXDataSet">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">arslabrobotics.identification.</span></span><span class="sig-name descname"><span class="pre">NeuralARXDataSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_in_out</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_lag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_lag</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/identification/arx.html#NeuralARXDataSet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.identification.NeuralARXDataSet" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>An Helper class to prepare a dataset for ARX NN learning</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_in_out</strong> – A matrix [ [ u(k), y(k) ] ] containing input/output sampled data</p></li>
+<li><p><strong>output_lag</strong> – The number of delay blocks for the output (n)</p></li>
+<li><p><strong>input_lag</strong> – The number of delay blocks for the input (m)</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="arslabrobotics.identification.NeuralARX.prepare">
-<span class="sig-name descname"><span class="pre">prepare</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/identification/arx.html#NeuralARX.prepare"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.identification.NeuralARX.prepare" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="arslabrobotics.identification.NeuralARXDataSet.prepare">
+<span class="sig-name descname"><span class="pre">prepare</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/identification/arx.html#NeuralARXDataSet.prepare"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.identification.NeuralARXDataSet.prepare" title="Link to this definition"></a></dt>
+<dd><p>Returns the dataset ready for learning and test</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(input_data, output_data)</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 

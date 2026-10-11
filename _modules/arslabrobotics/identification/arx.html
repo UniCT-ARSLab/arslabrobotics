@@ -74,7 +74,7 @@
 <span class="c1"># arx.py</span>
 <span class="c1">#</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">"ARXSolver"</span><span class="p">,</span> <span class="s2">"ARXModel"</span><span class="p">,</span> <span class="s2">"NeuralARX"</span> <span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">"ARXSolver"</span><span class="p">,</span> <span class="s2">"ARXModel"</span><span class="p">,</span> <span class="s2">"NeuralARXDataSet"</span> <span class="p">]</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
@@ -171,19 +171,33 @@
 
 
 
-<div class="viewcode-block" id="NeuralARX">
-<a class="viewcode-back" href="../../../generated/arslabrobotics.identification.arx.html#arslabrobotics.identification.NeuralARX">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">NeuralARX</span><span class="p">:</span>
+<div class="viewcode-block" id="NeuralARXDataSet">
+<a class="viewcode-back" href="../../../generated/arslabrobotics.identification.arx.html#arslabrobotics.identification.NeuralARXDataSet">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">NeuralARXDataSet</span><span class="p">:</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_in_out</span><span class="p">,</span> <span class="n">output_lag</span><span class="p">,</span> <span class="n">input_lag</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        An Helper class to prepare a dataset for ARX NN learning</span>
+
+<span class="sd">        :param data_in_out: A matrix [ [ u(k), y(k) ] ] containing input/output sampled data</span>
+<span class="sd">        :param output_lag: The number of delay blocks for the output (n)</span>
+<span class="sd">        :param input_lag: The number of delay blocks for the input (m)</span>
+
+<span class="sd">        """</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">data_in_out</span> <span class="o">=</span> <span class="n">data_in_out</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">output_lag</span> <span class="o">=</span> <span class="n">output_lag</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">input_lag</span> <span class="o">=</span> <span class="n">input_lag</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">data_len</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_in_out</span><span class="p">)</span>
 
-<div class="viewcode-block" id="NeuralARX.prepare">
-<a class="viewcode-back" href="../../../generated/arslabrobotics.identification.arx.html#arslabrobotics.identification.NeuralARX.prepare">[docs]</a>
+<div class="viewcode-block" id="NeuralARXDataSet.prepare">
+<a class="viewcode-back" href="../../../generated/arslabrobotics.identification.arx.html#arslabrobotics.identification.NeuralARXDataSet.prepare">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">prepare</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""</span>
+
+<span class="sd">        Returns the dataset ready for learning and test</span>
+
+<span class="sd">        :return: (input_data, output_data)</span>
+<span class="sd">        """</span>
         <span class="n">U</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_in_out</span><span class="p">[</span> <span class="p">:</span> <span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
         <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_in_out</span><span class="p">[</span> <span class="p">:</span> <span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
         <span class="c1">#print("U:", U.shape)</span>
@@ -192,11 +206,12 @@
         <span class="n">nn_in</span><span class="p">,</span> <span class="n">nn_out</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_len</span> <span class="o">-</span> <span class="nb">max</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">output_lag</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_lag</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])):</span>
 
-            <span class="n">u_window</span> <span class="o">=</span> <span class="n">U</span><span class="p">[</span><span class="n">i</span><span class="p">:(</span><span class="n">i</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_lag</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span>
-            <span class="n">y_window</span> <span class="o">=</span> <span class="n">Y</span><span class="p">[</span><span class="n">i</span><span class="p">:(</span><span class="n">i</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_lag</span><span class="p">)]</span>
+            <span class="n">u_window</span> <span class="o">=</span> <span class="n">U</span><span class="p">[</span><span class="n">i</span><span class="p">:(</span><span class="n">i</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_lag</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+            <span class="n">y_window</span> <span class="o">=</span> <span class="n">Y</span><span class="p">[</span><span class="n">i</span><span class="p">:(</span><span class="n">i</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_lag</span><span class="p">)]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
             <span class="c1">#print(u_window, y_window)</span>
 
-            <span class="n">nn_input</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span> <span class="p">(</span><span class="n">u_window</span><span class="p">,</span> <span class="n">y_window</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span> <span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">nn_input</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">u_window</span><span class="p">,</span> <span class="n">y_window</span><span class="p">))</span>
+            <span class="c1">#print(nn_input)</span>
 
             <span class="n">nn_in</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn_input</span><span class="p">)</span>
             <span class="n">nn_out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Y</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_lag</span><span class="p">])</span>
