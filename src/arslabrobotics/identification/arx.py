@@ -87,15 +87,29 @@ class ARXModel:
         return output
 
 
-class NeuralARX:
+class NeuralARXDataSet
 
     def __init__(self, data_in_out, output_lag, input_lag):
+        """
+        An Helper class to prepare a dataset for ARX NN learning
+
+        :param data_in_out: A matrix [ [ u(k), y(k) ] ] containing input/output sampled data
+        :param output_lag: The number of delay blocks for the output (n)
+        :param input_lag: The number of delay blocks for the input (m)
+
+        """
         self.data_in_out = data_in_out
         self.output_lag = output_lag
         self.input_lag = input_lag
         self.data_len = len(self.data_in_out)
 
     def prepare(self):
+        """
+
+        Returns the dataset ready for learning and test
+
+        :return: (input_data, output_data)
+        """
         U = np.array( self.data_in_out[ : , 0] ).reshape(-1, 1)
         Y = np.array( self.data_in_out[ : , 1] ).reshape(-1, 1)
         #print("U:", U.shape)
@@ -104,11 +118,12 @@ class NeuralARX:
         nn_in, nn_out = [], []
         for i in range(self.data_len - max([self.output_lag, self.input_lag + 1])):
 
-            u_window = U[i:(i + self.input_lag + 1)]
-            y_window = Y[i:(i + self.output_lag)]
+            u_window = U[i:(i + self.input_lag + 1)].flatten()
+            y_window = Y[i:(i + self.output_lag)].flatten()
             #print(u_window, y_window)
 
-            nn_input = np.stack( (u_window, y_window), axis=1 )[0]
+            nn_input = np.concatenate((u_window, y_window))
+            #print(nn_input)
 
             nn_in.append(nn_input)
             nn_out.append(Y[i + self.output_lag])
