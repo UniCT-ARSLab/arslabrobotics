@@ -1,4 +1,4 @@
 
-__all__ = [ "ARXSolver", "ARXModel", "NeuralARX" ]
+__all__ = [ "ARXSolver", "ARXModel", "NeuralARXDataSet" ]
 
 from arslabrobotics.identification.arx import *

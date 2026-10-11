@@ -2,7 +2,7 @@
 # arx.py
 #
 
-__all__ = [ "ARXSolver", "ARXModel", "NeuralARX" ]
+__all__ = [ "ARXSolver", "ARXModel", "NeuralARXDataSet" ]
 
 import numpy as np
 
@@ -87,7 +87,7 @@ class ARXModel:
         return output
 
 
-class NeuralARXDataSet
+class NeuralARXDataSet:
 
     def __init__(self, data_in_out, output_lag, input_lag):
         """
