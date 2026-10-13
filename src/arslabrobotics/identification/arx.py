@@ -37,11 +37,16 @@ class ARXSolver:
         regression_matrix = np.zeros( (n_rows, self.output_lag + self.input_lag + 1) )
         for i in range(0, self.output_lag):
             regression_matrix[:, i] = - Y[i: i + n_rows].flatten()
+            # reg = [ Y[0,0], Y[1,0], ...,
+            #         Y[1,0], Y[1,1],
+            #         Y[2,0], Y[2,1],
         for i in range(0, self.input_lag + 1):
             regression_matrix[:, self.output_lag + i] = U[i + 1: i + 1 + n_rows].flatten()
         theta_hat, residuals, rank, s = np.linalg.lstsq(regression_matrix, Y[self.output_lag:], rcond=None)
-        a_params = theta_hat[:self.output_lag]
-        b_params = theta_hat[self.output_lag:]
+        a_params = theta_hat[:self.output_lag].flatten().tolist()
+        b_params = theta_hat[self.output_lag:].flatten().tolist()
+        a_params.reverse()
+        b_params.reverse()
         return a_params, b_params#, residuals[0] / self.data_len
 
 
