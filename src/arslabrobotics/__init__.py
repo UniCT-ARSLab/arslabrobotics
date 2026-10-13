@@ -5,7 +5,8 @@ from . import data
 from . import dds
 from . import control
 from . import identification
+from . import fuzzy
 
-__all__ = [ "system", "utils", "data", "dds", "control", "identification" ]
+__all__ = [ "system", "utils", "data", "dds", "control", "identification", "fuzzy" ]
 
 
