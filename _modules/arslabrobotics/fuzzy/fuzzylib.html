@@ -1,0 +1,404 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>arslabrobotics.fuzzy.fuzzylib &mdash; arslabrobotics 2.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=51b770b3"></script>
+      <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            arslabrobotics
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">arslabrobotics</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">arslabrobotics.fuzzy.fuzzylib</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for arslabrobotics.fuzzy.fuzzylib</h1><div class="highlight"><pre>
+<span></span><span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">"FuzzySet"</span><span class="p">,</span>
+    <span class="s2">"Triangle"</span><span class="p">,</span>
+    <span class="s2">"Down"</span><span class="p">,</span>
+    <span class="s2">"Up"</span><span class="p">,</span>
+    <span class="s2">"Variable"</span><span class="p">,</span>
+    <span class="s2">"FuzzyEngine"</span>
+    <span class="p">]</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">arslabrobotics.fuzzy.fuzzyplot</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+<div class="viewcode-block" id="FuzzySet">
+<a class="viewcode-back" href="../../../generated/arslabrobotics.fuzzy.fuzzylib.html#arslabrobotics.fuzzy.FuzzySet">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">FuzzySet</span><span class="p">:</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_low</span> <span class="o">=</span> <span class="n">low</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_high</span> <span class="o">=</span> <span class="n">high</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">name</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">)</span>
+
+<div class="viewcode-block" id="FuzzySet.name">
+<a class="viewcode-back" href="../../../generated/arslabrobotics.fuzzy.fuzzylib.html#arslabrobotics.fuzzy.FuzzySet.name">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span></div>
+
+
+<div class="viewcode-block" id="FuzzySet.get_limits">
+<a class="viewcode-back" href="../../../generated/arslabrobotics.fuzzy.fuzzylib.html#arslabrobotics.fuzzy.FuzzySet.get_limits">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_limits</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_low</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_high</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="Triangle">
+<a class="viewcode-back" href="../../../generated/arslabrobotics.fuzzy.fuzzylib.html#arslabrobotics.fuzzy.Triangle">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Triangle</span><span class="p">(</span><span class="n">FuzzySet</span><span class="p">):</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mid</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_low</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_high</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+
+<div class="viewcode-block" id="Triangle.fuzzify">
+<a class="viewcode-back" href="../../../generated/arslabrobotics.fuzzy.fuzzylib.html#arslabrobotics.fuzzy.Triangle.fuzzify">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">fuzzify</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">var</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_high</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">var</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_low</span><span class="p">):</span>
+            <span class="k">return</span> <span class="mf">0.0</span>
+        <span class="k">if</span> <span class="n">var</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mid</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mf">1.0</span>
+        <span class="k">if</span> <span class="n">var</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mid</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">var</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_low</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_mid</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_low</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_high</span> <span class="o">-</span> <span class="n">var</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_high</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mid</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="Down">
+<a class="viewcode-back" href="../../../generated/arslabrobotics.fuzzy.fuzzylib.html#arslabrobotics.fuzzy.Down">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Down</span><span class="p">(</span><span class="n">FuzzySet</span><span class="p">):</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Down.fuzzify">
+<a class="viewcode-back" href="../../../generated/arslabrobotics.fuzzy.fuzzylib.html#arslabrobotics.fuzzy.Down.fuzzify">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">fuzzify</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">var</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_high</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mf">0.0</span>
+        <span class="k">if</span> <span class="n">var</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_low</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mf">1.0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="p">(</span><span class="n">var</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_low</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_high</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_low</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="Up">
+<a class="viewcode-back" href="../../../generated/arslabrobotics.fuzzy.fuzzylib.html#arslabrobotics.fuzzy.Up">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Up</span><span class="p">(</span><span class="n">FuzzySet</span><span class="p">):</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Up.fuzzify">
+<a class="viewcode-back" href="../../../generated/arslabrobotics.fuzzy.fuzzylib.html#arslabrobotics.fuzzy.Up.fuzzify">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">fuzzify</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">var</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_high</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mf">1.0</span>
+        <span class="k">if</span> <span class="n">var</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_low</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mf">0.0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">var</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_low</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_high</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_low</span><span class="p">)</span></div>
+</div>
+
+
+
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">FuzzyRule</span><span class="p">:</span>
+
+    <span class="n">AND</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">OR</span>  <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">NOT</span> <span class="o">=</span> <span class="mi">2</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lhs</span><span class="p">,</span> <span class="n">rhs</span><span class="p">,</span> <span class="n">typ</span> <span class="o">=</span> <span class="n">AND</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lhs</span> <span class="o">=</span> <span class="n">lhs</span> <span class="c1"># [ BoundedVariable ]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_rhs</span> <span class="o">=</span> <span class="n">rhs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_type</span> <span class="o">=</span> <span class="n">typ</span>
+        <span class="c1">#print("FuzzyRule:", lhs, rhs)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">eval</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="p">[</span> <span class="p">]</span>
+        <span class="k">for</span> <span class="n">bounded_var</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lhs</span><span class="p">:</span>
+            <span class="n">values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">bounded_var</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
+        <span class="c1">#print(values)</span>
+        <span class="k">match</span> <span class="bp">self</span><span class="o">.</span><span class="n">_type</span><span class="p">:</span>
+            <span class="k">case</span> <span class="bp">self</span><span class="o">.</span><span class="n">AND</span><span class="p">:</span>
+                <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+            <span class="k">case</span> <span class="bp">self</span><span class="o">.</span><span class="n">OR</span><span class="p">:</span>
+                <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">lhs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lhs</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">rhs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rhs</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__and__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">term</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lhs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">term</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__rshift__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_rhs</span> <span class="o">=</span> <span class="n">var</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">BoundedVariable</span><span class="p">:</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+        <span class="c1">#print("BoundedVariable", v, s)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_variable</span> <span class="o">=</span> <span class="n">v</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_fuzzyset</span> <span class="o">=</span> <span class="n">s</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">fuzzyset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fuzzyset</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">variable</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variable</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">eval</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_variable</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fuzzyset</span><span class="o">.</span><span class="n">fuzzify</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__and__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">term</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">FuzzyRule</span><span class="p">([</span> <span class="bp">self</span><span class="p">,</span> <span class="n">term</span> <span class="p">],</span> <span class="kc">None</span><span class="p">,</span> <span class="n">FuzzyRule</span><span class="o">.</span><span class="n">AND</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__rshift__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">FuzzyRule</span><span class="p">([</span> <span class="bp">self</span> <span class="p">],</span> <span class="n">var</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="Variable">
+<a class="viewcode-back" href="../../../generated/arslabrobotics.fuzzy.fuzzylib.html#arslabrobotics.fuzzy.Variable">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Variable</span><span class="p">:</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">=</span> <span class="n">val</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">name</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">"V: 0x</span><span class="si">{</span><span class="nb">id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="si">:</span><span class="s2">08x</span><span class="si">}</span><span class="s2">(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_value</span><span class="si">}</span><span class="s2">)"</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">"V: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="si">}</span><span class="s2">(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_value</span><span class="si">}</span><span class="s2">)"</span>
+
+<div class="viewcode-block" id="Variable.set">
+<a class="viewcode-back" href="../../../generated/arslabrobotics.fuzzy.fuzzylib.html#arslabrobotics.fuzzy.Variable.set">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">=</span> <span class="n">v</span></div>
+
+
+<div class="viewcode-block" id="Variable.get">
+<a class="viewcode-back" href="../../../generated/arslabrobotics.fuzzy.fuzzylib.html#arslabrobotics.fuzzy.Variable.get">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fuzzyset</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">BoundedVariable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fuzzyset</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="FuzzyEngine">
+<a class="viewcode-back" href="../../../generated/arslabrobotics.fuzzy.fuzzylib.html#arslabrobotics.fuzzy.FuzzyEngine">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">FuzzyEngine</span><span class="p">:</span>
+
+    <span class="n">STEPS</span> <span class="o">=</span> <span class="mf">100.0</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">plot</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_centroid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bounded_varset</span><span class="p">):</span>
+        <span class="n">lows</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">highs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">var</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">bounded_varset</span><span class="p">:</span>
+            <span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">)</span> <span class="o">=</span> <span class="n">var</span><span class="o">.</span><span class="n">fuzzyset</span><span class="p">()</span><span class="o">.</span><span class="n">get_limits</span><span class="p">()</span>
+            <span class="n">lows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">low</span><span class="p">)</span>
+            <span class="n">highs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">high</span><span class="p">)</span>
+
+        <span class="n">low</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">lows</span><span class="p">)</span>
+        <span class="n">high</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">highs</span><span class="p">)</span>
+        <span class="c1">#print(low, high)</span>
+
+        <span class="n">increment</span> <span class="o">=</span> <span class="p">(</span><span class="n">high</span> <span class="o">-</span> <span class="n">low</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">STEPS</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">low</span>
+        <span class="n">num</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">den</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">plot</span><span class="p">:</span>
+            <span class="n">X</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">Y</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">while</span> <span class="n">value</span> <span class="o">&lt;=</span> <span class="n">high</span><span class="p">:</span>
+            <span class="c1">#print("Value: ", value)</span>
+            <span class="n">max_fuzzy_value</span> <span class="o">=</span> <span class="mf">0.0</span>
+            <span class="k">for</span> <span class="n">rhs_var</span><span class="p">,</span> <span class="n">fuzzy_val</span> <span class="ow">in</span> <span class="n">bounded_varset</span><span class="p">:</span>
+                <span class="n">output_fuzzy_val</span> <span class="o">=</span> <span class="n">rhs_var</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">output_fuzzy_val</span> <span class="o">&gt;</span> <span class="n">fuzzy_val</span><span class="p">:</span>
+                    <span class="n">output_fuzzy_val</span> <span class="o">=</span> <span class="n">fuzzy_val</span>
+                <span class="n">max_fuzzy_value</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">max_fuzzy_value</span><span class="p">,</span> <span class="n">output_fuzzy_val</span><span class="p">)</span>
+                <span class="c1">#print(rhs_var, fuzzy_val, output_fuzzy_val, max_fuzzy_value)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">plot</span><span class="p">:</span>
+                <span class="n">X</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+                <span class="n">Y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">max_fuzzy_value</span><span class="p">)</span>
+            <span class="n">num</span> <span class="o">+=</span> <span class="n">value</span> <span class="o">*</span> <span class="n">max_fuzzy_value</span>
+            <span class="n">den</span> <span class="o">+=</span> <span class="n">max_fuzzy_value</span>
+            <span class="n">value</span> <span class="o">+=</span> <span class="n">increment</span>
+
+        <span class="k">if</span> <span class="n">den</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="n">num</span> <span class="o">/</span> <span class="n">den</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">plot</span><span class="p">:</span>
+            <span class="n">plot_set</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="p">[</span><span class="n">Y</span><span class="p">],</span> <span class="n">points</span> <span class="o">=</span> <span class="p">[</span> <span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="p">],</span> <span class="n">title</span> <span class="o">=</span> <span class="s2">"Output"</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">output</span>
+
+
+<div class="viewcode-block" id="FuzzyEngine.execute">
+<a class="viewcode-back" href="../../../generated/arslabrobotics.fuzzy.fuzzylib.html#arslabrobotics.fuzzy.FuzzyEngine.execute">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">rule_set</span><span class="p">):</span>
+        <span class="n">varset</span> <span class="o">=</span> <span class="p">{</span> <span class="p">}</span> <span class="c1"># { Variable : [ BoundedVariable ] }</span>
+        <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">rule_set</span><span class="p">:</span>
+            <span class="c1"># the output of the rule</span>
+            <span class="n">fuzzy_output_val</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+            <span class="c1"># the right hand side (a bounded variable)</span>
+            <span class="n">rhs</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">rhs</span><span class="p">()</span>
+            <span class="n">var</span> <span class="o">=</span> <span class="n">rhs</span><span class="o">.</span><span class="n">variable</span><span class="p">()</span>
+            <span class="n">fuzzyset</span> <span class="o">=</span> <span class="n">rhs</span><span class="o">.</span><span class="n">fuzzyset</span><span class="p">()</span>
+            <span class="c1">#print(var, fuzzy_output_val, fuzzyset)</span>
+            <span class="k">if</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">varset</span><span class="p">:</span>
+                <span class="n">found</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="c1"># check if the bounded var (name + concept) is already present in the list</span>
+                <span class="c1"># in this case it is an OR operator</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">varset</span><span class="p">[</span><span class="n">var</span><span class="p">])):</span>
+                    <span class="n">couple</span> <span class="o">=</span> <span class="n">varset</span><span class="p">[</span><span class="n">var</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+                    <span class="k">if</span> <span class="n">couple</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fuzzyset</span><span class="p">()</span> <span class="o">==</span> <span class="n">fuzzyset</span><span class="p">:</span>
+                        <span class="c1"># the concept is already present</span>
+                        <span class="n">fuzzy_output_val</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">fuzzy_output_val</span><span class="p">,</span> <span class="n">couple</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                        <span class="n">varset</span><span class="p">[</span><span class="n">var</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">rhs</span><span class="p">,</span> <span class="n">fuzzy_output_val</span><span class="p">)</span>
+                        <span class="n">found</span> <span class="o">=</span> <span class="kc">True</span>
+                        <span class="k">break</span>
+                <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="n">found</span><span class="p">):</span>
+                    <span class="n">varset</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="p">(</span><span class="n">rhs</span><span class="p">,</span> <span class="n">fuzzy_output_val</span><span class="p">)</span> <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">varset</span><span class="p">[</span><span class="n">var</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span> <span class="p">(</span><span class="n">rhs</span><span class="p">,</span> <span class="n">fuzzy_output_val</span><span class="p">)</span> <span class="p">]</span>
+        <span class="c1">#print(varset)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_varset</span> <span class="o">=</span> <span class="p">{</span> <span class="p">}</span>
+        <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">varset</span><span class="p">:</span>
+            <span class="n">output_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_centroid</span><span class="p">(</span><span class="n">varset</span><span class="p">[</span><span class="n">v</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">output_varset</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">output_value</span></div>
+
+        <span class="c1">#print(self.output_varset)</span>
+
+<div class="viewcode-block" id="FuzzyEngine.get">
+<a class="viewcode-back" href="../../../generated/arslabrobotics.fuzzy.fuzzylib.html#arslabrobotics.fuzzy.FuzzyEngine.get">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_varset</span><span class="p">[</span><span class="n">var</span><span class="p">]</span></div>
+</div>
+
+
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, ARSLab, Corrado Santoro.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

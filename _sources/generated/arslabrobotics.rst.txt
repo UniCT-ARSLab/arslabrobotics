@@ -13,6 +13,7 @@
    control
    data
    dds
+   fuzzy
    identification
    system
    utils

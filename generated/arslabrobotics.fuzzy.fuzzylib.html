@@ -1,0 +1,252 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>arslabrobotics.fuzzy.fuzzylib &mdash; arslabrobotics 2.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=51b770b3"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="arslabrobotics.fuzzy.fuzzyplot" href="arslabrobotics.fuzzy.fuzzyplot.html" />
+    <link rel="prev" title="arslabrobotics.fuzzy" href="arslabrobotics.fuzzy.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            arslabrobotics
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="arslabrobotics.html">arslabrobotics</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="arslabrobotics.control.html">arslabrobotics.control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arslabrobotics.data.html">arslabrobotics.data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arslabrobotics.dds.html">arslabrobotics.dds</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="arslabrobotics.fuzzy.html">arslabrobotics.fuzzy</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="arslabrobotics.fuzzy.html#arslabrobotics.fuzzy.FuzzySet"><code class="docutils literal notranslate"><span class="pre">FuzzySet</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="arslabrobotics.fuzzy.html#arslabrobotics.fuzzy.Triangle"><code class="docutils literal notranslate"><span class="pre">Triangle</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="arslabrobotics.fuzzy.html#arslabrobotics.fuzzy.Down"><code class="docutils literal notranslate"><span class="pre">Down</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="arslabrobotics.fuzzy.html#arslabrobotics.fuzzy.Up"><code class="docutils literal notranslate"><span class="pre">Up</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="arslabrobotics.fuzzy.html#arslabrobotics.fuzzy.Variable"><code class="docutils literal notranslate"><span class="pre">Variable</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="arslabrobotics.fuzzy.html#arslabrobotics.fuzzy.FuzzyEngine"><code class="docutils literal notranslate"><span class="pre">FuzzyEngine</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="arslabrobotics.fuzzy.html#arslabrobotics.fuzzy.plot_fuzzysets"><code class="docutils literal notranslate"><span class="pre">plot_fuzzysets()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="arslabrobotics.fuzzy.html#arslabrobotics.fuzzy.plot_set"><code class="docutils literal notranslate"><span class="pre">plot_set()</span></code></a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">arslabrobotics.fuzzy.fuzzylib</a></li>
+<li class="toctree-l4"><a class="reference internal" href="arslabrobotics.fuzzy.fuzzyplot.html">arslabrobotics.fuzzy.fuzzyplot</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="arslabrobotics.identification.html">arslabrobotics.identification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arslabrobotics.system.html">arslabrobotics.system</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arslabrobotics.utils.html">arslabrobotics.utils</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">arslabrobotics</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../api.html">API Reference</a></li>
+          <li class="breadcrumb-item"><a href="arslabrobotics.html">arslabrobotics</a></li>
+          <li class="breadcrumb-item"><a href="arslabrobotics.fuzzy.html">arslabrobotics.fuzzy</a></li>
+      <li class="breadcrumb-item active">arslabrobotics.fuzzy.fuzzylib</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/generated/arslabrobotics.fuzzy.fuzzylib.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-arslabrobotics.fuzzy.fuzzylib">
+<span id="arslabrobotics-fuzzy-fuzzylib"></span><h1>arslabrobotics.fuzzy.fuzzylib<a class="headerlink" href="#module-arslabrobotics.fuzzy.fuzzylib" title="Link to this heading"></a></h1>
+<p class="rubric">Classes</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">BoundedVariable</span></code>(v, s)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#arslabrobotics.fuzzy.fuzzylib.Down" title="arslabrobotics.fuzzy.fuzzylib.Down"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Down</span></code></a>(low, high[, name])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#arslabrobotics.fuzzy.fuzzylib.FuzzyEngine" title="arslabrobotics.fuzzy.fuzzylib.FuzzyEngine"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FuzzyEngine</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">FuzzyRule</span></code>(lhs, rhs[, typ])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#arslabrobotics.fuzzy.fuzzylib.FuzzySet" title="arslabrobotics.fuzzy.fuzzylib.FuzzySet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FuzzySet</span></code></a>(low, high[, name])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#arslabrobotics.fuzzy.fuzzylib.Triangle" title="arslabrobotics.fuzzy.fuzzylib.Triangle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Triangle</span></code></a>(low, high[, name])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#arslabrobotics.fuzzy.fuzzylib.Up" title="arslabrobotics.fuzzy.fuzzylib.Up"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Up</span></code></a>(low, high[, name])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#arslabrobotics.fuzzy.fuzzylib.Variable" title="arslabrobotics.fuzzy.fuzzylib.Variable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Variable</span></code></a>([val, name])</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="arslabrobotics.fuzzy.fuzzylib.FuzzySet">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">arslabrobotics.fuzzy.fuzzylib.</span></span><span class="sig-name descname"><span class="pre">FuzzySet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">low</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/fuzzy/fuzzylib.html#FuzzySet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.fuzzy.fuzzylib.FuzzySet" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="arslabrobotics.fuzzy.fuzzylib.FuzzySet.name">
+<span class="sig-name descname"><span class="pre">name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/fuzzy/fuzzylib.html#FuzzySet.name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.fuzzy.fuzzylib.FuzzySet.name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="arslabrobotics.fuzzy.fuzzylib.FuzzySet.get_limits">
+<span class="sig-name descname"><span class="pre">get_limits</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/fuzzy/fuzzylib.html#FuzzySet.get_limits"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.fuzzy.fuzzylib.FuzzySet.get_limits" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="arslabrobotics.fuzzy.fuzzylib.Triangle">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">arslabrobotics.fuzzy.fuzzylib.</span></span><span class="sig-name descname"><span class="pre">Triangle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">low</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/fuzzy/fuzzylib.html#Triangle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.fuzzy.fuzzylib.Triangle" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#arslabrobotics.fuzzy.fuzzylib.FuzzySet" title="arslabrobotics.fuzzy.fuzzylib.FuzzySet"><code class="xref py py-class docutils literal notranslate"><span class="pre">FuzzySet</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="arslabrobotics.fuzzy.fuzzylib.Triangle.fuzzify">
+<span class="sig-name descname"><span class="pre">fuzzify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/fuzzy/fuzzylib.html#Triangle.fuzzify"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.fuzzy.fuzzylib.Triangle.fuzzify" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="arslabrobotics.fuzzy.fuzzylib.Down">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">arslabrobotics.fuzzy.fuzzylib.</span></span><span class="sig-name descname"><span class="pre">Down</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">low</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/fuzzy/fuzzylib.html#Down"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.fuzzy.fuzzylib.Down" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#arslabrobotics.fuzzy.fuzzylib.FuzzySet" title="arslabrobotics.fuzzy.fuzzylib.FuzzySet"><code class="xref py py-class docutils literal notranslate"><span class="pre">FuzzySet</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="arslabrobotics.fuzzy.fuzzylib.Down.fuzzify">
+<span class="sig-name descname"><span class="pre">fuzzify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/fuzzy/fuzzylib.html#Down.fuzzify"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.fuzzy.fuzzylib.Down.fuzzify" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="arslabrobotics.fuzzy.fuzzylib.Up">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">arslabrobotics.fuzzy.fuzzylib.</span></span><span class="sig-name descname"><span class="pre">Up</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">low</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/fuzzy/fuzzylib.html#Up"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.fuzzy.fuzzylib.Up" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#arslabrobotics.fuzzy.fuzzylib.FuzzySet" title="arslabrobotics.fuzzy.fuzzylib.FuzzySet"><code class="xref py py-class docutils literal notranslate"><span class="pre">FuzzySet</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="arslabrobotics.fuzzy.fuzzylib.Up.fuzzify">
+<span class="sig-name descname"><span class="pre">fuzzify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/fuzzy/fuzzylib.html#Up.fuzzify"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.fuzzy.fuzzylib.Up.fuzzify" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="arslabrobotics.fuzzy.fuzzylib.Variable">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">arslabrobotics.fuzzy.fuzzylib.</span></span><span class="sig-name descname"><span class="pre">Variable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/fuzzy/fuzzylib.html#Variable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.fuzzy.fuzzylib.Variable" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="arslabrobotics.fuzzy.fuzzylib.Variable.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/fuzzy/fuzzylib.html#Variable.set"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.fuzzy.fuzzylib.Variable.set" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="arslabrobotics.fuzzy.fuzzylib.Variable.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/fuzzy/fuzzylib.html#Variable.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.fuzzy.fuzzylib.Variable.get" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="arslabrobotics.fuzzy.fuzzylib.FuzzyEngine">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">arslabrobotics.fuzzy.fuzzylib.</span></span><span class="sig-name descname"><span class="pre">FuzzyEngine</span></span><a class="reference internal" href="../_modules/arslabrobotics/fuzzy/fuzzylib.html#FuzzyEngine"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.fuzzy.fuzzylib.FuzzyEngine" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="arslabrobotics.fuzzy.fuzzylib.FuzzyEngine.STEPS">
+<span class="sig-name descname"><span class="pre">STEPS</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">100.0</span></span><a class="headerlink" href="#arslabrobotics.fuzzy.fuzzylib.FuzzyEngine.STEPS" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="arslabrobotics.fuzzy.fuzzylib.FuzzyEngine.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">rule_set</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/fuzzy/fuzzylib.html#FuzzyEngine.execute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.fuzzy.fuzzylib.FuzzyEngine.execute" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="arslabrobotics.fuzzy.fuzzylib.FuzzyEngine.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/fuzzy/fuzzylib.html#FuzzyEngine.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.fuzzy.fuzzylib.FuzzyEngine.get" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="arslabrobotics.fuzzy.html" class="btn btn-neutral float-left" title="arslabrobotics.fuzzy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="arslabrobotics.fuzzy.fuzzyplot.html" class="btn btn-neutral float-right" title="arslabrobotics.fuzzy.fuzzyplot" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, ARSLab, Corrado Santoro.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
