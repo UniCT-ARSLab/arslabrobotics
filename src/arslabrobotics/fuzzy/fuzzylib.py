@@ -169,8 +169,26 @@ class FuzzyEngine:
 
     STEPS = 100.0
 
+    COG = 0
+    FOM = 1
+    LOM = 2
+    MOM = 3
+
     def __init__(self):
         self.plot = False
+        self.mode = self.COG
+
+    def use_cog(self):
+        self.mode = self.COG
+
+    def use_mom(self):
+        self.mode = self.MOM
+
+    def use_fom(self):
+        self.mode = self.FOM
+
+    def use_lom(self):
+        self.mode = self.LOM
 
     def _centroid(self, bounded_varset):
         lows = []
@@ -218,6 +236,75 @@ class FuzzyEngine:
         return output
 
 
+    def _defuzzify(self, bounded_varset):
+        lows = []
+        highs = []
+        for var, val in bounded_varset:
+            (low, high) = var.fuzzyset().get_limits()
+            lows.append(low)
+            highs.append(high)
+
+        low = min(lows)
+        high = max(highs)
+        #print(low, high)
+
+        increment = (high - low) / self.STEPS
+        value = low
+        fom = None
+        lom = None
+        X = []
+        Y = []
+        while value <= high:
+            #print("Value: ", value)
+            overall_fuzzy_value = 0.0
+            for rhs_var, fuzzy_val in bounded_varset:
+                output_fuzzy_val = rhs_var.eval(value)
+                if output_fuzzy_val > fuzzy_val:
+                    output_fuzzy_val = fuzzy_val
+                overall_fuzzy_value = max(overall_fuzzy_value, output_fuzzy_val)
+                #print(rhs_var, fuzzy_val, output_fuzzy_val, max_fuzzy_value)
+            X.append(value)
+            Y.append(overall_fuzzy_value)
+            value += increment
+
+        num = 0.0
+        den = 0.0
+        maximum = max(Y)
+        for x,y in zip(X,Y):
+            num += x * y
+            den += y
+            if fom is None:
+                if y == maximum:
+                    fom = x
+                    lom = x
+            else:
+                if y == maximum:
+                    lom = x
+                else:
+                    break
+
+        match self.mode:
+            case self.COG:
+                if den == 0:
+                    output = 0.0
+                else:
+                    output = num / den
+
+            case self.MOM:
+                output = (lom + fom) / 2
+
+            case self.LOM:
+                output = lom
+
+            case self.FOM:
+                output = fom
+
+        if self.plot:
+            plot_set(X, [Y], points = [ (output, 0) ], title = "Output")
+
+        return output
+
+
     def execute(self, *rule_set):
         varset = { } # { Variable : [ BoundedVariable ] }
         for r in rule_set:
@@ -247,7 +334,7 @@ class FuzzyEngine:
         #print(varset)
         self.output_varset = { }
         for v in varset:
-            output_value = self._centroid(varset[v])
+            output_value = self._defuzzify(varset[v])
             self.output_varset[v] = output_value
         #print(self.output_varset)
 
