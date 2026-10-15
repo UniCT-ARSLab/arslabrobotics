@@ -279,8 +279,38 @@
 
     <span class="n">STEPS</span> <span class="o">=</span> <span class="mf">100.0</span>
 
+    <span class="n">COG</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">FOM</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">LOM</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">MOM</span> <span class="o">=</span> <span class="mi">3</span>
+
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">plot</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">COG</span>
+
+<div class="viewcode-block" id="FuzzyEngine.use_cog">
+<a class="viewcode-back" href="../../../generated/arslabrobotics.fuzzy.fuzzylib.html#arslabrobotics.fuzzy.FuzzyEngine.use_cog">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">use_cog</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">COG</span></div>
+
+
+<div class="viewcode-block" id="FuzzyEngine.use_mom">
+<a class="viewcode-back" href="../../../generated/arslabrobotics.fuzzy.fuzzylib.html#arslabrobotics.fuzzy.FuzzyEngine.use_mom">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">use_mom</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">MOM</span></div>
+
+
+<div class="viewcode-block" id="FuzzyEngine.use_fom">
+<a class="viewcode-back" href="../../../generated/arslabrobotics.fuzzy.fuzzylib.html#arslabrobotics.fuzzy.FuzzyEngine.use_fom">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">use_fom</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">FOM</span></div>
+
+
+<div class="viewcode-block" id="FuzzyEngine.use_lom">
+<a class="viewcode-back" href="../../../generated/arslabrobotics.fuzzy.fuzzylib.html#arslabrobotics.fuzzy.FuzzyEngine.use_lom">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">use_lom</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">LOM</span></div>
+
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_centroid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bounded_varset</span><span class="p">):</span>
         <span class="n">lows</span> <span class="o">=</span> <span class="p">[]</span>
@@ -328,6 +358,75 @@
         <span class="k">return</span> <span class="n">output</span>
 
 
+    <span class="k">def</span><span class="w"> </span><span class="nf">_defuzzify</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bounded_varset</span><span class="p">):</span>
+        <span class="n">lows</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">highs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">var</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">bounded_varset</span><span class="p">:</span>
+            <span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">)</span> <span class="o">=</span> <span class="n">var</span><span class="o">.</span><span class="n">fuzzyset</span><span class="p">()</span><span class="o">.</span><span class="n">get_limits</span><span class="p">()</span>
+            <span class="n">lows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">low</span><span class="p">)</span>
+            <span class="n">highs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">high</span><span class="p">)</span>
+
+        <span class="n">low</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">lows</span><span class="p">)</span>
+        <span class="n">high</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">highs</span><span class="p">)</span>
+        <span class="c1">#print(low, high)</span>
+
+        <span class="n">increment</span> <span class="o">=</span> <span class="p">(</span><span class="n">high</span> <span class="o">-</span> <span class="n">low</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">STEPS</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">low</span>
+        <span class="n">fom</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">lom</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">Y</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">while</span> <span class="n">value</span> <span class="o">&lt;=</span> <span class="n">high</span><span class="p">:</span>
+            <span class="c1">#print("Value: ", value)</span>
+            <span class="n">overall_fuzzy_value</span> <span class="o">=</span> <span class="mf">0.0</span>
+            <span class="k">for</span> <span class="n">rhs_var</span><span class="p">,</span> <span class="n">fuzzy_val</span> <span class="ow">in</span> <span class="n">bounded_varset</span><span class="p">:</span>
+                <span class="n">output_fuzzy_val</span> <span class="o">=</span> <span class="n">rhs_var</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">output_fuzzy_val</span> <span class="o">&gt;</span> <span class="n">fuzzy_val</span><span class="p">:</span>
+                    <span class="n">output_fuzzy_val</span> <span class="o">=</span> <span class="n">fuzzy_val</span>
+                <span class="n">overall_fuzzy_value</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">overall_fuzzy_value</span><span class="p">,</span> <span class="n">output_fuzzy_val</span><span class="p">)</span>
+                <span class="c1">#print(rhs_var, fuzzy_val, output_fuzzy_val, max_fuzzy_value)</span>
+            <span class="n">X</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="n">Y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">overall_fuzzy_value</span><span class="p">)</span>
+            <span class="n">value</span> <span class="o">+=</span> <span class="n">increment</span>
+
+        <span class="n">num</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">den</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">maximum</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">):</span>
+            <span class="n">num</span> <span class="o">+=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span>
+            <span class="n">den</span> <span class="o">+=</span> <span class="n">y</span>
+            <span class="k">if</span> <span class="n">fom</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="n">maximum</span><span class="p">:</span>
+                    <span class="n">fom</span> <span class="o">=</span> <span class="n">x</span>
+                    <span class="n">lom</span> <span class="o">=</span> <span class="n">x</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="n">maximum</span><span class="p">:</span>
+                    <span class="n">lom</span> <span class="o">=</span> <span class="n">x</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">break</span>
+
+        <span class="k">match</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span><span class="p">:</span>
+            <span class="k">case</span> <span class="bp">self</span><span class="o">.</span><span class="n">COG</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">den</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">output</span> <span class="o">=</span> <span class="mf">0.0</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">output</span> <span class="o">=</span> <span class="n">num</span> <span class="o">/</span> <span class="n">den</span>
+
+            <span class="k">case</span> <span class="bp">self</span><span class="o">.</span><span class="n">MOM</span><span class="p">:</span>
+                <span class="n">output</span> <span class="o">=</span> <span class="p">(</span><span class="n">lom</span> <span class="o">+</span> <span class="n">fom</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+
+            <span class="k">case</span> <span class="bp">self</span><span class="o">.</span><span class="n">LOM</span><span class="p">:</span>
+                <span class="n">output</span> <span class="o">=</span> <span class="n">lom</span>
+
+            <span class="k">case</span> <span class="bp">self</span><span class="o">.</span><span class="n">FOM</span><span class="p">:</span>
+                <span class="n">output</span> <span class="o">=</span> <span class="n">fom</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">plot</span><span class="p">:</span>
+            <span class="n">plot_set</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="p">[</span><span class="n">Y</span><span class="p">],</span> <span class="n">points</span> <span class="o">=</span> <span class="p">[</span> <span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="p">],</span> <span class="n">title</span> <span class="o">=</span> <span class="s2">"Output"</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">output</span>
+
+
 <div class="viewcode-block" id="FuzzyEngine.execute">
 <a class="viewcode-back" href="../../../generated/arslabrobotics.fuzzy.fuzzylib.html#arslabrobotics.fuzzy.FuzzyEngine.execute">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">rule_set</span><span class="p">):</span>
@@ -359,7 +458,7 @@
         <span class="c1">#print(varset)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">output_varset</span> <span class="o">=</span> <span class="p">{</span> <span class="p">}</span>
         <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">varset</span><span class="p">:</span>
-            <span class="n">output_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_centroid</span><span class="p">(</span><span class="n">varset</span><span class="p">[</span><span class="n">v</span><span class="p">])</span>
+            <span class="n">output_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_defuzzify</span><span class="p">(</span><span class="n">varset</span><span class="p">[</span><span class="n">v</span><span class="p">])</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">output_varset</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">output_value</span></div>
 
         <span class="c1">#print(self.output_varset)</span>
