@@ -64,9 +64,11 @@
 <li class="toctree-l4"><a class="reference internal" href="#arslabrobotics.system.TwoWheelsCart2DEncodersOdometry"><code class="docutils literal notranslate"><span class="pre">TwoWheelsCart2DEncodersOdometry</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#arslabrobotics.system.AckermannSteering"><code class="docutils literal notranslate"><span class="pre">AckermannSteering</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#arslabrobotics.system.Arm"><code class="docutils literal notranslate"><span class="pre">Arm</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#arslabrobotics.system.InvertedPendulum"><code class="docutils literal notranslate"><span class="pre">InvertedPendulum</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="arslabrobotics.system.arm.html">arslabrobotics.system.arm</a></li>
 <li class="toctree-l4"><a class="reference internal" href="arslabrobotics.system.basic.html">arslabrobotics.system.basic</a></li>
 <li class="toctree-l4"><a class="reference internal" href="arslabrobotics.system.cart.html">arslabrobotics.system.cart</a></li>
+<li class="toctree-l4"><a class="reference internal" href="arslabrobotics.system.inverted_pendulum.html">arslabrobotics.system.inverted_pendulum</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="arslabrobotics.utils.html">arslabrobotics.utils</a></li>
@@ -607,6 +609,43 @@ linear friction, distance between traction and distance between wheels</p>
 
 </dd></dl>
 
+<dl class="py class">
+<dt class="sig sig-object py" id="arslabrobotics.system.InvertedPendulum">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">arslabrobotics.system.</span></span><span class="sig-name descname"><span class="pre">InvertedPendulum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_Cart_mass</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_pendulum_mass</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_Cart_friction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_pendulum_length</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/system/inverted_pendulum.html#InvertedPendulum"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.system.InvertedPendulum" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Defines a cart robot of a 1D environment with an inverted pendulum.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>_Cart_mass</strong> (<em>float</em>) – The mass of the cart, expressed in Kg</p></li>
+<li><p><strong>_pendulum_mass</strong> (<em>float</em>) – The mass of the medulum</p></li>
+<li><p><strong>_Cart_friction</strong> (<em>float</em>) – The friction coefficient of the cart</p></li>
+<li><p><strong>_pendulum_length</strong> (<em>float</em>) – The length of the pendulum</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="arslabrobotics.system.InvertedPendulum.p">
+<span class="sig-name descname"><span class="pre">p</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/system/inverted_pendulum.html#InvertedPendulum.p"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.system.InvertedPendulum.p" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="arslabrobotics.system.InvertedPendulum.evaluate">
+<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delta_t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/system/inverted_pendulum.html#InvertedPendulum.evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.system.InvertedPendulum.evaluate" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="arslabrobotics.system.InvertedPendulum.get_status">
+<span class="sig-name descname"><span class="pre">get_status</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/system/inverted_pendulum.html#InvertedPendulum.get_status"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.system.InvertedPendulum.get_status" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[float, float, float, float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 <p class="rubric">Modules</p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
@@ -617,6 +656,9 @@ linear friction, distance between traction and distance between wheels</p>
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="arslabrobotics.system.cart.html#module-arslabrobotics.system.cart" title="arslabrobotics.system.cart"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cart</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="arslabrobotics.system.inverted_pendulum.html#module-arslabrobotics.system.inverted_pendulum" title="arslabrobotics.system.inverted_pendulum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inverted_pendulum</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>

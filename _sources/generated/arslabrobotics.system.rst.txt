@@ -13,3 +13,4 @@ arslabrobotics.system
    arm
    basic
    cart
+   inverted_pendulum

@@ -1,0 +1,188 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>arslabrobotics.system.inverted_pendulum &mdash; arslabrobotics 2.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=51b770b3"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="arslabrobotics.utils" href="arslabrobotics.utils.html" />
+    <link rel="prev" title="arslabrobotics.system.cart" href="arslabrobotics.system.cart.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            arslabrobotics
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="arslabrobotics.html">arslabrobotics</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="arslabrobotics.control.html">arslabrobotics.control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arslabrobotics.data.html">arslabrobotics.data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arslabrobotics.dds.html">arslabrobotics.dds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arslabrobotics.fuzzy.html">arslabrobotics.fuzzy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arslabrobotics.identification.html">arslabrobotics.identification</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="arslabrobotics.system.html">arslabrobotics.system</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="arslabrobotics.system.html#arslabrobotics.system.Proportional"><code class="docutils literal notranslate"><span class="pre">Proportional</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="arslabrobotics.system.html#arslabrobotics.system.Derivator"><code class="docutils literal notranslate"><span class="pre">Derivator</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="arslabrobotics.system.html#arslabrobotics.system.Integrator"><code class="docutils literal notranslate"><span class="pre">Integrator</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="arslabrobotics.system.html#arslabrobotics.system.LinearDynamicSystem"><code class="docutils literal notranslate"><span class="pre">LinearDynamicSystem</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="arslabrobotics.system.html#arslabrobotics.system.Cart"><code class="docutils literal notranslate"><span class="pre">Cart</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="arslabrobotics.system.html#arslabrobotics.system.Cart2D"><code class="docutils literal notranslate"><span class="pre">Cart2D</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="arslabrobotics.system.html#arslabrobotics.system.TwoWheelsCart2D"><code class="docutils literal notranslate"><span class="pre">TwoWheelsCart2D</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="arslabrobotics.system.html#arslabrobotics.system.TwoWheelsCart2DEncoders"><code class="docutils literal notranslate"><span class="pre">TwoWheelsCart2DEncoders</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="arslabrobotics.system.html#arslabrobotics.system.TwoWheelsCart2DEncodersOdometry"><code class="docutils literal notranslate"><span class="pre">TwoWheelsCart2DEncodersOdometry</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="arslabrobotics.system.html#arslabrobotics.system.AckermannSteering"><code class="docutils literal notranslate"><span class="pre">AckermannSteering</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="arslabrobotics.system.html#arslabrobotics.system.Arm"><code class="docutils literal notranslate"><span class="pre">Arm</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="arslabrobotics.system.html#arslabrobotics.system.InvertedPendulum"><code class="docutils literal notranslate"><span class="pre">InvertedPendulum</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="arslabrobotics.system.arm.html">arslabrobotics.system.arm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="arslabrobotics.system.basic.html">arslabrobotics.system.basic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="arslabrobotics.system.cart.html">arslabrobotics.system.cart</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">arslabrobotics.system.inverted_pendulum</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="arslabrobotics.utils.html">arslabrobotics.utils</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">arslabrobotics</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../api.html">API Reference</a></li>
+          <li class="breadcrumb-item"><a href="arslabrobotics.html">arslabrobotics</a></li>
+          <li class="breadcrumb-item"><a href="arslabrobotics.system.html">arslabrobotics.system</a></li>
+      <li class="breadcrumb-item active">arslabrobotics.system.inverted_pendulum</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/generated/arslabrobotics.system.inverted_pendulum.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-arslabrobotics.system.inverted_pendulum">
+<span id="arslabrobotics-system-inverted-pendulum"></span><h1>arslabrobotics.system.inverted_pendulum<a class="headerlink" href="#module-arslabrobotics.system.inverted_pendulum" title="Link to this heading"></a></h1>
+<p class="rubric">Classes</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#arslabrobotics.system.inverted_pendulum.InvertedPendulum" title="arslabrobotics.system.inverted_pendulum.InvertedPendulum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InvertedPendulum</span></code></a>(_Cart_mass, _pendulum_mass, ...)</p></td>
+<td><p>Defines a cart robot of a 1D environment with an inverted pendulum.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="arslabrobotics.system.inverted_pendulum.InvertedPendulum">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">arslabrobotics.system.inverted_pendulum.</span></span><span class="sig-name descname"><span class="pre">InvertedPendulum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_Cart_mass</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_pendulum_mass</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_Cart_friction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_pendulum_length</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/system/inverted_pendulum.html#InvertedPendulum"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.system.inverted_pendulum.InvertedPendulum" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Defines a cart robot of a 1D environment with an inverted pendulum.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>_Cart_mass</strong> (<em>float</em>) – The mass of the cart, expressed in Kg</p></li>
+<li><p><strong>_pendulum_mass</strong> (<em>float</em>) – The mass of the medulum</p></li>
+<li><p><strong>_Cart_friction</strong> (<em>float</em>) – The friction coefficient of the cart</p></li>
+<li><p><strong>_pendulum_length</strong> (<em>float</em>) – The length of the pendulum</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="arslabrobotics.system.inverted_pendulum.InvertedPendulum.p">
+<span class="sig-name descname"><span class="pre">p</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/system/inverted_pendulum.html#InvertedPendulum.p"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.system.inverted_pendulum.InvertedPendulum.p" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="arslabrobotics.system.inverted_pendulum.InvertedPendulum.evaluate">
+<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delta_t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/system/inverted_pendulum.html#InvertedPendulum.evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.system.inverted_pendulum.InvertedPendulum.evaluate" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="arslabrobotics.system.inverted_pendulum.InvertedPendulum.get_status">
+<span class="sig-name descname"><span class="pre">get_status</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arslabrobotics/system/inverted_pendulum.html#InvertedPendulum.get_status"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#arslabrobotics.system.inverted_pendulum.InvertedPendulum.get_status" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[float, float, float, float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="arslabrobotics.system.cart.html" class="btn btn-neutral float-left" title="arslabrobotics.system.cart" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="arslabrobotics.utils.html" class="btn btn-neutral float-right" title="arslabrobotics.utils" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, ARSLab, Corrado Santoro.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
