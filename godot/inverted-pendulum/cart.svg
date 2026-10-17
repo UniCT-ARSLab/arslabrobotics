@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120" width="200" height="120">
+  <!-- Body del Carrello -->
+  <rect x="20" y="20" width="160" height="70" rx="15" ry="15" fill="#ffffff" stroke="#777777" stroke-width="6"/>
+  <!-- Ruota Sinistra -->
+  <circle cx="60" cy="95" r="15" fill="#ffffff" stroke="#777777" stroke-width="6"/>
+  <!-- Ruota Destra -->
+  <circle cx="140" cy="95" r="15" fill="#ffffff" stroke="#777777" stroke-width="6"/>
+</svg>

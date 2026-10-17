@@ -12,9 +12,13 @@ __all__ = [
     "TwoWheelsCart2DEncodersOdometry",
     "AckermannSteering",
 
-    "Arm"
+    "Arm",
+
+    "InvertedPendulum"
+
     ]
 
 from arslabrobotics.system.basic import *
 from arslabrobotics.system.cart import *
 from arslabrobotics.system.arm import *
+from arslabrobotics.system.inverted_pendulum import *

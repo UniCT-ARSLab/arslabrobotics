@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://r7jjysvp06gd"]
+
+[ext_resource type="Texture2D" uid="uid://c0lt0hixg6li7" path="res://cart.svg" id="1_h2yge"]
+[ext_resource type="Script" uid="uid://2b884bej2a3h" path="res://main.gd" id="1_lquwl"]
+[ext_resource type="Texture2D" uid="uid://dsdqwitg64i4u" path="res://pivot.svg" id="2_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://186ev33ergw1" path="res://pole.svg" id="3_lquwl"]
+[ext_resource type="Script" uid="uid://5q2fkdgmaq1m" path="res://start.gd" id="5_lquwl"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_887lg"]
+
+[node name="main" type="Control" unique_id=299982524]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_lquwl")
+
+[node name="cart" type="Node2D" parent="." unique_id=497350452]
+
+[node name="cartGraphics" type="Sprite2D" parent="cart" unique_id=590168320]
+texture = ExtResource("1_h2yge")
+
+[node name="pivot" type="Node2D" parent="cart" unique_id=1176776869]
+position = Vector2(0, -37)
+
+[node name="pivotSprite" type="Sprite2D" parent="cart/pivot" unique_id=1897090476]
+texture = ExtResource("2_1bvp3")
+
+[node name="pole" type="Node2D" parent="cart/pivot" unique_id=64195301]
+position = Vector2(0, -90)
+
+[node name="poleSprite" type="Sprite2D" parent="cart/pivot/pole" unique_id=1885316146]
+texture = ExtResource("3_lquwl")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=1998768915]
+position = Vector2(4, 81)
+scale = Vector2(5000.31, 52.645)
+mesh = SubResource("BoxMesh_887lg")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=541145307]
+position = Vector2(6, -282)
+zoom = Vector2(0.305, 0.305)
+
+[node name="telemetry_label" type="Label" parent="." unique_id=1141334948]
+layout_mode = 0
+offset_left = -1499.0
+offset_top = -1259.0
+offset_right = -1404.0
+offset_bottom = -1236.0
+scale = Vector2(2.85, 2.85)
+text = "t = dhsdhwd"
+
+[node name="start" type="Button" parent="." unique_id=2021789758]
+layout_mode = 1
+offset_left = -1687.0001
+offset_top = -1270.0
+offset_right = -1641.0001
+offset_bottom = -1239.0
+scale = Vector2(3, 3)
+text = "Start"
+script = ExtResource("5_lquwl")
