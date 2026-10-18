@@ -92,17 +92,23 @@ class FuzzyRule:
         self._type = typ
         #print("FuzzyRule:", lhs, rhs)
 
-    def eval(self):
+    def eval(self, debug = False):
         values = [ ]
         for bounded_var in self._lhs:
             values.append(bounded_var.get())
         #print(values)
+        ret_val = None
         match self._type:
             case self.AND:
-                return min(values)
+                ret_val = min(values)
             case self.OR:
-                return max(values)
-        return None
+                ret_val = max(values)
+        if debug:
+            print("RULE:", end='')
+            for v in self._lhs:
+                print(v,' ', end='')
+            print(">>", self._rhs.fuzzyset().name(), ret_val)
+        return ret_val
 
     def lhs(self):
         return self._lhs
@@ -125,6 +131,11 @@ class BoundedVariable:
         #print("BoundedVariable", v, s)
         self._variable = v
         self._fuzzyset = s
+
+    def __repr__(self):
+        return "%s(%f, %f)" % (self._fuzzyset.name(), \
+                               self._variable.get(),
+                               self.get())
 
     def fuzzyset(self):
         return self._fuzzyset
@@ -180,6 +191,7 @@ class FuzzyEngine:
     def __init__(self):
         self.plot = False
         self.mode = self.COG
+        self.debug = False
 
     def use_cog(self):
         self.mode = self.COG
@@ -260,10 +272,10 @@ class FuzzyEngine:
         while value <= high:
             #print("Value: ", value)
             overall_fuzzy_value = 0.0
-            for rhs_var, fuzzy_val in bounded_varset:
+            for rhs_var, clipped_fuzzy_val in bounded_varset:
                 output_fuzzy_val = rhs_var.eval(value)
-                if output_fuzzy_val > fuzzy_val:
-                    output_fuzzy_val = fuzzy_val
+                if output_fuzzy_val > clipped_fuzzy_val:
+                    output_fuzzy_val = clipped_fuzzy_val
                 overall_fuzzy_value = max(overall_fuzzy_value, output_fuzzy_val)
                 #print(rhs_var, fuzzy_val, output_fuzzy_val, max_fuzzy_value)
             X.append(value)
@@ -273,9 +285,14 @@ class FuzzyEngine:
         num = 0.0
         den = 0.0
         maximum = max(Y)
-        for x,y in zip(X,Y):
+        #print("X=",X)
+        #print("Y=",Y)
+        for i in range(len(X)):
+            x = X[i]
+            y = Y[i]
             num += x * y
             den += y
+            #print(num, " ", den)
             if fom is None:
                 if y == maximum:
                     fom = x
@@ -283,8 +300,8 @@ class FuzzyEngine:
             else:
                 if y == maximum:
                     lom = x
-                else:
-                    break
+
+        #print("num, den = ", num, " ", den)
 
         match self.mode:
             case self.COG:
@@ -312,7 +329,7 @@ class FuzzyEngine:
         varset = { } # { Variable : [ BoundedVariable ] }
         for r in rule_set:
             # the output of the rule
-            fuzzy_output_val = r.eval()
+            fuzzy_output_val = r.eval(self.debug)
             # the right hand side (a bounded variable)
             rhs = r.rhs()
             var = rhs.variable()
@@ -335,10 +352,17 @@ class FuzzyEngine:
             else:
                 varset[var] = [ (rhs, fuzzy_output_val) ]
         #print(varset)
+        if self.debug:
+            print("OUTPUT:")
         self.output_varset = { }
         for v in varset:
             output_value = self._defuzzify(varset[v])
             self.output_varset[v] = output_value
+            if self.debug:
+                print("  VAR:", v)
+                for var, val in varset[v]:
+                    print("    ", var.fuzzyset().name(), " ", val)
+                print("  VALUE:", output_value)
         #print(self.output_varset)
 
     def get(self, var):
