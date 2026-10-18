@@ -81,22 +81,6 @@
 <div class="viewcode-block" id="InvertedPendulum">
 <a class="viewcode-back" href="../../../generated/arslabrobotics.system.inverted_pendulum.html#arslabrobotics.system.InvertedPendulum">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">InvertedPendulum</span><span class="p">:</span>
-    <span class="c1"># DINAMICHE: -------------------</span>
-    <span class="c1"># x posizione del carrello (metri)</span>
-    <span class="c1"># x_d velocità del carrello (metri/s)</span>
-    <span class="c1"># phi angolo pendolo verticale (radianti)</span>
-    <span class="c1"># phi_d velocità angolare (radianti/s)</span>
-
-    <span class="c1"># STATICHE: ---------------------</span>
-    <span class="c1"># M massa del carrello (kg)</span>
-    <span class="c1"># m massa del pendolo (kg)</span>
-    <span class="c1"># b attrito viscoso del carrello</span>
-    <span class="c1"># l distanza dal fulcro al centro di massa</span>
-    <span class="c1"># I momento di inerzia pendolo</span>
-    <span class="c1"># g accelerazione di gravità</span>
-
-    <span class="c1"># INPUT: ------------------------</span>
-    <span class="c1"># u forza applicata al carrello</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -161,6 +145,12 @@
 <a class="viewcode-back" href="../../../generated/arslabrobotics.system.inverted_pendulum.html#arslabrobotics.system.InvertedPendulum.get_status">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_status</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_d</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">phi</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">phi_d</span></div>
+
+
+<div class="viewcode-block" id="InvertedPendulum.set_angle">
+<a class="viewcode-back" href="../../../generated/arslabrobotics.system.inverted_pendulum.html#arslabrobotics.system.InvertedPendulum.set_angle">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_angle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phi</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">phi</span> <span class="o">=</span> <span class="n">phi</span></div>
 </div>
 
 
