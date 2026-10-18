@@ -15,7 +15,7 @@ from arslabrobotics.fuzzy.fuzzyplot import *
 
 class FuzzySet:
 
-    def __init__(self, low, high, name = None):
+    def __init__(self, name, low, high):
         self._low = low
         self._high = high
         self._name = name
@@ -32,9 +32,12 @@ class FuzzySet:
 
 class Triangle(FuzzySet):
 
-    def __init__(self, low, high, name = None):
-        super().__init__(low, high, name)
-        self._mid = (self._low + self._high) / 2
+    def __init__(self, name, low, high, mid = None):
+        super().__init__(name, low, high)
+        if mid is None:
+            self._mid = (self._low + self._high) / 2
+        else:
+            self._mid = mid
 
     def fuzzify(self, var):
         if (var > self._high) or (var < self._low):
@@ -49,8 +52,8 @@ class Triangle(FuzzySet):
 
 class Down(FuzzySet):
 
-    def __init__(self, low, high, name = None):
-        super().__init__(low, high, name)
+    def __init__(self, name, low, high):
+        super().__init__(name, low, high)
 
     def fuzzify(self, var):
         if var > self._high:
@@ -63,8 +66,8 @@ class Down(FuzzySet):
 
 class Up(FuzzySet):
 
-    def __init__(self, low, high, name = None):
-        super().__init__(low, high, name)
+    def __init__(self, name, low, high):
+        super().__init__(name, low, high)
 
     def fuzzify(self, var):
         if var > self._high:

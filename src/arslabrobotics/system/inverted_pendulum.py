@@ -7,22 +7,6 @@ __all__ = [
     ]
 
 class InvertedPendulum:
-    # DINAMICHE: -------------------
-    # x posizione del carrello (metri)
-    # x_d velocità del carrello (metri/s)
-    # phi angolo pendolo verticale (radianti)
-    # phi_d velocità angolare (radianti/s)
-
-    # STATICHE: ---------------------
-    # M massa del carrello (kg)
-    # m massa del pendolo (kg)
-    # b attrito viscoso del carrello
-    # l distanza dal fulcro al centro di massa
-    # I momento di inerzia pendolo
-    # g accelerazione di gravità
-
-    # INPUT: ------------------------
-    # u forza applicata al carrello
 
     def __init__(
         self,
@@ -79,4 +63,7 @@ class InvertedPendulum:
 
     def get_status(self) -> tuple[float, float, float, float]:
         return self.x, self.x_d, self.phi, self.phi_d
+
+    def set_angle(self, phi):
+        self.phi = phi
 
