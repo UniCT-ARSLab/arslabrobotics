@@ -18,7 +18,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	t += delta
-	#DDS.publish("tick", DDS.DDS_TYPE_FLOAT, delta)
+	DDS.publish("tick", DDS.DDS_TYPE_FLOAT, delta)
 	
 	telemetry.text = "t = %.3f seconds\np = %.3f meters\nphi = %.3f deg" % \
 		[t, x, rad_to_deg(phi)]

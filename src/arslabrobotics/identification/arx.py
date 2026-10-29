@@ -91,6 +91,18 @@ class ARXModel:
             self.u_memory[0] = _input
         return output
 
+    def state_space(self):
+        A = np.zeros( (self.output_lag, self.output_lag) )
+        B = np.zeros( (self.output_lag, 1) )
+        C = np.zeros( (1, self.output_lag) )
+        for i in range(self.output_lag):
+            A[0,i] = - self.a_params[i]
+        for i in range(self.output_lag - 1):
+            A[i+1,i] = 1
+        B[0,0] = self.b_params[0]
+        C[0,0] = 1
+        return (A, B, C)
+
 
 class NeuralARXDataSet:
 

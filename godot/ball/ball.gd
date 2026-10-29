@@ -31,3 +31,7 @@ func _process(delta: float) -> void:
 	dds.publish("speed", dds.DDS_TYPE_FLOAT, self.linear_velocity.x)
 	dds.publish("position", dds.DDS_TYPE_FLOAT, self.global_position.x - initial_position)
 	t += delta
+	#var v = dds.read("force")
+	#if v != null:
+		##print(v)
+		#apply_force(Vector2(v,0))

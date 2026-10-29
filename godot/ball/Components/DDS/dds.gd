@@ -1,4 +1,4 @@
-extends Node3D
+extends Node2D
 
 const COMMAND_KEEP_ALIVE = 0x80
 const COMMAND_SUBSCRIBE = 0x81

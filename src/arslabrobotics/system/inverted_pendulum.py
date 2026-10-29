@@ -6,6 +6,8 @@ __all__ = [
     "InvertedPendulum",
     ]
 
+import numpy as np
+
 class InvertedPendulum:
 
     def __init__(
@@ -42,24 +44,38 @@ class InvertedPendulum:
     def evaluate(self, delta_t, u):
         x1 = self.x + self.x_d * delta_t
 
-        x_d1 = self.x_d + delta_t * (
-            (-self.b * (self.I + self.m * self.l * self.l) / self.p()) * self.x_d
-            + ((self.m * self.m * self.g * self.l * self.l) / self.p()) * self.phi
-            + ((self.I + self.m * self.l * self.l) / self.p()) * u
-        )
+        x_d1 = self.x_d \
+              + delta_t * (-self.b * (self.I + self.m * self.l * self.l) / self.p()) * self.x_d \
+              + delta_t * ((self.m * self.m * self.g * self.l * self.l) / self.p()) * self.phi \
+              + delta_t * ((self.I + self.m * self.l * self.l) / self.p()) * u
 
         phi1 = self.phi + self.phi_d * delta_t
 
-        phi_d1 = self.phi_d + delta_t * (
-            ((-self.m * self.l * self.b) / self.p()) * self.x_d
-            + ((self.m * self.g * self.l * (self.M + self.m)) / self.p()) * self.phi
-            + ((self.m * self.l) / self.p()) * u
-        )
+        phi_d1 = self.phi_d \
+           + delta_t * ((-self.m * self.l * self.b) / self.p()) * self.x_d \
+           + delta_t * ((self.m * self.g * self.l * (self.M + self.m)) / self.p()) * self.phi \
+           + delta_t * ((self.m * self.l) / self.p()) * u
 
         self.x = x1
         self.x_d = x_d1
         self.phi = phi1
         self.phi_d = phi_d1
+
+    def discrete_state_space(self, delta_t):
+        a1 = [1, delta_t, 0, 0]
+        a2 = [0, 1 + delta_t * (-self.b * (self.I + self.m * self.l * self.l) / self.p()),
+              delta_t * ((self.m * self.m * self.g * self.l * self.l) / self.p()),
+              0]
+        a3 = [0, 0, 1, delta_t]
+        a4 = [0, delta_t * ((-self.m * self.l * self.b) / self.p()),
+              delta_t * ((self.m * self.g * self.l * (self.M + self.m)) / self.p()),
+              1]
+        A = np.array([a1, a2, a3, a4])
+        B = np.array([[0],
+                      [delta_t * ((self.I + self.m * self.l * self.l) / self.p())],
+                      [0],
+                      [delta_t * ((self.m * self.l) / self.p())] ] )
+        return (A, B)
 
     def get_status(self) -> tuple[float, float, float, float]:
         return self.x, self.x_d, self.phi, self.phi_d

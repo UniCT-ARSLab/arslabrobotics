@@ -43,6 +43,7 @@ class Arm:
         self.theta = new_theta
         return (self.theta, self.omega)
 
+
 if __name__ == "__main__":
     c = Arm(1.0, 1.0, 0.9)
     f = 3
