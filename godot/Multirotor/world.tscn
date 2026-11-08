@@ -1,0 +1,180 @@
+[gd_scene format=3 uid="uid://besrfxb6do24x"]
+
+[ext_resource type="PackedScene" uid="uid://t5ro3qm5fttb" path="res://robot.tscn" id="1_fer1o"]
+[ext_resource type="Script" uid="uid://blfon3x6pf5fc" path="res://reset_button.gd" id="2_fj7yv"]
+[ext_resource type="Script" uid="uid://b8r4t0mvm887h" path="res://start_button.gd" id="3_tlwt5"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ykxtl"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_pbq3u"]
+sky_material = SubResource("ProceduralSkyMaterial_ykxtl")
+
+[sub_resource type="Environment" id="Environment_y01v2"]
+background_mode = 2
+sky = SubResource("Sky_pbq3u")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pxise"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_5jmwy"]
+size = Vector2(6, 6)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p5b3b"]
+albedo_color = Color(0.172549, 0.180392, 0.152941, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gphqx"]
+points = PackedVector3Array(3.04702, 0.0476097, 3.04702, -3.04702, -0.0476097, -3.04702, -3.04702, 0.0476097, -3.04702, 3.04702, -0.0476097, -3.04702, -3.04702, -0.0476097, 3.04702, -3.04702, 0.0476097, 3.04702, 3.04702, 0.0476097, -3.04702, 3.04702, -0.0476097, 3.04702)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rj7wp"]
+size = Vector3(6, 0, 6)
+
+[sub_resource type="BoxMesh" id="BoxMesh_e23d5"]
+size = Vector3(4, 0.2, 0.05)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4osb2"]
+points = PackedVector3Array(-1.00813, -0.10813, -0.0331301, 1.00813, 0.103252, 0.0319106, 1.00813, 0.103252, -0.0331301, -1.00813, 0.103252, 0.0319106, 1.00813, -0.10813, 0.0319106, 1.00813, -0.10813, -0.0331301, -1.00813, 0.103252, -0.0331301, -1.00813, -0.10813, 0.0319106)
+
+[sub_resource type="BoxMesh" id="BoxMesh_msus4"]
+size = Vector3(4, 0.2, 0.05)
+
+[node name="World" type="Node3D" unique_id=774041748]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=446176480]
+environment = SubResource("Environment_y01v2")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=807251325]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Obstacles" type="Node3D" parent="." unique_id=1054774802]
+metadata/_edit_lock_ = true
+
+[node name="Floor" type="StaticBody3D" parent="Obstacles" unique_id=1686858667]
+physics_material_override = SubResource("PhysicsMaterial_pxise")
+metadata/_edit_lock_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacles/Floor" unique_id=451280475]
+mesh = SubResource("PlaneMesh_5jmwy")
+surface_material_override/0 = SubResource("StandardMaterial3D_p5b3b")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Obstacles/Floor" unique_id=857919764]
+shape = SubResource("ConvexPolygonShape3D_gphqx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Floor" unique_id=577316124]
+shape = SubResource("BoxShape3D_rj7wp")
+disabled = true
+
+[node name="Wall1" type="StaticBody3D" parent="Obstacles" unique_id=428990611]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.002, 0.001, -3)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacles/Wall1" unique_id=1600418442]
+mesh = SubResource("BoxMesh_e23d5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Wall1" unique_id=1551497776]
+shape = SubResource("ConvexPolygonShape3D_4osb2")
+
+[node name="Wall2" type="StaticBody3D" parent="Obstacles" unique_id=766869423]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, 0.001, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacles/Wall2" unique_id=482982261]
+mesh = SubResource("BoxMesh_msus4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Wall2" unique_id=456092338]
+shape = SubResource("ConvexPolygonShape3D_4osb2")
+
+[node name="Wall3" type="StaticBody3D" parent="Obstacles" unique_id=1085108635]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.002, 0.001, 3)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacles/Wall3" unique_id=163231059]
+mesh = SubResource("BoxMesh_e23d5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Wall3" unique_id=846126386]
+shape = SubResource("ConvexPolygonShape3D_4osb2")
+
+[node name="Wall4" type="StaticBody3D" parent="Obstacles" unique_id=866775348]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 0.001, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacles/Wall4" unique_id=884640629]
+mesh = SubResource("BoxMesh_msus4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Wall4" unique_id=610851813]
+shape = SubResource("ConvexPolygonShape3D_4osb2")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1303203247]
+transform = Transform3D(0.999586, -0.0138976, 0.0251778, -0.00220186, 0.835929, 0.548833, -0.0286743, -0.548661, 0.835553, -0.00823641, 1.35612, 2.39591)
+fov = 100.0
+
+[node name="Robot" parent="." unique_id=383886742 instance=ExtResource("1_fer1o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.214639, 0)
+
+[node name="Label_X" type="Label" parent="." unique_id=1034283150]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 20
+text = "X "
+
+[node name="Label_Y" type="Label" parent="." unique_id=741222148]
+offset_top = 34.0
+offset_right = 40.0
+offset_bottom = 62.0
+theme_override_font_sizes/font_size = 20
+text = "Y"
+
+[node name="Label_Z" type="Label" parent="." unique_id=632009485]
+offset_top = 69.0
+offset_right = 40.0
+offset_bottom = 97.0
+theme_override_font_sizes/font_size = 20
+text = "Z"
+
+[node name="Label_XR" type="Label" parent="." unique_id=270333501]
+offset_left = 161.0
+offset_right = 201.0
+offset_bottom = 28.0
+theme_override_font_sizes/font_size = 20
+text = "X "
+
+[node name="Label_YR" type="Label" parent="." unique_id=222157570]
+offset_left = 161.0
+offset_top = 34.0
+offset_right = 201.0
+offset_bottom = 62.0
+theme_override_font_sizes/font_size = 20
+text = "Y"
+
+[node name="Label_ZR" type="Label" parent="." unique_id=1697099701]
+offset_left = 161.0
+offset_top = 69.0
+offset_right = 201.0
+offset_bottom = 97.0
+theme_override_font_sizes/font_size = 20
+text = "Z"
+
+[node name="Label_Time" type="Label" parent="." unique_id=1360008218]
+offset_left = 303.0
+offset_top = 5.0
+offset_right = 343.0
+offset_bottom = 33.0
+theme_override_font_sizes/font_size = 20
+text = "Time"
+
+[node name="ResetButton" type="Button" parent="." unique_id=86104374]
+custom_minimum_size = Vector2(100, 50)
+offset_left = 3.0
+offset_top = 114.0
+offset_right = 103.0
+offset_bottom = 164.0
+text = "Reset"
+script = ExtResource("2_fj7yv")
+
+[node name="StartButton" type="Button" parent="." unique_id=998112817]
+custom_minimum_size = Vector2(100, 60)
+offset_left = 5.0
+offset_top = 181.0
+offset_right = 105.0
+offset_bottom = 241.0
+text = "Start"
+script = ExtResource("3_tlwt5")

@@ -86,7 +86,7 @@ class ARXModel:
 
         self.y_memory[1:] = self.y_memory[:-1]
         self.y_memory[0] = output
-        if self.input_lag > 1:
+        if self.input_lag > 0:
             self.u_memory[1:] = self.u_memory[:-1]
             self.u_memory[0] = _input
         return output
