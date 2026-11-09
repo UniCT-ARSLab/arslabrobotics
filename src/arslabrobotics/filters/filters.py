@@ -118,7 +118,7 @@ class ButterworthFilter:
 
     def __init__(self, order, typ, fcuts, fsamp):
         """
-        A class that implements a Butterworth filtrer
+        A class that implements a Butterworth filter
 
         :param order: Order of the filter (from 1)
         :param typ: Type of the filter, ‘lowpass’, ‘highpass’, ‘bandpass’, ‘bandstop’
@@ -140,4 +140,63 @@ class ButterworthFilter:
         :return: the output
         """
         return self.filter.evaluate(_in)
+
+
+class Chebysev1Filter:
+
+    def __init__(self, order, typ, ripple, fcuts, fsamp):
+        """
+        A class that implements a Chebysev filter type I
+
+        :param order: Order of the filter (from 1)
+        :param typ: Type of the filter, ‘lowpass’, ‘highpass’, ‘bandpass’, ‘bandstop’
+        :param ripple: Maximum ripple in dB
+        :param fcuts: Cut-off Frequencies, for lowpass and highpass it is a scalar, for bandpass and bandstop it is a two element list
+        :param fsample: Sampling Frequency
+
+        """
+        if type(fcuts) == list:
+            fcuts = np.array(fcuts)
+        [b, a] = sig.cheby1(N = order, rp=ripple, Wn = fcuts, btype = typ,
+                            analog = False, output = 'ba', fs = fsamp)
+        self.filter = ARXModel(a[1:], b)
+
+    def evaluate(self, _in):
+        """
+        Evaluates the filter
+
+        :param _input: the input
+        :return: the output
+        """
+        return self.filter.evaluate(_in)
+
+
+class Chebysev2Filter:
+
+    def __init__(self, order, typ, att, fcuts, fsamp):
+        """
+        A class that implements a Chebysev filter type II
+
+        :param order: Order of the filter (from 1)
+        :param typ: Type of the filter, ‘lowpass’, ‘highpass’, ‘bandpass’, ‘bandstop’
+        :param att: Attenuation in dB in the stop band
+        :param fcuts: Cut-off Frequencies, for lowpass and highpass it is a scalar, for bandpass and bandstop it is a two element list
+        :param fsample: Sampling Frequency
+
+        """
+        if type(fcuts) == list:
+            fcuts = np.array(fcuts)
+        [b, a] = sig.cheby2(N = order, rs=ripple, Wn = fcuts, btype = typ,
+                            analog = False, output = 'ba', fs = fsamp)
+        self.filter = ARXModel(a[1:], b)
+
+    def evaluate(self, _in):
+        """
+        Evaluates the filter
+
+        :param _input: the input
+        :return: the output
+        """
+        return self.filter.evaluate(_in)
+
 
