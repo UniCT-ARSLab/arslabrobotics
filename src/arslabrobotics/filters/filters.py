@@ -186,7 +186,7 @@ class Chebysev2Filter:
         """
         if type(fcuts) == list:
             fcuts = np.array(fcuts)
-        [b, a] = sig.cheby2(N = order, rs=ripple, Wn = fcuts, btype = typ,
+        [b, a] = sig.cheby2(N = order, rs=att, Wn = fcuts, btype = typ,
                             analog = False, output = 'ba', fs = fsamp)
         self.filter = ARXModel(a[1:], b)
 

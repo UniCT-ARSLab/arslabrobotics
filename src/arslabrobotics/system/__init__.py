@@ -16,7 +16,8 @@ __all__ = [
 
     "InvertedPendulum",
 
-    "MotorDriver"
+    "MotorDriver",
+    "IMUDriver"
 
     ]
 
@@ -25,3 +26,4 @@ from arslabrobotics.system.cart import *
 from arslabrobotics.system.arm import *
 from arslabrobotics.system.inverted_pendulum import *
 from arslabrobotics.system.motor_driver import *
+from arslabrobotics.system.imu_driver import *
