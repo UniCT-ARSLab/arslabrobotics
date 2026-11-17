@@ -52,7 +52,7 @@ class RollAngleKF:
         self.x = np.array( [ [0], [0] ])
 
         self.Q = np.eye(2) * 1e-3
-        self.R = np.eye(2) * 1e-2
+        self.R = np.eye(2) * 10
         self.P = np.eye(2)
         self.H = np.array( [ [1, 0],
                              [0, 0] ])
@@ -64,9 +64,12 @@ class RollAngleKF:
         self.x = self.A @ self.x
         self.P = self.A @ self.P @ self.A.T + self.Q
 
-    def udpate(self, acc_angle):
+    gravity_gain = 10.0
+
+    def update(self, acc_angle, g):
         z = np.array( [ [acc_angle], [0] ])
-        S = self.H @ self.P @ self.H.T + self.R
+        R = self.R + np.eye(2) * self.gravity_gain * abs(g - 1.0)
+        S = self.H @ self.P @ self.H.T + R
         K = self.P @ self.H.T @ np.linalg.inv(S)
         self.x = self.x + K @ (z - self.H @ self.x)
         self.P = (np.eye(2) - K @ self.H) @ self.P
@@ -112,11 +115,13 @@ def main():
         gyro_angle += imu_data[0] * delta_t
         acc_angle = np.degrees(np.atan2(imu_data[4], imu_data[5]))
 
-        filter.update(acc_angle)
+        g = np.sqrt(imu_data[3]**2 + imu_data[4]**2 + imu_data[5]**2)
+
+        filter.update(acc_angle, g)
 
         filtered_angle = filter.x[0,0]
 
-        glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT)
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
         glLoadIdentity()
         glTranslatef(0.0, 0.0, -10)
         glRotatef(-filtered_angle, 0, 0, 1)
