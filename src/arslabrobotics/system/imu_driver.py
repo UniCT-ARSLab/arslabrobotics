@@ -47,6 +47,8 @@ if __name__ == "__main__":
     drv.open()
     while True:
         v = drv.sample()
-        angle = math.degrees(math.atan2(v[4], v[5]))
-        print(v[4:6], angle)
+        #print("%6.3f %6.3f %6.3f" % (v[0], v[1], v[2]))
+        print("%6.3f %6.3f %6.3f" % (v[3], v[4], v[5]))
+        #angle = math.degrees(math.atan2(v[4], v[5]))
+        #print(v[4:6], angle)
 

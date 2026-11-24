@@ -47,15 +47,19 @@ def Cube():
 class RollAngleKF:
 
     def __init__(self):
+    	# [ angle, omega ]
+    	# angle = angle + omega * delta_t
+    	# omega = omega
         self.A = np.array( [ [1, 1e-2],
                               [0, 1] ] )
         self.x = np.array( [ [0], [0] ])
 
         self.Q = np.eye(2) * 1e-3
-        self.R = np.eye(2) * 10
+        self.R = np.eye(2) * 1
         self.P = np.eye(2)
         self.H = np.array( [ [1, 0],
                              [0, 0] ])
+        self.gravity_correction_gain = 10.0
 
     def predict(self, delta_t, omega):
         self.A[0, 1] = delta_t  # update A
@@ -64,11 +68,9 @@ class RollAngleKF:
         self.x = self.A @ self.x
         self.P = self.A @ self.P @ self.A.T + self.Q
 
-    gravity_gain = 10.0
-
     def update(self, acc_angle, g):
         z = np.array( [ [acc_angle], [0] ])
-        R = self.R + np.eye(2) * self.gravity_gain * abs(g - 1.0)
+        R = self.R + np.eye(2) * self.gravity_correction_gain * abs(g - 1.0)
         S = self.H @ self.P @ self.H.T + R
         K = self.P @ self.H.T @ np.linalg.inv(S)
         self.x = self.x + K @ (z - self.H @ self.x)
