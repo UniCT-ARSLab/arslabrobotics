@@ -6,6 +6,7 @@ __all__ = [
     "PID_Controller",
 
     "DifferentialDriveSpeedControl",
+    "Polar2DController",
 
     "VirtualRobot",
     "StraightLine2DMotion",
@@ -18,3 +19,4 @@ __all__ = [
 from arslabrobotics.control.pid import *
 from arslabrobotics.control.speed import *
 from arslabrobotics.control.trajectory import *
+from arslabrobotics.control.polar import *

@@ -14,7 +14,7 @@ __all__ = [
 import math
 
 #from basic import *
-#from arslabrobotics.utils.geometry import *
+from arslabrobotics.utils.geometry import normalize_angle
 
 class Cart:
     def __init__(self, _mass: float, _friction: float):
@@ -83,7 +83,7 @@ class Cart2D:
         new_w: float = self.w * (1 - self.beta * delta_t / self.Iz) + delta_t * _torque / self.Iz
         self.x = self.x + self.v * delta_t * math.cos(self.theta)
         self.y = self.y + self.v * delta_t * math.sin(self.theta)
-        self.theta = self.theta + delta_t * self.w
+        self.theta = normalize_angle(self.theta + delta_t * self.w)
         self.v = new_v
         self.w = new_w
 
@@ -142,6 +142,10 @@ class TwoWheelsCart2D(Cart2D):
         t = self.traction_wheelbase * (f_right - f_left)
         super().evaluate(delta_t, f, t)
 
+    def get_wheel_speeds(self):
+        vl = self.v - self.w * self.traction_wheelbase / 2
+        vr = self.v + self.w * self.traction_wheelbase / 2
+        return (vl, vr)
 
 # --------------------------------------------------------------------------
 

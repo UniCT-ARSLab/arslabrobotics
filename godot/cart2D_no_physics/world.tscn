@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://besrfxb6do24x"]
+[gd_scene format=3 uid="uid://besrfxb6do24x"]
 
 [ext_resource type="PackedScene" uid="uid://t5ro3qm5fttb" path="res://robot.tscn" id="1_fer1o"]
 
@@ -38,72 +38,72 @@ points = PackedVector3Array(-1.00813, -0.10813, -0.0331301, 1.00813, 0.103252, 0
 [sub_resource type="BoxMesh" id="BoxMesh_msus4"]
 size = Vector3(4, 0.2, 0.05)
 
-[node name="World" type="Node3D"]
+[node name="World" type="Node3D" unique_id=110313875]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=706286578]
 environment = SubResource("Environment_y01v2")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=256700859]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Obstacles" type="Node3D" parent="."]
+[node name="Obstacles" type="Node3D" parent="." unique_id=984556008]
 metadata/_edit_lock_ = true
 
-[node name="Floor" type="StaticBody3D" parent="Obstacles"]
+[node name="Floor" type="StaticBody3D" parent="Obstacles" unique_id=899216155]
 physics_material_override = SubResource("PhysicsMaterial_pxise")
 metadata/_edit_lock_ = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacles/Floor"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacles/Floor" unique_id=1686977916]
 mesh = SubResource("PlaneMesh_5jmwy")
 surface_material_override/0 = SubResource("StandardMaterial3D_p5b3b")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Obstacles/Floor"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Obstacles/Floor" unique_id=306519022]
 shape = SubResource("ConvexPolygonShape3D_gphqx")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Floor"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Floor" unique_id=1922991913]
 shape = SubResource("BoxShape3D_rj7wp")
 disabled = true
 
-[node name="Wall1" type="StaticBody3D" parent="Obstacles"]
+[node name="Wall1" type="StaticBody3D" parent="Obstacles" unique_id=11205637]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.002, 0.001, -3)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacles/Wall1"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacles/Wall1" unique_id=871882694]
 mesh = SubResource("BoxMesh_e23d5")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Wall1"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Wall1" unique_id=2092629092]
 shape = SubResource("ConvexPolygonShape3D_4osb2")
 
-[node name="Wall2" type="StaticBody3D" parent="Obstacles"]
+[node name="Wall2" type="StaticBody3D" parent="Obstacles" unique_id=51813938]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, 0.001, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacles/Wall2"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacles/Wall2" unique_id=1107035629]
 mesh = SubResource("BoxMesh_msus4")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Wall2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Wall2" unique_id=1323515887]
 shape = SubResource("ConvexPolygonShape3D_4osb2")
 
-[node name="Wall3" type="StaticBody3D" parent="Obstacles"]
+[node name="Wall3" type="StaticBody3D" parent="Obstacles" unique_id=1518433554]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.002, 0.001, 3)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacles/Wall3"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacles/Wall3" unique_id=494793328]
 mesh = SubResource("BoxMesh_e23d5")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Wall3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Wall3" unique_id=1685526360]
 shape = SubResource("ConvexPolygonShape3D_4osb2")
 
-[node name="Wall4" type="StaticBody3D" parent="Obstacles"]
+[node name="Wall4" type="StaticBody3D" parent="Obstacles" unique_id=1778177904]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 0.001, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacles/Wall4"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacles/Wall4" unique_id=1251680841]
 mesh = SubResource("BoxMesh_msus4")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Wall4"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacles/Wall4" unique_id=87855391]
 shape = SubResource("ConvexPolygonShape3D_4osb2")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=2138023894]
 transform = Transform3D(0.999586, -0.0138976, 0.0251778, -0.0195653, 0.31302, 0.949545, -0.0210776, -0.949645, 0.312619, 0.212265, 2.37032, 1.65204)
 fov = 100.0
 
-[node name="Robot" parent="." instance=ExtResource("1_fer1o")]
+[node name="Robot" parent="." unique_id=364938285 instance=ExtResource("1_fer1o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.138074, 0)

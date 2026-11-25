@@ -21,6 +21,7 @@ func _physics_process(delta):
 func _process(_delta):
 	#print(theRobot.global_position.x, " ", -theRobot.global_position.z, " ", theRobot.global_rotation.y)
 	DDS.publish("tick", DDS.DDS_TYPE_FLOAT, _delta)
+	print(_delta)
 
 	var x = DDS.read("X")
 	var y = DDS.read("Y")
