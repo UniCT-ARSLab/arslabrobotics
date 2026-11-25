@@ -125,7 +125,7 @@ class DDS(threading.Thread):
 
         :param _name: The name of the variable
         :param _value: The value
-        :param _type: The type, chosen among DDS_TYPE_INT, DDS_TYPE_FLOAT, DDS_TYPE_BLOB
+        :param _type: The type, chosen among DDS_TYPE_INT, DDS_TYPE_FLOAT, DDS_TYPE_BLOB, DDS_TYPE_JSON
 
         """
         data = io.BytesIO()
@@ -138,7 +138,8 @@ class DDS(threading.Thread):
         elif _type == DDS_TYPE_STRING:
             data.write(struct.pack(f"<{len(_value)}s", _value.encode("utf-8")))
         elif _type == DDS_TYPE_JSON:
-            data.write(struct.pack(f"<{len(_value)}s", _value.encode("utf-8")))
+            json_data = json.dumps(_value)
+            data.write(struct.pack(f"<{len(json_data)}s", json_data.encode("utf-8")))
 
         self.sd.sendto(data.getvalue(), (self.remote_host, self.remote_port))
 

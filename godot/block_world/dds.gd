@@ -229,4 +229,4 @@ func read(name : String):
 	return self.subscribed_vars[name]
 
 func clear(name : String):
-	self.subscribed_vars[name] = 0.0
+		self.subscribed_vars[name] = 0.0

@@ -9,7 +9,7 @@ command(pick(Object)) -->
 
 pick_verb --> [get] ; [pick] ; [grab].
 
-article --> [the].
+article --> [the] ; [a].
 
 obj(cube) --> [cube].
 obj(prism) --> [prism].
