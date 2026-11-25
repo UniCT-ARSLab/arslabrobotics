@@ -37,6 +37,7 @@ class CartModel:
             self.dpright.add_y("speed", "right speed (m/s)")
 
         self.t = threading.Thread(target = self.run)
+        self.t.daemon = True
         self.t.start()
 
 
